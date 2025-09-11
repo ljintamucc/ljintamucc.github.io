@@ -34745,7 +34745,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">mice</span><span class="p">)</span>
@@ -34795,13 +34795,13 @@ The following objects are masked from ‘package:base’:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Load the data</span>
-<span class="n">loc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;~/data/diamond_new.csv&quot;</span>
+<span class="n">loc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;diamond_MissingValues.csv&quot;</span>
 <span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -34823,18 +34823,22 @@ The following objects are masked from ‘package:base’:
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 6 × 10</caption>
+<caption>A data.frame: 10 × 10</caption>
 <thead>
 	<tr><th></th><th scope=col>carat</th><th scope=col>cut</th><th scope=col>color</th><th scope=col>clarity</th><th scope=col>depth</th><th scope=col>table</th><th scope=col>price</th><th scope=col>x</th><th scope=col>y</th><th scope=col>z</th></tr>
 	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>0.53</td><td>Good     </td><td>D</td><td>SI2 </td><td>63.9</td><td>55</td><td>1318</td><td>5.14</td><td>5.10</td><td>3.27</td></tr>
-	<tr><th scope=row>2</th><td>0.42</td><td>Premium  </td><td>F</td><td>VS1 </td><td>61.2</td><td>58</td><td>1103</td><td>4.86</td><td>4.82</td><td>2.96</td></tr>
-	<tr><th scope=row>3</th><td>0.34</td><td>Premium  </td><td>E</td><td>VS1 </td><td>59.9</td><td>58</td><td>1033</td><td>4.58</td><td>4.54</td><td>2.73</td></tr>
-	<tr><th scope=row>4</th><td>0.70</td><td>Very Good</td><td>D</td><td>VS1 </td><td>62.8</td><td>59</td><td>3247</td><td>5.63</td><td>5.68</td><td>3.55</td></tr>
-	<tr><th scope=row>5</th><td>0.28</td><td>Very Good</td><td>E</td><td>VVS2</td><td>64.0</td><td>54</td><td> 572</td><td>4.11</td><td>4.17</td><td>2.65</td></tr>
-	<tr><th scope=row>6</th><td>0.51</td><td>Premium  </td><td>D</td><td>VS2 </td><td>62.0</td><td>59</td><td>1807</td><td>5.12</td><td>5.08</td><td>3.16</td></tr>
+	<tr><th scope=row>1</th><td>0.53</td><td>Good     </td><td>D</td><td>SI2 </td><td>63.9</td><td>55</td><td> 1318</td><td>5.14</td><td>5.10</td><td>3.27</td></tr>
+	<tr><th scope=row>2</th><td>0.42</td><td>Premium  </td><td>F</td><td>VS1 </td><td>61.2</td><td>58</td><td> 1103</td><td>4.86</td><td>4.82</td><td>2.96</td></tr>
+	<tr><th scope=row>3</th><td>0.34</td><td>Premium  </td><td>E</td><td>VS1 </td><td>59.9</td><td>58</td><td> 1033</td><td>4.58</td><td>4.54</td><td>2.73</td></tr>
+	<tr><th scope=row>4</th><td>0.70</td><td>Very Good</td><td>D</td><td>VS1 </td><td>62.8</td><td>59</td><td> 3247</td><td>5.63</td><td>5.68</td><td>3.55</td></tr>
+	<tr><th scope=row>5</th><td>0.28</td><td>Very Good</td><td>E</td><td>VVS2</td><td>64.0</td><td>54</td><td>  572</td><td>4.11</td><td>4.17</td><td>2.65</td></tr>
+	<tr><th scope=row>6</th><td>0.51</td><td>Premium  </td><td>D</td><td>VS2 </td><td>62.0</td><td>59</td><td> 1807</td><td>5.12</td><td>5.08</td><td>3.16</td></tr>
+	<tr><th scope=row>7</th><td>0.61</td><td>Premium  </td><td>E</td><td>SI2 </td><td>61.3</td><td>59</td><td>   NA</td><td>5.48</td><td>5.39</td><td>3.33</td></tr>
+	<tr><th scope=row>8</th><td>0.34</td><td>Very Good</td><td>G</td><td>VS2 </td><td>60.3</td><td>54</td><td>  596</td><td>4.53</td><td>4.56</td><td>2.74</td></tr>
+	<tr><th scope=row>9</th><td>1.50</td><td>Fair     </td><td>F</td><td>VVS2</td><td>64.7</td><td>53</td><td>16364</td><td>7.22</td><td>7.15</td><td>4.65</td></tr>
+	<tr><th scope=row>10</th><td>1.00</td><td>Premium  </td><td>H</td><td>SI1 </td><td>62.7</td><td>59</td><td> 4788</td><td>6.37</td><td>6.30</td><td>3.97</td></tr>
 </tbody>
 </table>
 
@@ -34851,17 +34855,19 @@ The following objects are masked from ‘package:base’:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">3179</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Set seed 1923</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">1923</span><span class="p">)</span>
 
 <span class="c1">#m controls the number of imputations </span>
 <span class="c1"># 5:  there will be 5 complete datasets</span>
 <span class="n">dat.imp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mice</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;pmm&#39;</span><span class="p">)</span>
 
-<span class="c1">#to access the third imputed data set</span>
-<span class="nf">complete</span><span class="p">(</span><span class="n">dat.imp</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<span class="c1">#to access the second imputed data set</span>
+<span class="c1">#To see the first twenty cases</span>
+<span class="nf">complete</span><span class="p">(</span><span class="n">dat.imp</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 
 <span class="c1">#Please report the imputed price for the 7th diamond of the third imputed data </span>
 <span class="c1">#1120  , when the seed is 179</span>
@@ -34934,73 +34940,32 @@ The following objects are masked from ‘package:base’:
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 12000 × 10</caption>
+<caption>A data.frame: 20 × 10</caption>
 <thead>
-	<tr><th scope=col>carat</th><th scope=col>cut</th><th scope=col>color</th><th scope=col>clarity</th><th scope=col>depth</th><th scope=col>table</th><th scope=col>price</th><th scope=col>x</th><th scope=col>y</th><th scope=col>z</th></tr>
-	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+	<tr><th></th><th scope=col>carat</th><th scope=col>cut</th><th scope=col>color</th><th scope=col>clarity</th><th scope=col>depth</th><th scope=col>table</th><th scope=col>price</th><th scope=col>x</th><th scope=col>y</th><th scope=col>z</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>0.53</td><td>Good     </td><td>D</td><td>SI2 </td><td>63.9</td><td>55.0</td><td> 1318</td><td>5.14</td><td>5.10</td><td>3.27</td></tr>
-	<tr><td>0.42</td><td>Premium  </td><td>F</td><td>VS1 </td><td>61.2</td><td>58.0</td><td> 1103</td><td>4.86</td><td>4.82</td><td>2.96</td></tr>
-	<tr><td>0.34</td><td>Premium  </td><td>E</td><td>VS1 </td><td>59.9</td><td>58.0</td><td> 1033</td><td>4.58</td><td>4.54</td><td>2.73</td></tr>
-	<tr><td>0.70</td><td>Very Good</td><td>D</td><td>VS1 </td><td>62.8</td><td>59.0</td><td> 3247</td><td>5.63</td><td>5.68</td><td>3.55</td></tr>
-	<tr><td>0.28</td><td>Very Good</td><td>E</td><td>VVS2</td><td>64.0</td><td>54.0</td><td>  572</td><td>4.11</td><td>4.17</td><td>2.65</td></tr>
-	<tr><td>0.51</td><td>Premium  </td><td>D</td><td>VS2 </td><td>62.0</td><td>59.0</td><td> 1807</td><td>5.12</td><td>5.08</td><td>3.16</td></tr>
-	<tr><td>0.61</td><td>Premium  </td><td>E</td><td>SI2 </td><td>61.3</td><td>59.0</td><td> 1622</td><td>5.48</td><td>5.39</td><td>3.33</td></tr>
-	<tr><td>0.34</td><td>Very Good</td><td>G</td><td>VS2 </td><td>60.3</td><td>54.0</td><td>  596</td><td>4.53</td><td>4.56</td><td>2.74</td></tr>
-	<tr><td>1.50</td><td>Fair     </td><td>F</td><td>VVS2</td><td>64.7</td><td>53.0</td><td>16364</td><td>7.22</td><td>7.15</td><td>4.65</td></tr>
-	<tr><td>1.00</td><td>Premium  </td><td>H</td><td>SI1 </td><td>62.7</td><td>59.0</td><td> 4788</td><td>6.37</td><td>6.30</td><td>3.97</td></tr>
-	<tr><td>0.74</td><td>Very Good</td><td>E</td><td>SI2 </td><td>61.8</td><td>60.0</td><td> 2391</td><td>5.78</td><td>5.80</td><td>3.58</td></tr>
-	<tr><td>1.07</td><td>Ideal    </td><td>H</td><td>SI2 </td><td>62.8</td><td>56.0</td><td> 4899</td><td>6.50</td><td>6.56</td><td>4.10</td></tr>
-	<tr><td>1.02</td><td>Premium  </td><td>G</td><td>VS2 </td><td>59.8</td><td>58.0</td><td> 6169</td><td>6.58</td><td>6.54</td><td>3.92</td></tr>
-	<tr><td>0.70</td><td>Ideal    </td><td>H</td><td>SI1 </td><td>62.1</td><td>56.0</td><td> 2113</td><td>5.74</td><td>5.67</td><td>3.54</td></tr>
-	<tr><td>0.32</td><td>Premium  </td><td>G</td><td>VS1 </td><td>61.7</td><td>58.0</td><td>  645</td><td>4.38</td><td>4.41</td><td>2.71</td></tr>
-	<tr><td>0.70</td><td>Very Good</td><td>E</td><td>VVS2</td><td>61.5</td><td>58.0</td><td> 3429</td><td>5.67</td><td>5.71</td><td>3.50</td></tr>
-	<tr><td>0.90</td><td>Fair     </td><td>H</td><td>VS2 </td><td>64.6</td><td>54.0</td><td> 3725</td><td>6.09</td><td>6.14</td><td>3.95</td></tr>
-	<tr><td>0.60</td><td>Ideal    </td><td>E</td><td>SI1 </td><td>61.4</td><td>57.0</td><td> 1601</td><td>5.52</td><td>5.46</td><td>3.37</td></tr>
-	<tr><td>0.30</td><td>Ideal    </td><td>I</td><td>VS1 </td><td>62.2</td><td>53.9</td><td>  486</td><td>4.29</td><td>4.33</td><td>2.68</td></tr>
-	<tr><td>0.72</td><td>Good     </td><td>I</td><td>VS2 </td><td>63.3</td><td>59.0</td><td> 2068</td><td>5.62</td><td>5.66</td><td>3.57</td></tr>
-	<tr><td>1.24</td><td>Premium  </td><td>G</td><td>VVS1</td><td>60.4</td><td>59.0</td><td>10485</td><td>7.02</td><td>7.01</td><td>4.24</td></tr>
-	<tr><td>0.32</td><td>Premium  </td><td>E</td><td>VVS1</td><td>60.5</td><td>58.0</td><td>  954</td><td>4.42</td><td>4.47</td><td>2.69</td></tr>
-	<tr><td>1.19</td><td>Good     </td><td>E</td><td>VS2 </td><td>57.4</td><td>60.0</td><td> 6937</td><td>6.90</td><td>7.00</td><td>3.99</td></tr>
-	<tr><td>0.40</td><td>Ideal    </td><td>H</td><td>SI2 </td><td>61.9</td><td>58.0</td><td>  596</td><td>4.71</td><td>4.73</td><td>2.92</td></tr>
-	<tr><td>0.33</td><td>Premium  </td><td>H</td><td>VS2 </td><td>61.3</td><td>60.0</td><td>  668</td><td>4.47</td><td>4.44</td><td>2.73</td></tr>
-	<tr><td>1.90</td><td>Ideal    </td><td>H</td><td>VS2 </td><td>61.7</td><td>55.0</td><td>12443</td><td>7.90</td><td>7.81</td><td>4.85</td></tr>
-	<tr><td>1.00</td><td>Premium  </td><td>G</td><td>VVS2</td><td>59.5</td><td>61.0</td><td> 7589</td><td>6.46</td><td>6.42</td><td>3.83</td></tr>
-	<tr><td>0.43</td><td>Ideal    </td><td>F</td><td>VVS2</td><td>61.9</td><td>56.0</td><td> 1250</td><td>4.87</td><td>4.82</td><td>3.00</td></tr>
-	<tr><td>1.00</td><td>Very Good</td><td>F</td><td>VS2 </td><td>63.2</td><td>59.0</td><td> 2530</td><td>6.35</td><td>6.30</td><td>4.00</td></tr>
-	<tr><td>0.81</td><td>Ideal    </td><td>H</td><td>VS2 </td><td>61.6</td><td>56.0</td><td> 3084</td><td>6.03</td><td>5.98</td><td>3.70</td></tr>
-	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-	<tr><td>0.53</td><td>Very Good</td><td>E</td><td>VS2 </td><td>62.3</td><td>56.7</td><td> 1857</td><td>5.19</td><td>5.23</td><td>3.25</td></tr>
-	<tr><td>0.30</td><td>Premium  </td><td>E</td><td>IF  </td><td>61.0</td><td>59.0</td><td> 1097</td><td>4.33</td><td>4.29</td><td>2.63</td></tr>
-	<tr><td>0.90</td><td>Good     </td><td>J</td><td>VVS2</td><td>57.4</td><td>61.0</td><td> 3193</td><td>6.42</td><td>6.37</td><td>3.67</td></tr>
-	<tr><td>0.41</td><td>Ideal    </td><td>H</td><td>SI1 </td><td>62.6</td><td>55.0</td><td>  683</td><td>4.77</td><td>4.79</td><td>2.99</td></tr>
-	<tr><td>1.12</td><td>Premium  </td><td>H</td><td>VS1 </td><td>59.6</td><td>57.0</td><td> 5055</td><td>6.82</td><td>6.77</td><td>4.05</td></tr>
-	<tr><td>1.50</td><td>Good     </td><td>I</td><td>VVS2</td><td>65.4</td><td>59.0</td><td> 8732</td><td>7.09</td><td>7.14</td><td>4.65</td></tr>
-	<tr><td>0.72</td><td>Premium  </td><td>H</td><td>IF  </td><td>58.7</td><td>59.0</td><td> 3048</td><td>5.94</td><td>5.88</td><td>3.47</td></tr>
-	<tr><td>2.00</td><td>Ideal    </td><td>H</td><td>SI1 </td><td>61.8</td><td>57.0</td><td>18062</td><td>8.10</td><td>8.15</td><td>5.02</td></tr>
-	<tr><td>0.62</td><td>Very Good</td><td>H</td><td>IF  </td><td>60.3</td><td>59.0</td><td> 2367</td><td>5.52</td><td>5.55</td><td>3.34</td></tr>
-	<tr><td>0.32</td><td>Ideal    </td><td>E</td><td>VS1 </td><td>61.7</td><td>56.0</td><td>  758</td><td>4.39</td><td>4.42</td><td>2.72</td></tr>
-	<tr><td>1.02</td><td>Good     </td><td>H</td><td>SI1 </td><td>63.4</td><td>57.0</td><td> 4796</td><td>6.36</td><td>6.42</td><td>4.05</td></tr>
-	<tr><td>1.06</td><td>Ideal    </td><td>H</td><td>SI2 </td><td>60.9</td><td>56.0</td><td> 4563</td><td>6.58</td><td>6.63</td><td>4.02</td></tr>
-	<tr><td>0.33</td><td>Ideal    </td><td>E</td><td>VS1 </td><td>61.6</td><td>56.0</td><td>  462</td><td>4.46</td><td>4.43</td><td>2.74</td></tr>
-	<tr><td>0.73</td><td>Ideal    </td><td>E</td><td>SI1 </td><td>62.7</td><td>55.0</td><td> 2852</td><td>5.70</td><td>5.79</td><td>3.60</td></tr>
-	<tr><td>1.93</td><td>Premium  </td><td>H</td><td>VS2 </td><td>62.8</td><td>58.0</td><td>17353</td><td>7.91</td><td>7.86</td><td>4.95</td></tr>
-	<tr><td>0.58</td><td>Ideal    </td><td>F</td><td>SI1 </td><td>61.4</td><td>57.0</td><td> 1408</td><td>5.33</td><td>5.38</td><td>3.29</td></tr>
-	<tr><td>0.42</td><td>Very Good</td><td>H</td><td>VS2 </td><td>62.9</td><td>56.0</td><td>  773</td><td>4.72</td><td>4.79</td><td>2.99</td></tr>
-	<tr><td>0.38</td><td>Ideal    </td><td>F</td><td>VS1 </td><td>62.8</td><td>56.0</td><td>  998</td><td>4.64</td><td>4.59</td><td>2.90</td></tr>
-	<tr><td>0.42</td><td>Premium  </td><td>F</td><td>VS1 </td><td>60.9</td><td>59.0</td><td> 1031</td><td>4.80</td><td>4.85</td><td>2.94</td></tr>
-	<tr><td>0.70</td><td>Premium  </td><td>E</td><td>SI2 </td><td>62.9</td><td>59.0</td><td> 2273</td><td>5.71</td><td>5.64</td><td>3.57</td></tr>
-	<tr><td>0.27</td><td>Premium  </td><td>D</td><td>VVS2</td><td>62.2</td><td>59.0</td><td>  799</td><td>4.12</td><td>4.08</td><td>2.55</td></tr>
-	<tr><td>0.52</td><td>Ideal    </td><td>E</td><td>SI1 </td><td>62.3</td><td>56.0</td><td> 1389</td><td>5.12</td><td>5.16</td><td>3.20</td></tr>
-	<tr><td>1.62</td><td>Ideal    </td><td>H</td><td>VS2 </td><td>61.5</td><td>61.0</td><td>12542</td><td>7.53</td><td>7.48</td><td>4.62</td></tr>
-	<tr><td>0.63</td><td>Ideal    </td><td>F</td><td>SI1 </td><td>62.6</td><td>56.0</td><td> 1698</td><td>5.53</td><td>5.49</td><td>3.45</td></tr>
-	<tr><td>0.28</td><td>Very Good</td><td>F</td><td>VS1 </td><td>62.1</td><td>59.0</td><td>  487</td><td>4.16</td><td>4.21</td><td>2.60</td></tr>
-	<tr><td>0.31</td><td>Ideal    </td><td>E</td><td>VS1 </td><td>61.8</td><td>56.0</td><td>  942</td><td>4.34</td><td>4.33</td><td>2.68</td></tr>
-	<tr><td>1.50</td><td>Ideal    </td><td>I</td><td>VS2 </td><td>62.4</td><td>54.1</td><td> 9730</td><td>7.30</td><td>7.35</td><td>4.57</td></tr>
-	<tr><td>0.70</td><td>Premium  </td><td>F</td><td>VS2 </td><td>62.6</td><td>61.0</td><td> 2717</td><td>5.66</td><td>5.61</td><td>3.53</td></tr>
-	<tr><td>0.24</td><td>Very Good</td><td>E</td><td>VS1 </td><td>62.4</td><td>56.0</td><td>  461</td><td>3.96</td><td>3.97</td><td>2.47</td></tr>
-	<tr><td>0.39</td><td>Very Good</td><td>F</td><td>VS2 </td><td>62.4</td><td>58.0</td><td>  821</td><td>4.61</td><td>4.65</td><td>2.89</td></tr>
+	<tr><th scope=row>1</th><td>0.53</td><td>Good     </td><td>D</td><td>SI2 </td><td>63.9</td><td>55.0</td><td> 1318</td><td>5.14</td><td>5.10</td><td>3.27</td></tr>
+	<tr><th scope=row>2</th><td>0.42</td><td>Premium  </td><td>F</td><td>VS1 </td><td>61.2</td><td>58.0</td><td> 1103</td><td>4.86</td><td>4.82</td><td>2.96</td></tr>
+	<tr><th scope=row>3</th><td>0.34</td><td>Premium  </td><td>E</td><td>VS1 </td><td>59.9</td><td>58.0</td><td> 1033</td><td>4.58</td><td>4.54</td><td>2.73</td></tr>
+	<tr><th scope=row>4</th><td>0.70</td><td>Very Good</td><td>D</td><td>VS1 </td><td>62.8</td><td>59.0</td><td> 3247</td><td>5.63</td><td>5.68</td><td>3.55</td></tr>
+	<tr><th scope=row>5</th><td>0.28</td><td>Very Good</td><td>E</td><td>VVS2</td><td>64.0</td><td>54.0</td><td>  572</td><td>4.11</td><td>4.17</td><td>2.65</td></tr>
+	<tr><th scope=row>6</th><td>0.51</td><td>Premium  </td><td>D</td><td>VS2 </td><td>62.0</td><td>59.0</td><td> 1807</td><td>5.12</td><td>5.08</td><td>3.16</td></tr>
+	<tr><th scope=row>7</th><td>0.61</td><td>Premium  </td><td>E</td><td>SI2 </td><td>61.3</td><td>59.0</td><td> 1600</td><td>5.48</td><td>5.39</td><td>3.33</td></tr>
+	<tr><th scope=row>8</th><td>0.34</td><td>Very Good</td><td>G</td><td>VS2 </td><td>60.3</td><td>54.0</td><td>  596</td><td>4.53</td><td>4.56</td><td>2.74</td></tr>
+	<tr><th scope=row>9</th><td>1.50</td><td>Fair     </td><td>F</td><td>VVS2</td><td>64.7</td><td>53.0</td><td>16364</td><td>7.22</td><td>7.15</td><td>4.65</td></tr>
+	<tr><th scope=row>10</th><td>1.00</td><td>Premium  </td><td>H</td><td>SI1 </td><td>62.7</td><td>59.0</td><td> 4788</td><td>6.37</td><td>6.30</td><td>3.97</td></tr>
+	<tr><th scope=row>11</th><td>0.74</td><td>Very Good</td><td>E</td><td>SI2 </td><td>61.8</td><td>60.0</td><td> 2391</td><td>5.78</td><td>5.80</td><td>3.58</td></tr>
+	<tr><th scope=row>12</th><td>1.07</td><td>Ideal    </td><td>H</td><td>SI2 </td><td>62.8</td><td>56.0</td><td> 4899</td><td>6.50</td><td>6.56</td><td>4.10</td></tr>
+	<tr><th scope=row>13</th><td>1.02</td><td>Premium  </td><td>G</td><td>VS2 </td><td>59.8</td><td>58.0</td><td> 6169</td><td>6.58</td><td>6.54</td><td>3.92</td></tr>
+	<tr><th scope=row>14</th><td>0.70</td><td>Ideal    </td><td>H</td><td>SI1 </td><td>62.1</td><td>56.0</td><td> 2113</td><td>5.74</td><td>5.67</td><td>3.54</td></tr>
+	<tr><th scope=row>15</th><td>0.32</td><td>Premium  </td><td>G</td><td>VS1 </td><td>61.7</td><td>58.0</td><td>  645</td><td>4.38</td><td>4.41</td><td>2.71</td></tr>
+	<tr><th scope=row>16</th><td>0.70</td><td>Very Good</td><td>E</td><td>VVS2</td><td>61.5</td><td>58.0</td><td> 3429</td><td>5.67</td><td>5.71</td><td>3.50</td></tr>
+	<tr><th scope=row>17</th><td>0.90</td><td>Fair     </td><td>H</td><td>VS2 </td><td>64.6</td><td>54.0</td><td> 3725</td><td>6.09</td><td>6.14</td><td>3.95</td></tr>
+	<tr><th scope=row>18</th><td>0.60</td><td>Ideal    </td><td>E</td><td>SI1 </td><td>61.4</td><td>57.0</td><td> 1601</td><td>5.52</td><td>5.46</td><td>3.37</td></tr>
+	<tr><th scope=row>19</th><td>0.30</td><td>Ideal    </td><td>I</td><td>VS1 </td><td>62.2</td><td>53.9</td><td>  486</td><td>4.29</td><td>4.33</td><td>2.68</td></tr>
+	<tr><th scope=row>20</th><td>0.72</td><td>Good     </td><td>I</td><td>VS2 </td><td>63.3</td><td>59.0</td><td> 2068</td><td>5.62</td><td>5.66</td><td>3.57</td></tr>
 </tbody>
 </table>
 
@@ -35019,7 +34984,7 @@ The following objects are masked from ‘package:base’:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Package Caret knnImpute function:</p>
+<p>Package &quot;caret&quot; knnImpute function:</p>
 <p>The knnImpute method from the caret package employs the k-nearest neighbors (k-NN) algorithm to impute missing values. The k-NN algorithm predicts missing values by using data from other variables with similar (non-missing) values in the dataset. One of the advantages of the caret package is that it automatically standardizes the data before applying k-NN, as the developers note that standardization typically leads to more accurate results.</p>
 <p>To create the imputation model for predicting missing values, we use the preProcess() function. This function takes the dataset and the desired imputation method, which in this case is set to &quot;knnImpute&quot;, to perform the necessary calculation</p>
 
@@ -35031,25 +34996,30 @@ The following objects are masked from ‘package:base’:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">1231</span><span class="p">)</span>
 
 <span class="c1"># Median imputation</span>
-<span class="n">pp_median</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s">&quot;ca&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;medianImpute&quot;</span><span class="p">)</span>
-<span class="n">dat_ca_median</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pp_median</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="s">&quot;ca&quot;</span><span class="p">])</span>
+<span class="c1">#pp_median &lt;- preProcess(dat[&quot;ca&quot;], method = &quot;medianImpute&quot;)</span>
+<span class="c1">#dat_ca_median &lt;- predict(pp_median, dat[&quot;ca&quot;])</span>
 
 <span class="c1"># Mean imputation</span>
-<span class="n">pp_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s">&quot;ca&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;meanImpute&quot;</span><span class="p">)</span>
-<span class="n">dat_ca_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pp_mean</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="s">&quot;ca&quot;</span><span class="p">])</span>
+<span class="c1">#pp_mean &lt;- preProcess(dat[&quot;ca&quot;], method = &quot;meanImpute&quot;)</span>
+<span class="c1">#dat_ca_mean &lt;- predict(pp_mean, dat[&quot;ca&quot;])</span>
 
 
 <span class="c1">#set.seed(253)</span>
-<span class="c1"># Load the package if not</span>
+<span class="c1"># Load the package if not,</span>
 <span class="n">pre.model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;knnImpute&quot;</span><span class="p">)</span>
 <span class="c1">#the data</span>
-<span class="n">imputed.pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pre.model</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+<span class="n">imputed.dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pre.model</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+
+<span class="c1">#To see the first twenty cases</span>
+<span class="n">imputed.dat</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
 <span class="c1">#Note: knnImpute expects all predictors to be numeric, and it will standardize variables internally before imputing. If you only pass one variable (dat$ca), KNN won’t have neighbors to learn from. Usually, you pass the whole dataset (all numeric columns), and KNN imputes missing values jointly.</span>
 </pre></div>
 
@@ -35074,13 +35044,98 @@ The following objects are masked from ‘package:base’:
 Error: package RANN is required
 Traceback:
 
-1. predict(pre.model, dat)
-2. predict.preProcess(pre.model, dat)
-3. apply(hasMiss, 1, nnimp, old = object$data[, object$method$knnImpute, 
+1. predict.preProcess(pre.model, dat)
+2. apply(hasMiss, 1, nnimp, old = object$data[, object$method$knnImpute, 
  .     drop = FALSE], k = object$k, foo = object$knnSummary)
-4. FUN(newX[, i], ...)
-5. requireNamespaceQuietStop(&#34;RANN&#34;)
-6. stop(paste(&#34;package&#34;, package, &#34;is required&#34;), call. = FALSE)</pre>
+3. FUN(newX[, i], ...)
+4. requireNamespaceQuietStop(&#34;RANN&#34;)
+5. stop(paste(&#34;package&#34;, package, &#34;is required&#34;), call. = FALSE)
+6. .handleSimpleError(function (cnd) 
+ . {
+ .     watcher$capture_plot_and_output()
+ .     cnd &lt;- sanitize_call(cnd)
+ .     watcher$push(cnd)
+ .     switch(on_error, continue = invokeRestart(&#34;eval_continue&#34;), 
+ .         stop = invokeRestart(&#34;eval_stop&#34;), error = NULL)
+ . }, &#34;package RANN is required&#34;, base::quote(NULL))</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+
+<span class="c1"># Median imputation</span>
+<span class="w"> </span><span class="n">pp_median</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s">&quot;price&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;medianImpute&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="n">dat_price_median</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pp_median</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="s">&quot;price&quot;</span><span class="p">])</span>
+
+<span class="n">dat_price_median</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,]</span>
+<span class="c1"># Mean imputation</span>
+<span class="w"> </span><span class="n">pp_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">price</span><span class="p">[</span><span class="m">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pp_mean</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1318</li><li>1103</li><li>1033</li><li>3247</li><li>572</li><li>1807</li><li>2427.5</li><li>596</li><li>16364</li><li>4788</li><li>2391</li><li>4899</li><li>6169</li><li>2113</li><li>645</li><li>3429</li><li>3725</li><li>1601</li><li>486</li><li>2068</li></ol>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+Error in pre_process_options(method, column_types): These pre-processing methods are unknown: &#39;meanImpute&#39;
+Traceback:
+
+1. preProcess.default(dat[&#34;price&#34;], method = &#34;meanImpute&#34;)
+2. pre_process_options(method, column_types)
+3. stop((paste(&#34;These pre-processing methods are unknown:&#34;, paste(&#34;&#39;&#34;, 
+ .     others, &#34;&#39;&#34;, sep = &#34;&#34;, collapse = &#34;, &#34;))))
+4. .handleSimpleError(function (cnd) 
+ . {
+ .     watcher$capture_plot_and_output()
+ .     cnd &lt;- sanitize_call(cnd)
+ .     watcher$push(cnd)
+ .     switch(on_error, continue = invokeRestart(&#34;eval_continue&#34;), 
+ .         stop = invokeRestart(&#34;eval_stop&#34;), error = NULL)
+ . }, &#34;These pre-processing methods are unknown: &#39;meanImpute&#39;&#34;, 
+ .     base::quote(pre_process_options(method, column_types)))</pre>
 </div>
 </div>
 
@@ -35106,11 +35161,13 @@ Traceback:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Frequncy table of variable &quot;color&quot; </span>
 <span class="nf">table</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c1">#6 dummy variables to indicate variable &quot;color&quot;</span>
 </pre></div>
 
      </div>
@@ -35143,21 +35200,22 @@ Traceback:
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">dat.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">color.D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="c1">#%&gt;%</span>
+<span class="n">dat.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">color.D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
 <span class="n">color.E</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;E&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
 <span class="n">color.F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
 <span class="n">color.G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;G&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
 <span class="n">color.H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;H&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
-<span class="n">color_I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;I&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
-<span class="n">color_J</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;J&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="n">color_I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;I&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 
 <span class="c1">#data$dummy_Ecolor = ifelse(data$color %in% c(&quot;E&quot;), 1, 0)</span>
 </pre></div>
@@ -35167,15 +35225,45 @@ Traceback:
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>── <span class="ansi-bold">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">dplyr    </span> 1.1.4     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">readr    </span> 2.1.5
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">forcats  </span> 1.0.0     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">stringr  </span> 1.5.1
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">lubridate</span> 1.9.4     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">tibble   </span> 3.3.0
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">purrr    </span> 1.1.0     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">tidyr    </span> 1.3.0
+── <span class="ansi-bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">filter()</span> masks <span class="ansi-blue-fg">mice</span>::filter(), <span class="ansi-blue-fg">stats</span>::filter()
+<span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">lag()</span>    masks <span class="ansi-blue-fg">stats</span>::lag()
+<span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">purrr</span>::<span class="ansi-green-fg">lift()</span>   masks <span class="ansi-blue-fg">caret</span>::lift()
+<span class="ansi-cyan-fg">ℹ</span> Use the conflicted package (<span class="ansi-blue-fg">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">dat.1</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -35197,18 +35285,18 @@ Traceback:
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A data.frame: 6 × 10</caption>
+<caption>A data.frame: 6 × 16</caption>
 <thead>
-	<tr><th></th><th scope=col>carat</th><th scope=col>cut</th><th scope=col>color</th><th scope=col>clarity</th><th scope=col>depth</th><th scope=col>table</th><th scope=col>price</th><th scope=col>x</th><th scope=col>y</th><th scope=col>z</th></tr>
-	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+	<tr><th></th><th scope=col>carat</th><th scope=col>cut</th><th scope=col>color</th><th scope=col>clarity</th><th scope=col>depth</th><th scope=col>table</th><th scope=col>price</th><th scope=col>x</th><th scope=col>y</th><th scope=col>z</th><th scope=col>color.D</th><th scope=col>color.E</th><th scope=col>color.F</th><th scope=col>color.G</th><th scope=col>color.H</th><th scope=col>color_I</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>0.53</td><td>Good     </td><td>D</td><td>SI2 </td><td>63.9</td><td>55</td><td>1318</td><td>5.14</td><td>5.10</td><td>3.27</td></tr>
-	<tr><th scope=row>2</th><td>0.42</td><td>Premium  </td><td>F</td><td>VS1 </td><td>61.2</td><td>58</td><td>1103</td><td>4.86</td><td>4.82</td><td>2.96</td></tr>
-	<tr><th scope=row>3</th><td>0.34</td><td>Premium  </td><td>E</td><td>VS1 </td><td>59.9</td><td>58</td><td>1033</td><td>4.58</td><td>4.54</td><td>2.73</td></tr>
-	<tr><th scope=row>4</th><td>0.70</td><td>Very Good</td><td>D</td><td>VS1 </td><td>62.8</td><td>59</td><td>3247</td><td>5.63</td><td>5.68</td><td>3.55</td></tr>
-	<tr><th scope=row>5</th><td>0.28</td><td>Very Good</td><td>E</td><td>VVS2</td><td>64.0</td><td>54</td><td> 572</td><td>4.11</td><td>4.17</td><td>2.65</td></tr>
-	<tr><th scope=row>6</th><td>0.51</td><td>Premium  </td><td>D</td><td>VS2 </td><td>62.0</td><td>59</td><td>1807</td><td>5.12</td><td>5.08</td><td>3.16</td></tr>
+	<tr><th scope=row>1</th><td>0.53</td><td>Good     </td><td>D</td><td>SI2 </td><td>63.9</td><td>55</td><td>1318</td><td>5.14</td><td>5.10</td><td>3.27</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>2</th><td>0.42</td><td>Premium  </td><td>F</td><td>VS1 </td><td>61.2</td><td>58</td><td>1103</td><td>4.86</td><td>4.82</td><td>2.96</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>3</th><td>0.34</td><td>Premium  </td><td>E</td><td>VS1 </td><td>59.9</td><td>58</td><td>1033</td><td>4.58</td><td>4.54</td><td>2.73</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>4</th><td>0.70</td><td>Very Good</td><td>D</td><td>VS1 </td><td>62.8</td><td>59</td><td>3247</td><td>5.63</td><td>5.68</td><td>3.55</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>5</th><td>0.28</td><td>Very Good</td><td>E</td><td>VVS2</td><td>64.0</td><td>54</td><td> 572</td><td>4.11</td><td>4.17</td><td>2.65</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>6</th><td>0.51</td><td>Premium  </td><td>D</td><td>VS2 </td><td>62.0</td><td>59</td><td>1807</td><td>5.12</td><td>5.08</td><td>3.16</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 </tbody>
 </table>
 
@@ -35278,139 +35366,10 @@ Traceback:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="o">?</span><span class="n">scale</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
-<span class="n">x</span>
-<span class="c1">#For a column, the mean is zero after the scale function</span>
-<span class="n">centered.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="n">centered.x</span>
-
-
-<span class="c1">#For a column, the variance is 1 after the scale function (the mean is zero and the variance is 1)</span>
-<span class="n">zscore.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="n">zscore.x</span>
-
-<span class="c1">#(x- the mean)/the standard deviation</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A matrix: 5 × 2 of type int</caption>
-<tbody>
-	<tr><td>1</td><td> 6</td></tr>
-	<tr><td>2</td><td> 7</td></tr>
-	<tr><td>3</td><td> 8</td></tr>
-	<tr><td>4</td><td> 9</td></tr>
-	<tr><td>5</td><td>10</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A matrix: 5 × 2 of type dbl</caption>
-<tbody>
-	<tr><td>-2</td><td>-2</td></tr>
-	<tr><td>-1</td><td>-1</td></tr>
-	<tr><td> 0</td><td> 0</td></tr>
-	<tr><td> 1</td><td> 1</td></tr>
-	<tr><td> 2</td><td> 2</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A matrix: 5 × 2 of type dbl</caption>
-<tbody>
-	<tr><td>-1.2649111</td><td>-1.2649111</td></tr>
-	<tr><td>-0.6324555</td><td>-0.6324555</td></tr>
-	<tr><td> 0.0000000</td><td> 0.0000000</td></tr>
-	<tr><td> 0.6324555</td><td> 0.6324555</td></tr>
-	<tr><td> 1.2649111</td><td> 1.2649111</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">pre.obj</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;scale&quot;</span><span class="p">))</span>
-<span class="n">dat.trans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pre.obj</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
-
-
-<span class="c1"># Yeo-Johnson works even with zero/negative values</span>
-<span class="n">pre.obj</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;YeoJohnson&quot;</span><span class="p">))</span>
-
-<span class="c1"># Box-Cox requires strictly positive values</span>
-<span class="n">pre.obj2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dat</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;BoxCox&quot;</span><span class="p">))</span>
-
-<span class="n">dat.trans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pre.obj</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
-
-<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 
 <span class="c1"># Example dataset with categorical variable</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
@@ -35426,47 +35385,6 @@ Traceback:
 <span class="n">iris.full</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">dummies</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iris</span><span class="p">)</span>
 
 <span class="nf">head</span><span class="p">(</span><span class="n">iris.full</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Subsetting the Data</span>
-<span class="c1">#delete all Status variables</span>
-<span class="n">sdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">segmentationOriginal</span><span class="p">[,</span><span class="w"> </span><span class="n">Case</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Train&quot;</span><span class="p">)</span>
-
-<span class="c1">#sdata = segmentationOriginal[segmentationOriginal$Case == &quot;Train&quot;,] </span>
-<span class="c1">#sdata= segmentationOriginal%&gt;%filter(Case == &quot;Train&quot;)</span>
-
-<span class="n">cellid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdata</span><span class="o">$</span><span class="n">Cell</span>
-<span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdata</span><span class="o">$</span><span class="n">Class</span>
-<span class="n">case</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdata</span><span class="o">$</span><span class="n">Case</span>
-
-<span class="c1">#To delete the first three variables</span>
-<span class="n">segData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdata</span><span class="p">[,</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)]</span>
-
-<span class="c1">#To select all variables such that the &quot;Status&quot; is in the name of the variable.</span>
-<span class="n">statusColNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">grep</span><span class="p">(</span><span class="s">&quot;Status&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">segData</span><span class="p">))</span>
-
-<span class="c1">#Keep all variables which are quantitative (no status variables)</span>
-<span class="n">segData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segData</span><span class="p">[,</span><span class="o">-</span><span class="n">statusColNum</span><span class="p">]</span>
-
-<span class="c1">#The number of cases and the number of variables</span>
-<span class="nf">length</span><span class="p">(</span><span class="n">segData</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
-<span class="nf">length</span><span class="p">(</span><span class="n">segData</span><span class="p">[</span><span class="m">1</span><span class="p">,])</span>
-
-<span class="nf">str</span><span class="p">(</span><span class="n">segData</span><span class="p">)</span>
-<span class="c1">#There are still 58 vaiables</span>
 </pre></div>
 
      </div>
