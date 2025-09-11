@@ -14630,13 +14630,79 @@ With addition and subtraction, it is just a matter of working element by element
 <p>Matrix multiplication</p>
 <p>The concept of multiplying matrices adheres to the fundamental principle seen in vector multiplication, where matrices are regarded as an ensemble of column vectors. Matrix multiplication involves pairing the elements of each row in the first matrix with the corresponding elements of each column in the second matrix. The resulting matrix is formed by calculating the sum of the products of these paired elements. Matrices of different dimensions can be multiplied if they are conformable. Conformability requires that the number of columns in the first matrix matches the number of rows in the second matrix.</p>
 <p>Tensors extend the concept of matrices to three or more dimensions, providing a more general representation.</p>
-<p>Transpose : Transposition is a process wherein the ith element of a column vector is exchanged with the ith element of a row vector, and vice versa.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Addition">Addition<a class="anchor-link" href="#Addition">&#182;</a></h3><p>If $A = (a_{ij})$ and $B = (b_{ij})$, both of size $n \times m$, then</p>
+$$
+C = A + B = (c_{ij}), \quad \text{where } c_{ij} = a_{ij} + b_{ij}, \quad i=1,2,\dots,n, \ j=1,2,\dots,m.
+$$<hr />
+<p><strong>Example:</strong></p>
+$$
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}, \quad 
+B = \begin{bmatrix}
+6 &amp; 5 &amp; 4 \\
+3 &amp; 2 &amp; 1
+\end{bmatrix}.
+$$<p>Then</p>
+$$
+C = A + B = \begin{bmatrix}
+1+6 &amp; 2+5 &amp; 3+4 \\
+4+3 &amp; 5+2 &amp; 6+1
+\end{bmatrix}
+= \begin{bmatrix}
+7 &amp; 7 &amp; 7 \\
+7 &amp; 7 &amp; 7
+\end{bmatrix}.
+$$
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Transpose-of-a-Matrix">Transpose of a Matrix<a class="anchor-link" href="#Transpose-of-a-Matrix">&#182;</a></h3><p>The <strong>transpose</strong> of a matrix $A$, denoted $A^T$, is obtained by flipping $A$ over its diagonal.<br />
+This means the rows of $A$ become the columns of $A^T$, and the columns of $A$ become the rows.</p>
+<p><strong>Definition:</strong></p>
+<p>If $A = (a_{ij})$ is an $n \times m$ matrix, then</p>
+$$
+A^T = (a_{ji}),
+$$<p>which is an $m \times n$ matrix.</p>
 $$A^{\intercal} = \begin{bmatrix}
     a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1} \\
     a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2} \\
     \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
     a_{1m} &amp; a_{2m} &amp; \cdots &amp; a_{nm} \\
 \end{bmatrix}
+$$<hr />
+<p><strong>Example:</strong></p>
+$$
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}_{2 \times 3}.
+$$<p>Then the transpose is</p>
+$$
+A^T = \begin{bmatrix}
+1 &amp; 4 \\
+2 &amp; 5 \\
+3 &amp; 6
+\end{bmatrix}_{3 \times 2}.
 $$
 </div>
 </div>
@@ -14649,25 +14715,9 @@ $$
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># input a 3 x 2 matrix in the column order</span>
-
-<span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">  </span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">  </span>
 
 <span class="n">A</span>
-
-<span class="c1">#dim() function can be used to return the dimensions of a matrix</span>
-
-<span class="nf">dim</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-
-
-<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">  </span>
-
-<span class="n">B</span>
-
-<span class="c1">#Matrix multiplication</span>
-<span class="n">A</span><span class="o">%*%</span><span class="n">B</span>
-
-<span class="c1">#It is not right : A * B for matrix multiplication</span>
 </pre></div>
 
      </div>
@@ -14700,6 +14750,57 @@ $$
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># input a 3 x 2 matrix in the column order</span>
+<span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">  </span>
+<span class="n">A</span>
+<span class="c1">#dim() function can be used to return the dimensions of a matrix</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 3 × 2 of type dbl</caption>
+<tbody>
+	<tr><td> 2</td><td> 7</td></tr>
+	<tr><td>-2</td><td> 3</td></tr>
+	<tr><td> 3</td><td>-1</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -14717,6 +14818,39 @@ $$
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#By colomn : the default option for byrow = FALSE</span>
+<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">  </span>
+
+<span class="n">B</span>
+
+
+<span class="c1">#It is not right : A * B for matrix multiplication</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -14735,6 +14869,99 @@ $$
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Questions:</p>
+<ol>
+<li><p>Can we add A, and B?    No , the dimensions of two matrixes are not the same.</p>
+</li>
+<li><p>Can we multiple A and B?     Yes.
+ If A is $n \times m$, and B is $m \times q$, then we can multiple A and B.  The number of columns of the first matrix $A$ is the same as the number of rows of the second matrix $B$, we can multiple A and B.  The result matrix $C$ is a $n \times q$ matrix.</p>
+<p>The entry of the product matrix $C$ in the $i$-th row and $j$-th column is obtained by taking the dot product of the $i$-th row of $A$ and the $j$-th column of $B$:</p>
+</li>
+</ol>
+$$
+C_{ij} = \sum_{k=1}^{m} a_{ik} \, b_{kj}, \quad \text{for } i=1,2,\dots,n \text{ and } j=1,2,\dots,q.
+$$<hr />
+<p><strong>Example:</strong></p>
+$$
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}_{2 \times 3}, \quad 
+B = \begin{bmatrix}
+7 &amp; 8 \\
+9 &amp; 10 \\
+11 &amp; 12
+\end{bmatrix}_{3 \times 2}.
+$$<p>Then the product $C = AB$ is a $2 \times 2$ matrix:</p>
+$$
+C = \begin{bmatrix}
+(1)(7) + (2)(9) + (3)(11) &amp; (1)(8) + (2)(10) + (3)(12) \\
+(4)(7) + (5)(9) + (6)(11) &amp; (4)(8) + (5)(10) + (6)(12)
+\end{bmatrix}
+= \begin{bmatrix}
+58 &amp; 64 \\
+139 &amp; 154
+\end{bmatrix}.
+$$<p><strong>Example:</strong></p>
+$$
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}, \quad 
+x = \begin{bmatrix}
+1 \\
+0 \\
+-1
+\end{bmatrix}.
+$$<p>Then</p>
+$$
+y = A x = \begin{bmatrix}
+1(1) + 2(0) + 3(-1) \\
+4(1) + 5(0) + 6(-1)
+\end{bmatrix}
+= \begin{bmatrix}
+-2 \\
+-2
+\end{bmatrix}.
+$$
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Matrix multiplication</span>
+<span class="n">A</span><span class="o">%*%</span><span class="n">B</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -14745,9 +14972,9 @@ $$
 <table class="dataframe">
 <caption>A matrix: 3 × 4 of type dbl</caption>
 <tbody>
-	<tr><td> 3</td><td> 5</td><td> 3</td><td> 9</td></tr>
-	<tr><td> 3</td><td>-5</td><td>18</td><td>24</td></tr>
-	<tr><td>-1</td><td> 1</td><td>-5</td><td>-7</td></tr>
+	<tr><td> 7</td><td>17</td><td>-1</td><td>13</td></tr>
+	<tr><td> 3</td><td>13</td><td>-9</td><td>-3</td></tr>
+	<tr><td>-1</td><td>-9</td><td>10</td><td> 8</td></tr>
 </tbody>
 </table>
 
@@ -14764,7 +14991,7 @@ $$
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#18 , which is the at 2rd row, and 3 column</span>
@@ -14778,6 +15005,95 @@ $$
 </div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="o">%*%</span><span class="n">B</span>
+
+<span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+
+<span class="n">D</span>
+
+<span class="c1">#The main diagonal:  7, 13, 10</span>
+<span class="c1"># Trace : the total of all elements in the main diagonal</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 3 × 3 of type dbl</caption>
+<tbody>
+	<tr><td> 7</td><td>17</td><td>-1</td></tr>
+	<tr><td> 3</td><td>13</td><td>-9</td></tr>
+	<tr><td>-1</td><td>-9</td><td>10</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Linear Combination of Columns:</strong></p>
+<p>Multiplying $A$ which is ($n \times m$) by a vector $x$  which is ($m \times 1$) produces a linear combination of the columns of $A$.<br />
+That is,</p>
+$$
+Ax = x_1 a_1 + x_2 a_2 + \cdots + x_m a_m,
+$$<p>where $a_j$ is the $j$-th column of $A$.<br />
+This is a key interpretation in linear algebra and statistics (e.g., regression models).</p>
+<p><strong>Example:</strong></p>
+$$
+A = \begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1 \\
+1 &amp; 1
+\end{bmatrix}, \quad
+x = \begin{bmatrix}
+2 \\
+3
+\end{bmatrix}.
+$$<p>Then</p>
+$$
+Ax = 2\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix} +
+3\begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix}
+= \begin{bmatrix}2 \\ 0 \\ 2\end{bmatrix} +
+\begin{bmatrix}0 \\ 3 \\ 3\end{bmatrix}
+= \begin{bmatrix}2 \\ 3 \\ 5\end{bmatrix}.
+$$
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14786,7 +15102,8 @@ $$
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Square-matrix:">Square matrix:<a class="anchor-link" href="#Square-matrix:">&#182;</a></h1><p>A matrix is a square matrix if the number of rows and columns are equal. Within a square matrix, the main diagonal encompasses the elements positioned along the diagonal path from the upper-left element to the lower-right element.</p>
-<h1 id="Eigen-values-and-eigen-vectors">Eigen values and eigen vectors<a class="anchor-link" href="#Eigen-values-and-eigen-vectors">&#182;</a></h1><p>Given a square matrix $A$, the condition that characterizes an eigenvalue, $\lambda$, is the existence of a nonzero vector $x$ such that
+<p>$ A x $: a matrix times a vector which is the same as linear tranformation of $x$.</p>
+<h1 id="Eigenvalues-and-eigenvectors">Eigenvalues and eigenvectors<a class="anchor-link" href="#Eigenvalues-and-eigenvectors">&#182;</a></h1><p>Given a square matrix $A$, the condition that characterizes an eigenvalue, $\lambda$, is the existence of a nonzero vector $x$ such that
  $$
   A x  = \lambda x .
  $$</p>
@@ -14812,15 +15129,23 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># </span>
 <span class="n">mat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">)</span>
 <span class="n">mat</span>
 
-<span class="nf">eigen</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="w"> </span>
+<span class="c1">#Find the eigenvalues of the matrix </span>
+<span class="n">Rst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">eigen</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="w"> </span>
 
+<span class="c1">#Rst</span>
+<span class="c1">#eignevalues of matrix mat</span>
+<span class="nf">round</span><span class="p">(</span><span class="n">Rst</span><span class="o">$</span><span class="n">values</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+
+
+<span class="c1">#The first Eigenvector </span>
+<span class="n">Rst</span><span class="o">$</span><span class="n">vectors</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
 <span class="c1">#there are only 1 non-zero eigenvalue</span>
 <span class="c1"># the non-zero eigenvalue is 3.</span>
 <span class="c1"># If there are some zero eigenvalues (eigenvalues very close to zero), the dimension of the data can be reduced.</span>
@@ -14862,18 +15187,31 @@ $$</p>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>3</li><li>0</li><li>0</li></ol>
 
-<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>eigen() decomposition
-$values
-[1]  3.000000e+00  8.881784e-16 -2.372134e-17
+</div>
 
-$vectors
-           [,1]       [,2]      [,3]
-[1,]  0.5773503 -0.8164966 0.0000000
-[2,] -0.5773503 -0.4082483 0.7071068
-[3,]  0.5773503  0.4082483 0.7071068
-</pre>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.577350269189626</li><li>-0.577350269189626</li><li>0.577350269189626</li></ol>
+
 </div>
 
 </div>
@@ -14887,7 +15225,51 @@ $vectors
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="m">0.5773503</span><span class="p">,</span><span class="w"> </span><span class="m">-0.5773503</span><span class="p">,</span><span class="w"> </span><span class="m">0.5773503</span><span class="w"> </span><span class="p">)</span><span class="o">*</span><span class="m">3</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1.7320509</li><li>-1.7320509</li><li>1.7320509</li></ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">mat</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="m">0.5773503</span><span class="p">,</span><span class="w"> </span><span class="m">-0.5773503</span><span class="p">,</span><span class="w"> </span><span class="m">0.5773503</span><span class="w"> </span><span class="p">)</span>
@@ -14920,6 +15302,45 @@ $vectors
 </tbody>
 </table>
 
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
+<span class="m">1</span><span class="o">/</span><span class="n">a</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+0.2
 </div>
 
 </div>
@@ -14965,15 +15386,16 @@ $$
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">  </span>
-<span class="n">A</span>
-<span class="c1">#Find the inverse matrix </span>
-<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="n">B</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Input the matrix </span>
+<span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
 
+<span class="c1">#Find the inverse matrix </span>
+<span class="n">BInverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">BInverse</span>
 <span class="c1"># not 1/A</span>
 </pre></div>
 
@@ -14998,28 +15420,9 @@ $$
 <table class="dataframe">
 <caption>A matrix: 3 × 3 of type dbl</caption>
 <tbody>
-	<tr><td>12</td><td> 3</td><td> 5</td></tr>
-	<tr><td> 7</td><td>30</td><td> 2</td></tr>
-	<tr><td>-2</td><td>-1</td><td>20</td></tr>
-</tbody>
-</table>
-
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A matrix: 3 × 3 of type dbl</caption>
-<tbody>
-	<tr><td> 0.085305371</td><td>-0.0092107128</td><td>-0.020405271</td></tr>
-	<tr><td>-0.020405271</td><td> 0.0354258183</td><td> 0.001558736</td></tr>
-	<tr><td> 0.007510273</td><td> 0.0008502196</td><td> 0.048037410</td></tr>
+	<tr><td> 0.085305371</td><td>-0.020405271</td><td>0.0075102735</td></tr>
+	<tr><td>-0.009210713</td><td> 0.035425818</td><td>0.0008502196</td></tr>
+	<tr><td>-0.020405271</td><td> 0.001558736</td><td>0.0480374097</td></tr>
 </tbody>
 </table>
 
@@ -15036,10 +15439,12 @@ $$
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">round</span><span class="p">(</span><span class="n">B</span><span class="o">%*%</span><span class="n">A</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">round</span><span class="p">(</span><span class="n">B</span><span class="o">%*%</span><span class="n">BInverse</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+
+<span class="nf">round</span><span class="p">(</span><span class="n">BInverse</span><span class="o">%*%</span><span class="n">B</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15072,33 +15477,6 @@ $$
 </div>
 
 </div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">round</span><span class="p">(</span><span class="n">A</span><span class="o">%*%</span><span class="n">B</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -15123,6 +15501,368 @@ $$
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Example:   Use the sparrow dataset. Let X be the data matrix.</p>
+<ol>
+<li><p>Find $X^T X $. What is the dimension?</p>
+</li>
+<li><p>Find $X X^T$.  What is the dimension?</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Set the location of the file</span>
+<span class="n">lc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;~/Data1/Bumpus_sparrows.csv&quot;</span>
+
+<span class="c1">#header = 1  : the variable names are given in the first row of the .csv file</span>
+<span class="n">dat</span><span class="o">=</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="n">lc</span><span class="p">,</span><span class="w">  </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1">#To check if the data was loaded successfully or not , display the first few line or the last few lines</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+
+<span class="n">X.mat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">[,</span><span class="m">-1</span><span class="p">])</span>
+
+<span class="n">X.mat</span>
+<span class="nf">t</span><span class="p">(</span><span class="n">X.mat</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Survivorship</th><th scope=col>Total_length</th><th scope=col>Alar_extent</th><th scope=col>L_beak_head</th><th scope=col>L_humerous</th><th scope=col>L_keel_sternum</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>S</td><td>156</td><td>245</td><td>31.6</td><td>18.5</td><td>20.5</td></tr>
+	<tr><th scope=row>2</th><td>S</td><td>154</td><td>240</td><td>30.4</td><td>17.9</td><td>19.6</td></tr>
+	<tr><th scope=row>3</th><td>S</td><td>153</td><td>240</td><td>31.0</td><td>18.4</td><td>20.6</td></tr>
+	<tr><th scope=row>4</th><td>S</td><td>153</td><td>236</td><td>30.9</td><td>17.7</td><td>20.2</td></tr>
+	<tr><th scope=row>5</th><td>S</td><td>155</td><td>243</td><td>31.5</td><td>18.6</td><td>20.3</td></tr>
+	<tr><th scope=row>6</th><td>S</td><td>163</td><td>247</td><td>32.0</td><td>19.0</td><td>20.9</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 49 × 5 of type dbl</caption>
+<thead>
+	<tr><th scope=col>Total_length</th><th scope=col>Alar_extent</th><th scope=col>L_beak_head</th><th scope=col>L_humerous</th><th scope=col>L_keel_sternum</th></tr>
+</thead>
+<tbody>
+	<tr><td>156</td><td>245</td><td>31.6</td><td>18.5</td><td>20.5</td></tr>
+	<tr><td>154</td><td>240</td><td>30.4</td><td>17.9</td><td>19.6</td></tr>
+	<tr><td>153</td><td>240</td><td>31.0</td><td>18.4</td><td>20.6</td></tr>
+	<tr><td>153</td><td>236</td><td>30.9</td><td>17.7</td><td>20.2</td></tr>
+	<tr><td>155</td><td>243</td><td>31.5</td><td>18.6</td><td>20.3</td></tr>
+	<tr><td>163</td><td>247</td><td>32.0</td><td>19.0</td><td>20.9</td></tr>
+	<tr><td>157</td><td>238</td><td>30.9</td><td>18.4</td><td>20.2</td></tr>
+	<tr><td>155</td><td>239</td><td>32.8</td><td>18.6</td><td>21.2</td></tr>
+	<tr><td>164</td><td>248</td><td>32.7</td><td>19.1</td><td>21.1</td></tr>
+	<tr><td>158</td><td>238</td><td>31.0</td><td>18.8</td><td>22.0</td></tr>
+	<tr><td>158</td><td>240</td><td>31.3</td><td>18.6</td><td>22.0</td></tr>
+	<tr><td>160</td><td>244</td><td>31.1</td><td>18.6</td><td>20.5</td></tr>
+	<tr><td>161</td><td>246</td><td>32.3</td><td>19.3</td><td>21.8</td></tr>
+	<tr><td>157</td><td>245</td><td>32.0</td><td>19.1</td><td>20.0</td></tr>
+	<tr><td>157</td><td>235</td><td>31.5</td><td>18.1</td><td>19.8</td></tr>
+	<tr><td>156</td><td>237</td><td>30.9</td><td>18.0</td><td>20.3</td></tr>
+	<tr><td>158</td><td>244</td><td>31.4</td><td>18.5</td><td>21.6</td></tr>
+	<tr><td>153</td><td>238</td><td>30.5</td><td>18.2</td><td>20.9</td></tr>
+	<tr><td>155</td><td>236</td><td>30.3</td><td>18.5</td><td>20.1</td></tr>
+	<tr><td>163</td><td>246</td><td>32.5</td><td>18.6</td><td>21.9</td></tr>
+	<tr><td>159</td><td>236</td><td>31.5</td><td>18.0</td><td>21.5</td></tr>
+	<tr><td>155</td><td>240</td><td>31.4</td><td>18.0</td><td>20.7</td></tr>
+	<tr><td>156</td><td>240</td><td>31.5</td><td>18.2</td><td>20.6</td></tr>
+	<tr><td>160</td><td>242</td><td>32.6</td><td>18.8</td><td>21.7</td></tr>
+	<tr><td>152</td><td>232</td><td>30.3</td><td>17.2</td><td>19.8</td></tr>
+	<tr><td>160</td><td>250</td><td>31.7</td><td>18.8</td><td>22.5</td></tr>
+	<tr><td>155</td><td>237</td><td>31.0</td><td>18.5</td><td>20.0</td></tr>
+	<tr><td>157</td><td>245</td><td>32.2</td><td>19.5</td><td>21.4</td></tr>
+	<tr><td>165</td><td>245</td><td>33.1</td><td>19.8</td><td>22.7</td></tr>
+	<tr><td>153</td><td>231</td><td>30.1</td><td>17.3</td><td>19.8</td></tr>
+	<tr><td>162</td><td>239</td><td>30.3</td><td>18.0</td><td>23.1</td></tr>
+	<tr><td>162</td><td>243</td><td>31.6</td><td>18.8</td><td>21.3</td></tr>
+	<tr><td>159</td><td>245</td><td>31.8</td><td>18.5</td><td>21.7</td></tr>
+	<tr><td>159</td><td>247</td><td>30.9</td><td>18.1</td><td>19.0</td></tr>
+	<tr><td>155</td><td>243</td><td>30.9</td><td>18.5</td><td>21.3</td></tr>
+	<tr><td>162</td><td>252</td><td>31.9</td><td>19.1</td><td>22.2</td></tr>
+	<tr><td>152</td><td>230</td><td>30.4</td><td>17.3</td><td>18.6</td></tr>
+	<tr><td>159</td><td>242</td><td>30.8</td><td>18.2</td><td>20.5</td></tr>
+	<tr><td>155</td><td>238</td><td>31.2</td><td>17.9</td><td>19.3</td></tr>
+	<tr><td>163</td><td>249</td><td>33.4</td><td>19.5</td><td>22.8</td></tr>
+	<tr><td>163</td><td>242</td><td>31.0</td><td>18.1</td><td>20.7</td></tr>
+	<tr><td>156</td><td>237</td><td>31.7</td><td>18.2</td><td>20.3</td></tr>
+	<tr><td>159</td><td>238</td><td>31.5</td><td>18.4</td><td>20.3</td></tr>
+	<tr><td>161</td><td>245</td><td>32.1</td><td>19.1</td><td>20.8</td></tr>
+	<tr><td>155</td><td>235</td><td>30.7</td><td>17.7</td><td>19.6</td></tr>
+	<tr><td>162</td><td>247</td><td>31.9</td><td>19.1</td><td>20.4</td></tr>
+	<tr><td>153</td><td>237</td><td>30.6</td><td>18.6</td><td>20.4</td></tr>
+	<tr><td>162</td><td>245</td><td>32.5</td><td>18.5</td><td>21.1</td></tr>
+	<tr><td>164</td><td>248</td><td>32.3</td><td>18.8</td><td>20.9</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 5 × 49 of type dbl</caption>
+<tbody>
+	<tr><th scope=row>Total_length</th><td>156.0</td><td>154.0</td><td>153.0</td><td>153.0</td><td>155.0</td><td>163.0</td><td>157.0</td><td>155.0</td><td>164.0</td><td>158.0</td><td>⋯</td><td>163.0</td><td>163.0</td><td>156.0</td><td>159.0</td><td>161.0</td><td>155.0</td><td>162.0</td><td>153.0</td><td>162.0</td><td>164.0</td></tr>
+	<tr><th scope=row>Alar_extent</th><td>245.0</td><td>240.0</td><td>240.0</td><td>236.0</td><td>243.0</td><td>247.0</td><td>238.0</td><td>239.0</td><td>248.0</td><td>238.0</td><td>⋯</td><td>249.0</td><td>242.0</td><td>237.0</td><td>238.0</td><td>245.0</td><td>235.0</td><td>247.0</td><td>237.0</td><td>245.0</td><td>248.0</td></tr>
+	<tr><th scope=row>L_beak_head</th><td> 31.6</td><td> 30.4</td><td> 31.0</td><td> 30.9</td><td> 31.5</td><td> 32.0</td><td> 30.9</td><td> 32.8</td><td> 32.7</td><td> 31.0</td><td>⋯</td><td> 33.4</td><td> 31.0</td><td> 31.7</td><td> 31.5</td><td> 32.1</td><td> 30.7</td><td> 31.9</td><td> 30.6</td><td> 32.5</td><td> 32.3</td></tr>
+	<tr><th scope=row>L_humerous</th><td> 18.5</td><td> 17.9</td><td> 18.4</td><td> 17.7</td><td> 18.6</td><td> 19.0</td><td> 18.4</td><td> 18.6</td><td> 19.1</td><td> 18.8</td><td>⋯</td><td> 19.5</td><td> 18.1</td><td> 18.2</td><td> 18.4</td><td> 19.1</td><td> 17.7</td><td> 19.1</td><td> 18.6</td><td> 18.5</td><td> 18.8</td></tr>
+	<tr><th scope=row>L_keel_sternum</th><td> 20.5</td><td> 19.6</td><td> 20.6</td><td> 20.2</td><td> 20.3</td><td> 20.9</td><td> 20.2</td><td> 21.2</td><td> 21.1</td><td> 22.0</td><td>⋯</td><td> 22.8</td><td> 20.7</td><td> 20.3</td><td> 20.3</td><td> 20.8</td><td> 19.6</td><td> 20.4</td><td> 20.4</td><td> 21.1</td><td> 20.9</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Question 1</span>
+
+<span class="c1">#X transpose</span>
+<span class="n">Xt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">X.mat</span><span class="p">)</span>
+<span class="n">XTX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Xt</span><span class="o">%*%</span><span class="n">X.mat</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">XTX</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>5</li><li>5</li></ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Question 2</span>
+
+<span class="c1">#X transpose</span>
+<span class="n">Xt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">X.mat</span><span class="p">)</span>
+<span class="n">XXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X.mat</span><span class="o">%*%</span><span class="n">Xt</span>
+
+<span class="nf">dim</span><span class="p">(</span><span class="n">XXT</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>49</li><li>49</li></ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Exercises:-Matrix-Operations">Exercises: Matrix Operations<a class="anchor-link" href="#Exercises:-Matrix-Operations">&#182;</a></h3><hr />
+<h4 id="1.-Matrix-Addition">1. Matrix Addition<a class="anchor-link" href="#1.-Matrix-Addition">&#182;</a></h4><p>Let
+$$
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}, \quad
+B = \begin{bmatrix}
+6 &amp; 5 &amp; 4 \\
+3 &amp; 2 &amp; 1
+\end{bmatrix}.
+$$</p>
+<p>(a) Compute $A + B$.<br />
+(b) What are the dimensions of the result?<br />
+(c) Can we compute $A + C$ if
+$$
+C = \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}?
+$$
+Explain why or why not.</p>
+<hr />
+<h4 id="2.-Matrix-Multiplication">2. Matrix Multiplication<a class="anchor-link" href="#2.-Matrix-Multiplication">&#182;</a></h4><p>Let
+$$
+A = \begin{bmatrix}
+1 &amp; 0 \\
+2 &amp; 1 \\
+-1 &amp; 3
+\end{bmatrix}, \quad
+B = \begin{bmatrix}
+2 &amp; 1 &amp; -1 \\
+0 &amp; 4 &amp; 3
+\end{bmatrix}.
+$$</p>
+<p>(a) Compute the product $AB$.<br />
+(b) What are the dimensions of $AB$?<br />
+(c) Is $BA$ defined? Why or why not?</p>
+<hr />
+<h4 id="3.-Matrix-Transpose">3. Matrix Transpose<a class="anchor-link" href="#3.-Matrix-Transpose">&#182;</a></h4><p>Let
+$$
+M = \begin{bmatrix}
+2 &amp; -1 &amp; 3 \\
+0 &amp; 4 &amp; 5
+\end{bmatrix}.
+$$</p>
+<p>Compute $M^T$.</p>
+<hr />
+<h4 id="4.-Matrix-Inverse">4. Matrix Inverse<a class="anchor-link" href="#4.-Matrix-Inverse">&#182;</a></h4><p>Let
+$$
+N = \begin{bmatrix}
+2 &amp; 1 \\
+5 &amp; 3
+\end{bmatrix}.
+$$</p>
+<p>Find $N^{-1}$.</p>
+<hr />
+<h4 id="5.">5.<a class="anchor-link" href="#5.">&#182;</a></h4><p>Let
+$$
+P = \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}, \quad
+Q = \begin{bmatrix}
+0 &amp; 1 \\
+-1 &amp; 0
+\end{bmatrix}.
+$$</p>
+<p>Compute $P + Q$, $PQ$, and $QP$.</p>
+<h4 id="6.">6.<a class="anchor-link" href="#6.">&#182;</a></h4><p>Exercise: Eigenvalues and Eigenvectors</p>
+<p>Let 
+$$
+A = \begin{bmatrix}
+4 &amp; 1 \\
+2 &amp; 3
+\end{bmatrix}.
+$$</p>
+<p>(a) Compute the eigenvalues of $A$.<br />
+(c) For each eigenvalue, find a corresponding eigenvector.</p>
+
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
