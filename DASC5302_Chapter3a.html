@@ -14612,6 +14612,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <p>In a simple linear regression, there is only one predictor. The mathematical model:</p>
 <p>$$y_i = \beta_0 + \beta_1 x_i + e_i$$</p>
 <p>where $\beta_0$ is the intercept,  $\beta_1$ is the slope and $e_i$ is the error term.</p>
+<p>In machine learning workflows, simple linear regression is usually as the first supervised model for regression tasks, valued more for its interpretability and clarity than for raw predictive power.</p>
 <p>Example: Use R dataset &quot;cars&quot;.    Speed : driving speed.  dist: the distance to stop.
   Construct a predictive model (a simple linear regression) to predict stoping distance based on the driving speed.</p>
 <pre><code>  Response:   dist
@@ -14627,11 +14628,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># R codes</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span>
 <span class="c1">#head(cars)</span>
 
 <span class="c1">#Run a simple linear regression</span>
@@ -14652,6 +14654,32 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>speed</th><th scope=col>dist</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>4</td><td> 2</td></tr>
+	<tr><th scope=row>2</th><td>4</td><td>10</td></tr>
+	<tr><th scope=row>3</th><td>7</td><td> 4</td></tr>
+	<tr><th scope=row>4</th><td>7</td><td>22</td></tr>
+	<tr><th scope=row>5</th><td>8</td><td>16</td></tr>
+	<tr><th scope=row>6</th><td>9</td><td>10</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -15826,6 +15854,48 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Excercise: MASS , data(cat) #The cat dataset contains measurements on 97 domestic cats, separated by sex. It was introduced in the context of analyzing body and organ weights.</p>
+<ol>
+<li><strong>Fit a regression model</strong><br />
+Fit a simple linear regression model of <strong>heart weight (<code>Hwt</code>)</strong> on <strong>body weight (<code>Bwt</code>)</strong>:<ul>
+<li>Report the estimated regression equation.</li>
+<li>Interpret the slope ((\beta_1)) in context.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li><strong>Prediction</strong><br />
+Using the fitted model, predict the heart weight of a cat with a body weight of <strong>3.0 kg</strong>.</li>
+</ol>
+<hr />
+<ol start="3">
+<li><strong>Residual Analysis</strong><ul>
+<li>Plot the residuals of the regression model.</li>
+<li>Do they show any clear patterns (e.g., curvature, unequal spread)?</li>
+<li>What does this tell you about the assumptions of linear regression?</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li><strong>Model Fit</strong><ul>
+<li>Compute the coefficient of determination ((R^2)).</li>
+<li>Explain what this value means in the context of the data.</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Residual-plots">Residual plots<a class="anchor-link" href="#Residual-plots">&#182;</a></h1><p>It can be helpful to check if the model has a good fit or not.  In a residual plot, we plot the predictor against the residuals; or we plot the predicted values against residuals.</p>
 
 </div>
@@ -16380,6 +16450,54 @@ $$r=\dfrac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i-\b
 <p>a positive linear relationship :  r &gt; 0</p>
 <p>a negative linear relationship :  r &lt; 0</p>
 <p>The absolute value of $r$ tells the strength of a relationship and the sign indicate the direction.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Table: Comparison of Simple Linear Regression and Correlation</p>
+<table>
+<thead>
+<tr>
+  <th><strong>Aspect</strong></th>
+  <th><strong>Simple Linear Regression</strong></th>
+  <th><strong>Correlation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Primary Goal</strong></td>
+  <td>Model the relationship between one independent variable (predictor) and one dependent variable (target) to make predictions.</td>
+  <td>Measure the strength and direction of the linear relationship between two variables.</td>
+</tr>
+<tr>
+  <td><strong>Key Output</strong></td>
+  <td>Coefficients $\beta_0$ (intercept) and $\beta_1$ (slope) for prediction.</td>
+  <td>Correlation coefficient $r$ (often Pearson’s $r$), ranging from $-1$ to $+1$.</td>
+</tr>
+<tr>
+  <td><strong>Direction of Relationship</strong></td>
+  <td>Asymmetrical: defines a dependent variable (Y) and an independent variable (X); swapping them changes the model.</td>
+  <td>Symmetrical: correlation between X and Y is the same as between Y and X.</td>
+</tr>
+<tr>
+  <td><strong>Statistical Basis</strong></td>
+  <td>Fits a &quot;best-fit&quot; line by minimizing squared vertical distances (errors) between data points and the line.</td>
+  <td>Quantifies how closely two variables vary together; does not fit a line to the data.</td>
+</tr>
+<tr>
+  <td><strong>Role in Machine Learning</strong></td>
+  <td>A supervised learning algorithm used for predictive modeling.</td>
+  <td>A statistical tool for feature selection and exploratory data analysis.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
