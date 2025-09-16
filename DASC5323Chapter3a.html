@@ -15780,6 +15780,653 @@ $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Cholesky-Decomposition">Cholesky Decomposition<a class="anchor-link" href="#Cholesky-Decomposition">&#182;</a></h2><ul>
+<li><p><strong>Definition</strong><br />
+The Cholesky factorization (also called <em>matrix square root factorization</em>) is a method to define the square root of a positive definite matrix.<br />
+In this decomposition, the square root matrix is <strong>upper triangular</strong>.</p>
+$$
+A = C C^T
+$$<p>where $C$ is an $n \times n$ upper triangular matrix with non-negative diagonal elements.</p>
+</li>
+<li><p><strong>Notes</strong></p>
+<ul>
+<li>Other matrix square root factorizations exist where the square root matrix is not necessarily upper triangular.</li>
+<li>In <strong>R</strong>, the function <code>chol()</code> computes the Cholesky factorization of a symmetric, positive definite square matrix.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Example: Cholesky decomposition in R</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">chol</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 2 × 2 of type dbl</caption>
+<tbody>
+	<tr><td>2</td><td>0.500000</td></tr>
+	<tr><td>0</td><td>1.658312</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="LU-Decomposition">LU Decomposition<a class="anchor-link" href="#LU-Decomposition">&#182;</a></h2><p><strong>LU decomposition</strong> (also called <strong>LU factorization</strong>) is a method of decomposing a square matrix $A$ into the product of two triangular matrices:</p>
+$$
+A = L U,
+$$<p>where</p>
+<ul>
+<li>$L$ is a <strong>lower triangular matrix</strong> (with ones on the diagonal if using Doolittle’s method),</li>
+<li>$U$ is an <strong>upper triangular matrix</strong>.</li>
+</ul>
+<hr />
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>For a $3 \times 3$ matrix:</p>
+$$
+A =
+\begin{bmatrix}
+2 &amp; 1 &amp; 1 \\
+4 &amp; -6 &amp; 0 \\
+-2 &amp; 7 &amp; 2
+\end{bmatrix},
+$$<p>LU decomposition yields:</p>
+$$
+L =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+2 &amp; 1 &amp; 0 \\
+-1 &amp; -1 &amp; 1
+\end{bmatrix},
+\quad
+U =
+\begin{bmatrix}
+2 &amp; 1 &amp; 1 \\
+0 &amp; -8 &amp; -2 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}.
+$$<p>Thus,</p>
+$$
+A = L U.
+$$
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">Matrix</span><span class="p">)</span>
+
+<span class="c1"># Define matrix A and vector B</span>
+<span class="n">A.Mat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
+<span class="w">                 </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">-4</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">                 </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">-5</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span>
+<span class="w">                 </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">-3</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">B.Vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">16.9</span><span class="p">,</span><span class="w"> </span><span class="m">-14</span><span class="p">,</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="m">9.4</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Matrix A:\n&quot;</span><span class="p">);</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">A.Mat</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;\nVector B:\n&quot;</span><span class="p">);</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">B.Vec</span><span class="p">)</span>
+
+<span class="c1"># Perform LU decomposition</span>
+<span class="n">LU.A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lu</span><span class="p">(</span><span class="n">A.Mat</span><span class="p">)</span>
+<span class="n">ELU.A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">expand</span><span class="p">(</span><span class="n">LU.A</span><span class="p">)</span>
+
+<span class="n">L.Mat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ELU.A</span><span class="o">$</span><span class="n">L</span>
+<span class="n">U.Mat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ELU.A</span><span class="o">$</span><span class="n">U</span>
+<span class="n">P.Mat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ELU.A</span><span class="o">$</span><span class="n">P</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;\nL matrix:\n&quot;</span><span class="p">);</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">L.Mat</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;\nU matrix:\n&quot;</span><span class="p">);</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">U.Mat</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;\nPermutation matrix P:\n&quot;</span><span class="p">);</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">P.Mat</span><span class="p">)</span>
+
+<span class="c1"># Forward substitution: solve L * Y = P * B</span>
+<span class="n">Y.Vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">L.Mat</span><span class="p">)</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="p">(</span><span class="n">P.Mat</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">B.Vec</span><span class="p">)</span>
+
+<span class="c1"># Back substitution: solve U * X = Y</span>
+<span class="n">X.Vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">U.Mat</span><span class="p">)</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">Y.Vec</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Matrix A:
+     [,1] [,2] [,3] [,4]
+[1,]    4    3   -2    5
+[2,]    2   -4    6    1
+[3,]   -1    2   -5    6
+[4,]    3    5   -2   -3
+
+Vector B:
+      [,1]
+[1,]  16.9
+[2,] -14.0
+[3,]  25.0
+[4,]   9.4
+
+L matrix:
+4 x 4 Matrix of class &#34;dtrMatrix&#34; (unitriangular)
+     [,1]       [,2]       [,3]       [,4]      
+[1,]  1.0000000          .          .          .
+[2,]  0.5000000  1.0000000          .          .
+[3,]  0.7500000 -0.5000000  1.0000000          .
+[4,] -0.2500000 -0.5000000 -0.6666667  1.0000000
+
+U matrix:
+4 x 4 Matrix of class &#34;dtrMatrix&#34;
+     [,1] [,2] [,3] [,4]
+[1,]  4.0  3.0 -2.0  5.0
+[2,]    . -5.5  7.0 -1.5
+[3,]    .    .  3.0 -7.5
+[4,]    .    .    .  1.5
+
+Permutation matrix P:
+4 x 4 sparse Matrix of class &#34;pMatrix&#34;
+            
+[1,] | . . .
+[2,] . | . .
+[3,] . . . |
+[4,] . . | .
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Spectral-Decomposition-(Eigen-Decomposition)">Spectral Decomposition (Eigen Decomposition)<a class="anchor-link" href="#Spectral-Decomposition-(Eigen-Decomposition)">&#182;</a></h2><ul>
+<li><p><strong>Definition</strong><br />
+Spectral decomposition is mainly used for <strong>Principal Components Analysis (PCA)</strong> and other eigen-structure based methods.<br />
+It decomposes a square symmetric matrix into the product of three matrices:</p>
+$$
+A = Q^T D Q
+$$<p>where:</p>
+<ul>
+<li>$Q$ is an $n \times n$ orthogonal matrix whose $i$-th column is the $i$-th eigenvector of $A$.</li>
+<li>$D$ is an $n \times n$ diagonal matrix with the eigenvalues of $A$ on its diagonal.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Create a symmetric matrix</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Perform eigen decomposition</span>
+<span class="n">specdcp.mat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># Display results</span>
+<span class="n">specdcp.mat</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>eigen() decomposition
+$values
+[1] 4.618034 2.381966
+
+$vectors
+           [,1]       [,2]
+[1,] -0.8506508  0.5257311
+[2,] -0.5257311 -0.8506508
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Singular-Value-Decomposition-(SVD)">Singular Value Decomposition (SVD)<a class="anchor-link" href="#Singular-Value-Decomposition-(SVD)">&#182;</a></h2><ul>
+<li><p><strong>Definition</strong><br />
+The Singular Value Decomposition (SVD) is a fundamental matrix factorization used in statistics, machine learning, and numerical linear algebra.<br />
+It decomposes any $m \times n$ matrix $A$ into three matrices:</p>
+$$
+A = U \Sigma V^T
+$$<p>where:</p>
+<ul>
+<li>$U$ is an $m \times m$ orthogonal matrix (its columns are the left singular vectors of $A$).</li>
+<li>$\Sigma$ is an $m \times n$ diagonal matrix with <strong>singular values</strong> (non-negative real numbers) on the diagonal.</li>
+<li>$V$ is an $n \times n$ orthogonal matrix (its columns are the right singular vectors of $A$).</li>
+</ul>
+</li>
+<li><p><strong>Notes</strong></p>
+<ul>
+<li>Singular values in $\Sigma$ are the square roots of the eigenvalues of $A^T A$ (or $A A^T$).</li>
+<li>SVD works for <strong>any rectangular matrix</strong>, not just square ones.</li>
+<li>Common uses include <strong>dimensionality reduction (PCA), low-rank approximation, and solving ill-conditioned linear systems</strong>.</li>
+</ul>
+<h3 id="Geometric-Interpretation">Geometric Interpretation<a class="anchor-link" href="#Geometric-Interpretation">&#182;</a></h3></li>
+<li><p>$V$ rotates the coordinate system in the <strong>input space</strong> (columns/features).</p>
+</li>
+<li><p>$\Sigma$ scales the axes according to the <strong>singular values</strong> (stretching/shrinking in principal directions).</p>
+</li>
+<li><p>$U$ rotates the result into the <strong>output space</strong> (rows/observations).</p>
+<h3 id="Statistical-Interpretation">Statistical Interpretation<a class="anchor-link" href="#Statistical-Interpretation">&#182;</a></h3></li>
+<li><p><strong>Singular values</strong> (diagonal of $\Sigma$) measure the &quot;strength&quot; or variance explained by each singular vector. Larger singular values = more important dimensions.</p>
+</li>
+<li><p><strong>Left singular vectors ($U$)</strong> represent new orthogonal axes for the <strong>observations</strong> (row space).</p>
+</li>
+<li><p><strong>Right singular vectors ($V$)</strong> represent new orthogonal axes for the <strong>variables/features</strong> (column space).</p>
+</li>
+<li><p>In <strong>PCA</strong>, SVD of the centered data matrix yields principal components.</p>
+</li>
+</ul>
+<hr />
+<h3 id="Practical-Interpretation">Practical Interpretation<a class="anchor-link" href="#Practical-Interpretation">&#182;</a></h3><ul>
+<li><p><strong>Dimensionality Reduction</strong>: Keep only the first $k$ singular values/vectors → low-rank approximation of $A$.</p>
+</li>
+<li><p><strong>Noise Filtering</strong>: Discard small singular values → remove low-variance (often noisy) directions.</p>
+</li>
+<li><p><strong>Latent Structure Discovery</strong>: Reveals hidden factors in data (e.g., topics in text analysis, gene expression patterns, etc.).</p>
+</li>
+<li><p><strong>Pseudo-inverse</strong>: Compute the Moore–Penrose inverse for solving least-squares regression when $A$ is not full rank.</p>
+<h3 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h3></li>
+</ul>
+<p><strong>image compression</strong>.</p>
+<p>An image can be represented as a large matrix (grayscale) or three matrices (R, G, B channels for color).<br />
+SVD allows us to approximate this matrix using only the largest singular values, reducing storage while preserving most of the image quality.</p>
+<p>Latent Semantic Analysis (LSA) uses <strong>SVD</strong> to uncover hidden semantic structure in a text corpus.<br />
+It starts with a <strong>term-document matrix</strong> $A$, where:</p>
+<ul>
+<li>Rows = terms (words)</li>
+<li>Columns = documents</li>
+<li>Entries = frequency or TF–IDF weight of a word in a document</li>
+</ul>
+<p>Then, SVD is applied:</p>
+$$
+A = U \Sigma V^T
+$$<ul>
+<li>$U$: maps <strong>terms → latent semantic space</strong></li>
+<li>$\Sigma$: contains <strong>singular values</strong>, representing the strength of latent semantic concepts</li>
+<li>$V$: maps <strong>documents → latent semantic space</strong></li>
+</ul>
+<p>By keeping only the top $k$ singular values/vectors, we obtain a <strong>reduced-rank approximation</strong> $\tilde{A}$ that captures the most important semantic relationships while filtering out noise.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Create a matrix</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Perform SVD</span>
+<span class="n">svd.mat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># Display results</span>
+<span class="n">svd.mat</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<dl>
+	<dt>$d</dt>
+		<dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>9.52551809156511</li><li>0.514300580658644</li></ol>
+</dd>
+	<dt>$u</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 3 × 2 of type dbl</caption>
+<tbody>
+	<tr><td>-0.2298477</td><td> 0.8834610</td></tr>
+	<tr><td>-0.5247448</td><td> 0.2407825</td></tr>
+	<tr><td>-0.8196419</td><td>-0.4018960</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$v</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 2 of type dbl</caption>
+<tbody>
+	<tr><td>-0.6196295</td><td>-0.7848945</td></tr>
+	<tr><td>-0.7848945</td><td> 0.6196295</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Example: Term-Document Matrix</span>
+<span class="c1"># 6 documents, 8 terms</span>
+<span class="c1">#latent semantic space, uncovering relationships between words and documents.</span>
+<span class="n">A</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span>
+<span class="w">  </span><span class="c1"># Doc1 Doc2 Doc3 Doc4 Doc5 Doc6</span>
+<span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="c1"># Term1 (appears in Docs 1,3,5)</span>
+<span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="c1"># Term2 (appears in Docs 1,4)</span>
+<span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="c1"># Term3 (appears in Docs 2,3,6)</span>
+<span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="c1"># Term4 (appears in Docs 2,4)</span>
+<span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="c1"># Term5 (appears in Docs 1,2,5)</span>
+<span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="c1"># Term6 (appears in Docs 3,5,6)</span>
+<span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="c1"># Term7 (appears in Docs 4,5,6)</span>
+<span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">0</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="p">,</span><span class="w">   </span><span class="m">1</span><span class="w">    </span><span class="c1"># Term8 (appears in Docs 1,5,6)</span>
+<span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">colnames</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Doc&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Term&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">8</span><span class="p">)</span>
+<span class="n">A</span>
+
+<span class="c1"># Perform SVD</span>
+<span class="n">svd.mat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># Examine results</span>
+<span class="n">svd.mat</span><span class="o">$</span><span class="n">d</span><span class="w">   </span><span class="c1"># Singular values (importance of concepts)</span>
+<span class="n">svd.mat</span><span class="o">$</span><span class="n">u</span><span class="w">   </span><span class="c1"># Term → concept space</span>
+<span class="n">svd.mat</span><span class="o">$</span><span class="n">v</span><span class="w">   </span><span class="c1"># Document → concept space</span>
+
+<span class="c1"># Reduce to rank-2 approximation</span>
+<span class="n">k</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span>
+<span class="n">U_k</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">svd.mat</span><span class="o">$</span><span class="n">u</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">k</span><span class="p">]</span>
+<span class="n">D_k</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">diag</span><span class="p">(</span><span class="n">svd.mat</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">k</span><span class="p">])</span>
+<span class="n">V_k</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">svd.mat</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">k</span><span class="p">]</span>
+
+<span class="n">A_approx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">U_k</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">D_k</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">V_k</span><span class="p">)</span>
+<span class="nf">round</span><span class="p">(</span><span class="n">A_approx</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+
+<span class="c1">#Show How SVD Decomposes Information</span>
+<span class="c1">#Singular values show how many topics/concepts matter.</span>
+<span class="c1">#U (terms) shows which words cluster together → words with similar meaning/usage.</span>
+<span class="c1">#V (documents) shows which documents are similar → clustering by topic.</span>
+<span class="c1">#Σ tells us the strength/importance of each concept.</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 8 × 6 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>Doc1</th><th scope=col>Doc2</th><th scope=col>Doc3</th><th scope=col>Doc4</th><th scope=col>Doc5</th><th scope=col>Doc6</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>Term1</th><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><th scope=row>Term2</th><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>Term3</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+	<tr><th scope=row>Term4</th><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>Term5</th><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><th scope=row>Term6</th><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+	<tr><th scope=row>Term7</th><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+	<tr><th scope=row>Term8</th><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>3.35753298269553</li><li>1.86624863756097</li><li>1.7573938040189</li><li>1.53242419582145</li><li>1.06282928260965</li><li>0.823240736721598</li></ol>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 8 × 6 of type dbl</caption>
+<tbody>
+	<tr><td>-0.4113005</td><td>-0.007084548</td><td> 0.42237408</td><td>-0.2757501</td><td>-0.51265832</td><td>-0.3129358</td></tr>
+	<tr><td>-0.1904132</td><td>-0.560035636</td><td>-0.01137848</td><td> 0.1617431</td><td>-0.53495880</td><td> 0.4097645</td></tr>
+	<tr><td>-0.3158440</td><td> 0.361654332</td><td>-0.52534894</td><td>-0.4271074</td><td>-0.08069225</td><td> 0.4409461</td></tr>
+	<tr><td>-0.1374384</td><td>-0.404040084</td><td>-0.60693702</td><td>-0.1134818</td><td>-0.02324484</td><td>-0.2714517</td></tr>
+	<tr><td>-0.3834410</td><td>-0.372221449</td><td> 0.13991336</td><td>-0.4422384</td><td> 0.52204978</td><td>-0.2187204</td></tr>
+	<tr><td>-0.4236398</td><td> 0.502552477</td><td>-0.01703673</td><td> 0.1109984</td><td>-0.15734930</td><td>-0.2410884</td></tr>
+	<tr><td>-0.3847717</td><td>-0.028541814</td><td>-0.26379621</td><td> 0.6680743</td><td> 0.11383343</td><td>-0.2730566</td></tr>
+	<tr><td>-0.4487551</td><td>-0.018579976</td><td> 0.29606109</td><td> 0.2197349</td><td> 0.36564483</td><td> 0.5343432</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 6 × 6 of type dbl</caption>
+<tbody>
+	<tr><td>-0.4270724</td><td>-0.51328724</td><td> 0.48194665</td><td>-0.2195936</td><td>-0.1504687</td><td> 0.50100961</td></tr>
+	<tr><td>-0.2492078</td><td>-0.22216075</td><td>-0.56468425</td><td>-0.6413548</td><td> 0.3933959</td><td>-0.05979526</td></tr>
+	<tr><td>-0.3427470</td><td> 0.45927549</td><td>-0.06828953</td><td>-0.3862241</td><td>-0.7063222</td><td>-0.13735728</td></tr>
+	<tr><td>-0.2122461</td><td>-0.53187850</td><td>-0.50194311</td><td> 0.4674526</td><td>-0.4181012</td><td>-0.16367480</td></tr>
+	<tr><td>-0.6111356</td><td> 0.04079022</td><td> 0.32862047</td><td> 0.1832515</td><td> 0.3119226</td><td>-0.62127385</td></tr>
+	<tr><td>-0.4685019</td><td> 0.43782217</td><td>-0.29027119</td><td> 0.3730691</td><td> 0.2271642</td><td> 0.56015734</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 8 × 6 of type dbl</caption>
+<tbody>
+	<tr><td>0.60</td><td>0.35</td><td> 0.47</td><td> 0.30</td><td>0.84</td><td> 0.64</td></tr>
+	<tr><td>0.81</td><td>0.39</td><td>-0.26</td><td> 0.69</td><td>0.35</td><td>-0.16</td></tr>
+	<tr><td>0.11</td><td>0.11</td><td> 0.67</td><td>-0.13</td><td>0.68</td><td> 0.79</td></tr>
+	<tr><td>0.58</td><td>0.28</td><td>-0.19</td><td> 0.50</td><td>0.25</td><td>-0.11</td></tr>
+	<tr><td>0.91</td><td>0.48</td><td> 0.12</td><td> 0.64</td><td>0.76</td><td> 0.30</td></tr>
+	<tr><td>0.13</td><td>0.15</td><td> 0.92</td><td>-0.20</td><td>0.91</td><td> 1.08</td></tr>
+	<tr><td>0.58</td><td>0.33</td><td> 0.42</td><td> 0.30</td><td>0.79</td><td> 0.58</td></tr>
+	<tr><td>0.66</td><td>0.38</td><td> 0.50</td><td> 0.34</td><td>0.92</td><td> 0.69</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Exercises:-Matrix-Operations">Exercises: Matrix Operations<a class="anchor-link" href="#Exercises:-Matrix-Operations">&#182;</a></h3><hr />
 <h4 id="1.-Matrix-Addition">1. Matrix Addition<a class="anchor-link" href="#1.-Matrix-Addition">&#182;</a></h4><p>Let
 $$
@@ -15859,19 +16506,6 @@ A = \begin{bmatrix}
 $$</p>
 <p>(a) Compute the eigenvalues of $A$.<br />
 (c) For each eigenvalue, find a corresponding eigenvector.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>See the notes for SVD</p>
-<p>Matrix decomposition, or matrix factorization, refers to breaking down a matrix into a product of simpler matrices. Various types of matrix decompositions exist, each tailored to solve specific types of problems.</p>
 
 </div>
 </div>
