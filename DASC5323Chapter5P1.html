@@ -14597,7 +14597,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Chapter-5--MANOVA">Chapter 5  MANOVA<a class="anchor-link" href="#Chapter-5--MANOVA">&#182;</a></h1><p><strong>Hotelling’s T² Test and Multivariate Analysis of Variance (MANOVA)</strong><br />
+<h1 id="Chapter-5--Hypothesis-testing-for-Multivariate-data-and-MANOVA">Chapter 5  Hypothesis testing for Multivariate data and MANOVA<a class="anchor-link" href="#Chapter-5--Hypothesis-testing-for-Multivariate-data-and-MANOVA">&#182;</a></h1><p><strong>Hotelling’s T² Test and Multivariate Analysis of Variance (MANOVA)</strong><br />
 Hotelling’s T² test is the multivariate counterpart of the two-sample <em>t</em>-test, while MANOVA extends ANOVA to assess group differences across multiple dependent variables simultaneously.</p>
 
 </div>
@@ -14659,7 +14659,7 @@ $p$-value $= 0.04462$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#one sample t test for (a)</span>
@@ -14993,7 +14993,16 @@ class="
 <p>Formally, the hypotheses can be stated as:</p>
 <p>$H_0:  {\mu} $ =  a given vector of known numbers</p>
 <p>$H_1:  {\mu}  \ne $ the given vector of known numbers</p>
-
+<h3 id="Formula-for-one-sample-Hotelling's-T%5E2-test">Formula for one-sample Hotelling's T^2 test<a class="anchor-link" href="#Formula-for-one-sample-Hotelling's-T%5E2-test">&#182;</a></h3>$$
+T^2 = (\bar{x} - \mu_0)^{\prime} 
+      \left(\tfrac{1}{n}\mathbf{S}\right)^{-1} 
+      (\bar{x} - \mu_0) 
+    = n(\bar{x} - \mu_0)^{\prime}\mathbf{S}^{-1}(\bar{x} - \mu_0)
+$$$$
+T^2 \sim \frac{(n-1)p}{\,n-p\,} F_{p,\,n-p}
+$$$$
+P\!\left(F_{p,\,n-p} &gt; \frac{(n-p)}{(n-1)p}T^2 \right)
+$$
 </div>
 </div>
 </div>
@@ -15015,7 +15024,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">MVTests</span><span class="p">)</span>
@@ -15195,6 +15204,162 @@ The data follow a multivariate normal distribution (Please check using a multiva
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="The-following-example-is-based-on-formula:">The following example is based on formula:<a class="anchor-link" href="#The-following-example-is-based-on-formula:">&#182;</a></h3><p>Question: Conduct a test to check if the population average of both (Total_length, Alar_extent) is different than (150, 235).</p>
+<p>The R codes below is the calculation using formula. Please check the answer.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Data matrix</span>
+<span class="n">mean.vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
+<span class="n">mean.vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="n">mean.vec</span><span class="p">)</span>
+<span class="n">mean.vec</span>
+
+<span class="n">mean.hypothesized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="m">235</span><span class="p">)</span>
+
+<span class="n">S.cov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cov</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">])</span><span class="w"> </span>
+<span class="n">S.cov</span>
+
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+
+<span class="n">n</span>
+
+<span class="c1">#The calculation of one sample  Hotelling T </span>
+<span class="c1">#solve(S.cov)  ==&gt; get the inverse of S.cov</span>
+<span class="n">T2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">*</span><span class="nf">t</span><span class="p">(</span><span class="n">mean.vec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean.hypothesized</span><span class="p">)</span><span class="o">%*%</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">S.cov</span><span class="p">)</span><span class="o">%*%</span><span class="w"> </span><span class="p">(</span><span class="n">mean.vec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean.hypothesized</span><span class="p">)</span>
+<span class="n">T2</span>
+
+<span class="c1">#To get the p-value, </span>
+<span class="c1">#The reference distribution is an F distribuiton with degrees of freedom p, n-p , wehere p is the number of variable)</span>
+<span class="c1"># p =2 </span>
+<span class="c1">#F distribution with degree freedom = 2, 49 -2 = 47</span>
+
+<span class="n">p</span><span class="o">=</span><span class="m">2</span>
+<span class="c1">#pf(x, df1, df2) is the find the probability no more than a number x for an F distribution with ...</span>
+<span class="n">pvalue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pf</span><span class="p">(</span><span class="w">  </span><span class="n">T2</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="m">-1</span><span class="p">)),</span><span class="w">  </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="w">  </span><span class="p">)</span>
+
+<span class="n">pvalue</span>
+
+<span class="c1">#Since the pvalue is 0, which is smaller than the level of significance (0.05). Reject H0.  </span>
+<span class="c1">#There is sufficient evidence that the mean vector of (Total_length, Alar_extent) is different than (150, 235).</span>
+
+<span class="c1">#Check the normality assumption :  multivariate normal - multivariate QQ nomral plot</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>157.979591836735</li><li>241.326530612245</li></ol>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 2 × 2 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>Total_length</th><th scope=col>Alar_extent</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>Total_length</th><td>13.35374</td><td>13.61097</td></tr>
+	<tr><th scope=row>Alar_extent</th><td>13.61097</td><td>25.68282</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+49
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 1 × 1 of type dbl</caption>
+<tbody>
+	<tr><td>247.1884</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 1 × 1 of type dbl</caption>
+<tbody>
+	<tr><td>0</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
