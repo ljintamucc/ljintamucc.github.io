@@ -14659,7 +14659,7 @@ $p$-value $= 0.04462$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#one sample t test for (a)</span>
@@ -14988,12 +14988,44 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="The-one-sample-Hotelling%E2%80%99s-T2-test">The one-sample Hotelling&#8217;s T2 test<a class="anchor-link" href="#The-one-sample-Hotelling%E2%80%99s-T2-test">&#182;</a></h1><p>The one-sample Hotelling’s T2 test serves as the multivariate counterpart to the traditional one-sample or paired Student’s
-t-test. While the one-sample t-test compares the mean response to a particular value, Hotelling’s one-sample T2 test
-extends this to scenarios involving two or more response variables. , although it can be used when there is only
-one response variable.</p>
-<p>There are more than one response.  The purpose of the one sample Hotelling T is to test if the population mean vector is the same as a given mean vector.</p>
+<h3 id="The-one-sample-Hotelling%E2%80%99s-T2-test">The one-sample Hotelling&#8217;s T2 test<a class="anchor-link" href="#The-one-sample-Hotelling%E2%80%99s-T2-test">&#182;</a></h3><p><strong>The one-sample Hotelling’s T² test</strong> is the multivariate counterpart of the traditional one-sample or paired Student’s <em>t</em>-test. While the one-sample <em>t</em>-test compares the population mean of a single variable to a specified value, Hotelling’s one-sample T² test extends this framework to cases involving two or more response variables (though it also reduces to the <em>t</em>-test when there is only one response variable).</p>
+<p>The primary purpose of the one-sample Hotelling’s T² test is to determine whether the population mean vector is equal to a given mean vector when there are multiple response variables.</p>
+<p>Formally, the hypotheses can be stated as:</p>
 <p>$H_0:  {\mu} $ =  a given vector of known numbers</p>
+<p>$H_1:  {\mu}  \ne $ the given vector of known numbers</p>
+<h3 id="Formula-for-one-sample-Hotelling's-T%5E2-test">Formula for one-sample Hotelling's T^2 test<a class="anchor-link" href="#Formula-for-one-sample-Hotelling's-T%5E2-test">&#182;</a></h3>$$
+T^2 = (\bar{x} - \mu_0)^{\prime} 
+      \left(\tfrac{1}{n}\mathbf{S}\right)^{-1} 
+      (\bar{x} - \mu_0) 
+    = n(\bar{x} - \mu_0)^{\prime}\mathbf{S}^{-1}(\bar{x} - \mu_0)
+$$$$
+T^2 \sim \frac{(n-1)p}{\,n-p\,} F_{p,\,n-p}
+$$$$
+P\!\left(F_{p,\,n-p} &gt; \frac{(n-p)}{(n-1)p}T^2 \right)
+$$
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Example: Run a test to determine whether the population mean vector of Total_length, Alar_extent, and L_beak_head differs from $(150, 240, 34)$.</p>
+<p>R codes:</p>
 
 </div>
 </div>
@@ -15003,7 +15035,7 @@ one response variable.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">MVTests</span><span class="p">)</span>
@@ -15163,21 +15195,198 @@ The following object is masked from ‘package:datasets’:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Example-:">Example :<a class="anchor-link" href="#Example-:">&#182;</a></h1><p>Use the sparrow survive data. Run a test to check if the population mean vector of (Total_length, Alar_extent, L_beak_head) are the same as (150, 240, 34).</p>
-<p>The one-sample Hotelling’s T2 test.</p>
+<p>The hypothesis testing for the problem is reported as below:</p>
 $$
-H_0 :   \mu^T = (150, 240, 34); \quad   H_1 :   \mu^T \ne (150, 240, 34)
-$$<p>The assumption of the Hotelling T: multivariate normality of the data   (multivariate QQ)</p>
-<p>The calculation using R: 
-R code:  OneSampleHT2(dat[, c(1,2,3)],mu=c(150, 240, 34))</p>
-<p>Hotelling T = 2117.639
-test statisitc =  F =  676.468</p>
-<p>p-value = 0.00000</p>
-<p>Reject  H0. There is suffificent evidence in the data to support H1 that the population mean vector of (Total_length, Alar_extent, L_beak_head) are different than (150, 240, 34).</p>
+H_0 : \mu^T = (150, 240, 34) \quad \text{vs.} \quad H_1 : \mu^T \ne (150, 240, 34)
+$$<p><strong>Assumption:</strong><br />
+The data follow a multivariate normal distribution (Please check using a multivariate Q-Q plot).</p>
+<p><strong>Calculation in R:</strong></p>
+<div class="highlight"><pre><span></span><span class="nf">OneSampleHT2</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)],</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="m">240</span><span class="p">,</span><span class="w"> </span><span class="m">34</span><span class="p">))</span>
+</pre></div>
+<p><strong>Results:</strong></p>
+<ul>
+<li>Hotelling’s T² = 2117.639</li>
+<li>Test statistic: $F = 676.468$</li>
+<li>$p$-value = 0.00000</li>
+</ul>
+<p><strong>Conclusion:</strong></p>
+<p>Reject $H_0$. There is sufficient evidence to support $H_1$, indicating that the population mean vector of <em>(Total_length, Alar_extent, L_beak_head)</em> differs from $(150, 240, 34)$.</p>
 
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="The-following-example-is-based-on-formula:">The following example is based on formula:<a class="anchor-link" href="#The-following-example-is-based-on-formula:">&#182;</a></h3><p>Question: Conduct a test to check if the population average of both (Total_length, Alar_extent) is different than (150, 235).</p>
+<p>The R codes below is the calculation using formula. Please check the answer.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Data matrix</span>
+<span class="n">mean.vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
+<span class="n">mean.vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="n">mean.vec</span><span class="p">)</span>
+<span class="n">mean.vec</span>
+
+<span class="n">mean.hypothesized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="m">235</span><span class="p">)</span>
+
+<span class="n">S.cov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cov</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">])</span><span class="w"> </span>
+<span class="n">S.cov</span>
+
+<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+
+<span class="n">n</span>
+
+<span class="c1">#The calculation of one sample  Hotelling T </span>
+<span class="c1">#solve(S.cov)  ==&gt; get the inverse of S.cov</span>
+<span class="n">T2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">*</span><span class="nf">t</span><span class="p">(</span><span class="n">mean.vec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean.hypothesized</span><span class="p">)</span><span class="o">%*%</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">S.cov</span><span class="p">)</span><span class="o">%*%</span><span class="w"> </span><span class="p">(</span><span class="n">mean.vec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean.hypothesized</span><span class="p">)</span>
+<span class="n">T2</span>
+
+<span class="c1">#To get the p-value, </span>
+<span class="c1">#The reference distribution is an F distribuiton with degrees of freedom p, n-p , wehere p is the number of variable)</span>
+<span class="c1"># p =2 </span>
+<span class="c1">#F distribution with degree freedom = 2, 49 -2 = 47</span>
+
+<span class="n">p</span><span class="o">=</span><span class="m">2</span>
+<span class="c1">#pf(x, df1, df2) is the find the probability no more than a number x for an F distribution with ...</span>
+<span class="n">pvalue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pf</span><span class="p">(</span><span class="w">  </span><span class="n">T2</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="m">-1</span><span class="p">)),</span><span class="w">  </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="w">  </span><span class="p">)</span>
+
+<span class="n">pvalue</span>
+
+<span class="c1">#Since the pvalue is 0, which is smaller than the level of significance (0.05). Reject H0.  </span>
+<span class="c1">#There is sufficient evidence that the mean vector of (Total_length, Alar_extent) is different than (150, 235).</span>
+
+<span class="c1">#Check the normality assumption :  multivariate normal - multivariate QQ nomral plot</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>157.979591836735</li><li>241.326530612245</li></ol>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 2 × 2 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>Total_length</th><th scope=col>Alar_extent</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>Total_length</th><td>13.35374</td><td>13.61097</td></tr>
+	<tr><th scope=row>Alar_extent</th><td>13.61097</td><td>25.68282</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+49
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 1 × 1 of type dbl</caption>
+<tbody>
+	<tr><td>247.1884</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 1 × 1 of type dbl</caption>
+<tbody>
+	<tr><td>0</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15210,7 +15419,7 @@ $$H_1: \mu_1 &lt; \mu_2$$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Two sample t test: Repellent A vs Repellent B</span>
@@ -15699,9 +15908,24 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="The-two-sample-Hotelling%E2%80%99s-T2-test">The two-sample Hotelling&#8217;s T2 test<a class="anchor-link" href="#The-two-sample-Hotelling%E2%80%99s-T2-test">&#182;</a></h1><p>$H_0:  (\mu_1, \mu_2, \cdots, \mu_k) = (v_1, v_2, \cdots, v_k)$</p>
+<h1 id="The-two-sample-Hotelling%E2%80%99s-T2-test">The two-sample Hotelling&#8217;s T2 test<a class="anchor-link" href="#The-two-sample-Hotelling%E2%80%99s-T2-test">&#182;</a></h1><p>The two-sample Hotelling’s T² test is the multivariate extension of the two-sample t-test. It is used to determine whether the mean vectors of two groups differ significantly across multiple correlated dependent variables.</p>
+<p>$H_0:  (\mu_1, \mu_2, \cdots, \mu_k) = (v_1, v_2, \cdots, v_k)$</p>
 <p>where $(\mu_1, \mu_2, \cdots, \mu_k)$ and $(v_1, v_2, \cdots, v_k)$ are the population mean vectors of two groups.  The purpose of the two-sample Hotelling’s T2 test is to test if two population mean vectors of two groups are the same or not.</p>
-<h1 id="Example-:">Example :<a class="anchor-link" href="#Example-:">&#182;</a></h1><p>Use the sparrow survive data. Run a test to check if the population mean vector of (Total_length, Alar_extent, L_beak_head) of survived cases is the same as that of unsurvived cases.</p>
+\begin{align}
+\mathbf{S}_p &amp;= \frac{(n_1 - 1)\mathbf{S}_1 + (n_2 - 1)\mathbf{S}_2}{n_1 + n_2 - 2} \\[2mm]
+T^2 &amp;= \frac{n_1 n_2}{n_1 + n_2} (\mathbf{\bar{X}}_1 - \mathbf{\bar{X}}_2)^\top \mathbf{S}_p^{-1} (\mathbf{\bar{X}}_1 - \mathbf{\bar{X}}_2) \\[1mm]
+F &amp;= \frac{(n_1 + n_2 - p - 1) T^2}{(n_1 + n_2 - 2)p} \sim F_{p,\, n_1 + n_2 - p - 1}
+\end{align}$$
+\begin{aligned}
+\mathbf{\bar{X}}_1 &amp;\text{ = mean vector of Group 1} \\
+\mathbf{\bar{X}}_2 &amp;\text{ = mean vector of Group 2} \\
+\mathbf{S}_1 &amp;\text{ = covariance matrix of Group 1} \\
+\mathbf{S}_2 &amp;\text{ = covariance matrix of Group 2} \\
+\mathbf{S}_p &amp;\text{ = pooled covariance matrix} \\
+n_1, n_2 &amp;\text{ = sample sizes of the two groups} \\
+p &amp;\text{ = number of dependent variables}
+\end{aligned}
+$$<h1 id="Example-:">Example :<a class="anchor-link" href="#Example-:">&#182;</a></h1><p>Use the sparrow survive data. Run a test to check if the population mean vector of (Total_length, Alar_extent, L_beak_head) of survived cases is the same as that of unsurvived cases.</p>
 $$
 H_0 :   \mu^T_S =  \mu^T_{NS}; \quad   H_1 :   \mu^T_S  \ne  \mu^T_{NS}
 $$<p>where $\mu^T_S$ and $\mu^T_{NS}$ are the population mean vectors of survived cases, non-survived cases respectively.</p>
@@ -15721,7 +15945,7 @@ test statisitc =  F =  676.468</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Check the normality of both groups</span>
@@ -16086,20 +16310,6 @@ b2p =  12.4   kurtosis =  -1.25  with probability &lt;=  0.21</pre>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-Error in which(group == 1): object &#39;Survivorship&#39; not found
-Traceback:
-
-1. TwoSamplesHT2(sparrow1.dat, group = Survivorship)
-2. which(group == 1)</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
@@ -16438,7 +16648,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Two sample hotelling t test</span>
@@ -16558,35 +16768,6 @@ class="
 </div>
 
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<dl>
-	<dt>$Test.Statistic</dt>
-		<dd><table class="dataframe">
-<caption>A matrix: 1 × 1 of type dbl</caption>
-<tbody>
-	<tr><td>0.4671943</td></tr>
-</tbody>
-</table>
-</dd>
-	<dt>$p.value</dt>
-		<dd><table class="dataframe">
-<caption>A matrix: 1 × 1 of type dbl</caption>
-<tbody>
-	<tr><td>0.706624</td></tr>
-</tbody>
-</table>
-</dd>
-</dl>
-
-</div>
-
-</div>
 
 </div>
 
@@ -16597,7 +16778,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Self defined Function for two sample Hotelling t test </span>
@@ -16691,32 +16872,64 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="MANOVA">MANOVA<a class="anchor-link" href="#MANOVA">&#182;</a></h1><p>Multivariate ANOVA (Analysis of Variance) : a statistical method that analyzes the differences among multiple groups across multiple dependent variables.</p>
-<p>Assumputions:<br />
-Multivariate normality - data of each group, or residuals of all groups should have a multivariate normal distribution.</p>
-<p>Multivariate QQ normal plot for the multivariate residuals</p>
-<p>Homogeneity of the variance-covariance matrices of all groups: data should have equal variance-covariance matrices by each group. A multivariate version of the Homogeneity of variances can be tested using Box’s M test. <strong>Box’s M-test</strong> uses a lower alpha level such as 0.01 to assess the p value for significance.</p>
-<h1 id="MANOVA-Example:--Chemical-Analysis-of-Romano-British-Pottery">MANOVA Example:  Chemical Analysis of Romano-British Pottery<a class="anchor-link" href="#MANOVA-Example:--Chemical-Analysis-of-Romano-British-Pottery">&#182;</a></h1><p>Pottery shards are collected from 5 sites in the British Isles:</p>
-<p>L: Llanedyrn
-C: Caldicot
-I: Isle Thorns
-A: Ashley Rails</p>
-<p>Each pottery sample was returned to the laboratory for chemical assay. In these assays the concentrations of several different chemicals were determined:</p>
-<p>Al: Aluminum
-Fe: Iron
-...</p>
-<p>MANOVA will allow us to determine whether the chemical content of the pottery depends on the site.</p>
-<p>H0:  the chemical content of the pottery is independent of the site. 
-        The population mean vectors of these chemicals at these four sites are the same.
-        or...</p>
-<p>H1:  the chemical content of the pottery depends on the site.</p>
-<p>Calculation and requirements (assumptions) for MANOVA:</p>
-<p>The four most widely used ways for MANOVA:
-Wilk’s Lambda
-Roy’s Largest Root
-Pillai’s Criterion
-Hotelling’s Trace</p>
-<p>MANOVA in R uses <strong>Pillai’s Trace</strong> test for the calculations, which is then converted to an F-statistic when we want to check the significance of the group mean differences. You can use other tests, such as Wilk’s Lambda, Roy’s Largest Root, or Hotelling-Lawley’s test, but Pillai’s Trace test is the most powerful one.</p>
+<h3 id="Multivariate-ANOVA-(MANOVA)">Multivariate ANOVA (MANOVA)<a class="anchor-link" href="#Multivariate-ANOVA-(MANOVA)">&#182;</a></h3><p><strong>Definition:</strong> A statistical method used to analyze differences among multiple groups across multiple dependent variables.</p>
+<hr />
+<h3 id="Assumptions">Assumptions<a class="anchor-link" href="#Assumptions">&#182;</a></h3><ol>
+<li><p><strong>Multivariate Normality</strong></p>
+<ul>
+<li>The data of each group, or the residuals of all groups, should follow a multivariate normal distribution.</li>
+<li>Can be assessed using a <strong>multivariate QQ plot</strong> of the residuals.</li>
+</ul>
+</li>
+<li><p><strong>Homogeneity of Variance–Covariance Matrices</strong></p>
+<ul>
+<li>The variance–covariance matrices should be equal across groups.</li>
+<li>This can be tested using <strong>Box’s M test</strong>, which typically applies a more conservative alpha level (e.g., 0.01) when assessing significance.</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="MANOVA-Example:-Chemical-Analysis-of-Romano-British-Pottery">MANOVA Example: Chemical Analysis of Romano-British Pottery<a class="anchor-link" href="#MANOVA-Example:-Chemical-Analysis-of-Romano-British-Pottery">&#182;</a></h4><p>Researchers analyze Romano-British pottery to investigate differences in chemical composition across pottery types or production sites. Each pottery sample contains measurements of multiple chemical elements (e.g., aluminum, iron, magnesium), making this a multivariate dataset.</p>
+<p>Pottery shards were collected from five sites in the British Isles:</p>
+<ul>
+<li><strong>L:</strong> Llanedyrn</li>
+<li><strong>C:</strong> Caldicot</li>
+<li><strong>I:</strong> Isle Thorns</li>
+<li><strong>A:</strong> Ashley Rails</li>
+</ul>
+<p>Each sample was returned to the laboratory for chemical assay, where concentrations of several chemical elements were measured, including:</p>
+<ul>
+<li><strong>Al:</strong> Aluminum</li>
+<li><strong>Fe:</strong> Iron</li>
+<li><em>(Additional chemicals can be listed here)</em></li>
+</ul>
+<p><strong>Objective:</strong><br />
+MANOVA is used to determine whether the chemical composition of pottery depends on the site of origin.</p>
+<p><strong>Hypotheses:</strong></p>
+<ul>
+<li><strong>Null hypothesis (H₀):</strong> The chemical content of pottery is independent of the site. That is, the population mean vectors of the measured chemicals are the same across all sites.</li>
+<li><strong>Alternative hypothesis (H₁):</strong> The chemical content of pottery depends on the site.</li>
+</ul>
+<p><strong>MANOVA Calculation and Assumptions:</strong><br />
+MANOVA requires several assumptions, including multivariate normality and homogeneity of variance–covariance matrices.</p>
+<p>There are four widely used test statistics for MANOVA:</p>
+<ol>
+<li><strong>Wilks’ Lambda</strong></li>
+<li><strong>Roy’s Largest Root</strong></li>
+<li><strong>Pillai’s Trace</strong></li>
+<li><strong>Hotelling’s Trace</strong></li>
+</ol>
+<p>In R, <strong>Pillai’s Trace</strong> is commonly used. It is converted to an F-statistic to test the significance of group mean differences. While other tests (Wilks’ Lambda, Roy’s Largest Root, Hotelling-Lawley) can also be used, <strong>Pillai’s Trace is considered the most robust and powerful</strong>, especially when assumptions are slightly violated.</p>
 
 </div>
 </div>
@@ -16726,7 +16939,7 @@ Hotelling’s Trace</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">heplots</span><span class="p">)</span>
@@ -16792,7 +17005,7 @@ Hotelling’s Trace</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#MANOVA</span>
@@ -16878,24 +17091,6 @@ b1p =  28.08   skew =  224.62  with probability  &lt;=  1.6e-29
 b2p =  63.37   kurtosis =  11.75  with probability &lt;=  0</pre>
 </div>
 
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-Attaching package: ‘MVTests’
-
-
-The following object is masked from ‘package:datasets’:
-
-    iris
-
-
-</pre>
-</div>
 </div>
 <div class="jp-OutputArea-child">
     
@@ -17317,10 +17512,36 @@ X_{n1} &amp; \ldots &amp; X_{np}
 \end{pmatrix}_{n\times q},
 \end{align}
 $$<p>When $q = 1$, and $p&gt;1$ it is a multiple regression.</p>
+<h3 id="The-underlying-assumptions:">The underlying assumptions:<a class="anchor-link" href="#The-underlying-assumptions:">&#182;</a></h3><ol>
+<li><p><strong>Linearity</strong><br />
+Each predictor should have a linear relationship with each outcome. Nonlinear relationships can bias the results.</p>
+</li>
+<li><p><strong>Independence</strong><br />
+Observations should be independent. If they are not (e.g., in time-series or clustered data), standard errors may become unreliable.</p>
+</li>
+<li><p><strong>Multivariate Normality</strong><br />
+Error terms are assumed to follow a multivariate normal distribution.</p>
+<ul>
+<li>Even if this assumption is violated, coefficient estimates remain unbiased.</li>
+<li>However, confidence intervals and hypothesis tests may lose accuracy.</li>
+<li>While tests like Shapiro–Wilk can assess normality for individual outcomes, multivariate normality is best evaluated with methods such as <strong>Mardia’s test</strong>, which accounts for correlations among residuals.</li>
+</ul>
+</li>
+<li><p><strong>Homoscedasticity</strong><br />
+The variance of errors should be constant across predictors and outcomes. If not, the model becomes less efficient.</p>
+</li>
+<li><p><strong>No Multicollinearity issues</strong><br />
+Predictors should not be perfectly correlated, as this prevents the model from estimating their separate effects.</p>
+</li>
+</ol>
 <p>Example: Applied Multivariate Statistical Analysis (6th ed.) by Richard Johnson and Dean Wichern. This data come from exercise
 7.25 and involve 17 overdoses of the drug amitriptyline (Rudorfer, 1982). There are two responses we want to model: TOT and AMI.
-TOT is total TCAD plasma level and AMI is the amount of amitriptyline present in the TCAD plasma level. The predictors are
-as follows:</p>
+TOT is total TCAD plasma level and AMI is the amount of amitriptyline present in the TCAD plasma level.The predictors are:</p>
+<p>GEN: gender (male = 0, female = 1)</p>
+<p>AMT: amount of drug taken at the time of overdose</p>
+<p>PR: PR wave measurement</p>
+<p>DIAP: diastolic blood pressure</p>
+<p>QRS: QRS wave measurement</p>
 <p>The purpose is to build a regression model using other variables to predict tot and ami. In the problem, there are two responses (multivariate).</p>
 
 </div>
@@ -17331,7 +17552,7 @@ as follows:</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">BNSP</span><span class="p">)</span>
@@ -17351,6 +17572,26 @@ as follows:</p>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Warning message:
+“no DISPLAY variable so Tk is not available”
+
+Attaching package: ‘BNSP’
+
+
+The following object is masked from ‘package:base’:
+
+    chol
+
+
+</pre>
+</div>
+</div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -17387,7 +17628,7 @@ as follows:</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># The same as the codes for multiple regression , the difference is that the response is multivariate using cbind</span>
@@ -17567,8 +17808,61 @@ F-statistic: 17.29 on 5 and 11 DF,  p-value: 6.983e-05
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The fitted model:</p>
-<p><img src="data:image/png;base64,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" alt="image.png" /></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="1.-Multivariate-Model-for-tot-and-ami:">1. Multivariate Model for <code>tot</code> and <code>ami</code>:<a class="anchor-link" href="#1.-Multivariate-Model-for-tot-and-ami:">&#182;</a></h3>$$
+\begin{bmatrix}
+\hat{tot} \\
+\hat{ami}
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2879.48 \\
+-2728.71
+\end{bmatrix}
++
+\begin{bmatrix}
+675.65 \\
+763.03
+\end{bmatrix} \cdot \text{gen}
++
+\begin{bmatrix}
+0.28 \\
+0.31
+\end{bmatrix} \cdot \text{amt}
++
+\begin{bmatrix}
+10.27 \\
+8.90
+\end{bmatrix} \cdot \text{pr}
++
+\begin{bmatrix}
+7.25 \\
+7.21
+\end{bmatrix} \cdot \text{bp}
++
+\begin{bmatrix}
+7.60 \\
+4.99
+\end{bmatrix} \cdot \text{qrs}
+$$<hr />
+<h3 id="2.-Univariate-Linear-Model-for-tot:">2. Univariate Linear Model for <code>tot</code>:<a class="anchor-link" href="#2.-Univariate-Linear-Model-for-tot:">&#182;</a></h3>$$
+\hat{tot} = -2879.48 + 675.65 \cdot \text{gen} + 0.28 \cdot \text{amt} + 10.27 \cdot \text{pr} + 7.25 \cdot \text{bp} + 7.60 \cdot \text{qrs}
+$$<hr />
+<h3 id="3.-Univariate-Linear-Model-for-ami:">3. Univariate Linear Model for <code>ami</code>:<a class="anchor-link" href="#3.-Univariate-Linear-Model-for-ami:">&#182;</a></h3>$$
+\hat{ami} = -2728.71 + 763.03 \cdot \text{gen} + 0.31 \cdot \text{amt} + 8.90 \cdot \text{pr} + 7.21 \cdot \text{bp} + 4.99 \cdot \text{qrs}
+$$<p>We also express the multivariate regression model in matrix form as:</p>
+<p>The fitted model:
+<img src="data:image/png;base64,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" alt="image.png" /></p>
 
 </div>
 </div>
