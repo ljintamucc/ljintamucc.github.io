@@ -14597,7 +14597,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Regression---Linear-models">Regression - Linear models<a class="anchor-link" href="#Regression---Linear-models">&#182;</a></h1><h2 id="1.-Multiple-Linear-Regression">1. Multiple Linear Regression<a class="anchor-link" href="#1.-Multiple-Linear-Regression">&#182;</a></h2><p><strong>Regression</strong> is a method used to build a mathematical relationship between predictors (independent variables) and a dependent (response) variable.</p>
+<h1 id="Chapter-4-Regression---Linear-models">Chapter 4 Regression - Linear models<a class="anchor-link" href="#Chapter-4-Regression---Linear-models">&#182;</a></h1><h2 id="1.-Multiple-Linear-Regression">1. Multiple Linear Regression<a class="anchor-link" href="#1.-Multiple-Linear-Regression">&#182;</a></h2><p><strong>Regression</strong> is a method used to build a mathematical relationship between predictors (independent variables) and a dependent (response) variable.</p>
 <p><strong>Multiple regression</strong> extends simple linear regression by allowing more than one independent (explanatory) variable. While simple regression uses a single predictor, multiple regression fits a model for one dependent variable based on multiple predictors. This makes it a powerful tool in predictive analytics and statistical modeling. By incorporating multiple predictors, analysts can better understand the relationships among variables and improve predictive performance. Multiple regression is widely applied in fields such as finance, marketing, healthcare, and environmental sciences.</p>
 <hr />
 <h3 id="Applications-of-Multiple-Regression">Applications of Multiple Regression<a class="anchor-link" href="#Applications-of-Multiple-Regression">&#182;</a></h3><h4 id="Economics-and-Finance">Economics and Finance<a class="anchor-link" href="#Economics-and-Finance">&#182;</a></h4><ul>
@@ -14670,33 +14670,15 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Example</span>
-
-<span class="c1">#https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/airquality</span>
-<span class="c1">#Daily air quality measurements in New York, May to September 1973 stored within a</span>
-<span class="c1">#A data frame with 153 observations on 6 variables. </span>
-<span class="c1">#The source of the data: obtained from the New York State Department of Conservation (ozone data) </span>
-<span class="c1">#and the National Weather Service (meteorological data) and cited by Chambers et al. (1985).</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
 
 <span class="c1">#How many missing values in each variable</span>
 <span class="nf">colSums</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">airquality</span><span class="p">))</span>
-<span class="nf">str</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
-
-<span class="c1">#To build a predictive model using all other variables to predict Ozone</span>
-<span class="n">fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="w"> </span><span class="n">Solar.R</span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Day</span><span class="p">,</span><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">airquality</span><span class="p">)</span>
-
-<span class="n">fit</span>
-
-<span class="c1">#scatter plot matrix</span>
-<span class="nf">pairs</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
-
-<span class="c1">#correlation plot</span>
-<span class="n">dat</span><span class="o">=</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
-<span class="nf">cor</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14717,6 +14699,32 @@ $$</p>
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Ozone</th><th scope=col>Solar.R</th><th scope=col>Wind</th><th scope=col>Temp</th><th scope=col>Month</th><th scope=col>Day</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>41</td><td>190</td><td> 7.4</td><td>67</td><td>5</td><td>1</td></tr>
+	<tr><th scope=row>2</th><td>36</td><td>118</td><td> 8.0</td><td>72</td><td>5</td><td>2</td></tr>
+	<tr><th scope=row>3</th><td>12</td><td>149</td><td>12.6</td><td>74</td><td>5</td><td>3</td></tr>
+	<tr><th scope=row>4</th><td>18</td><td>313</td><td>11.5</td><td>62</td><td>5</td><td>4</td></tr>
+	<tr><th scope=row>5</th><td>NA</td><td> NA</td><td>14.3</td><td>56</td><td>5</td><td>5</td></tr>
+	<tr><th scope=row>6</th><td>28</td><td> NA</td><td>14.9</td><td>66</td><td>5</td><td>6</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
 .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
@@ -14727,41 +14735,41 @@ $$</p>
 </div>
 
 </div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&#39;data.frame&#39;:	153 obs. of  6 variables:
- $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
- $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
- $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
- $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
- $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
- $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>
-Call:
-lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day, data = airquality)
-
-Coefficients:
-(Intercept)      Solar.R         Wind         Temp        Month          Day  
-  -64.11632      0.05027     -3.31844      1.89579     -3.03996      0.27388  
-</pre>
 </div>
 
 </div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Create a new data set without missing values by delete the cases with missing values</span>
+<span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
+
+<span class="c1">#Correlation plot</span>
+<span class="nf">cor</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+
+
+<span class="c1">#scatter plot matrix</span>
+<span class="nf">pairs</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
@@ -17367,6 +17375,154 @@ class="
 
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#To build a predictive model using all other variables to predict Ozone</span>
+<span class="n">fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="w"> </span><span class="n">Solar.R</span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Day</span><span class="p">,</span><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day, data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-37.014 -12.284  -3.302   8.454  95.348 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -64.11632   23.48249  -2.730  0.00742 ** 
+Solar.R       0.05027    0.02342   2.147  0.03411 *  
+Wind         -3.31844    0.64451  -5.149 1.23e-06 ***
+Temp          1.89579    0.27389   6.922 3.66e-10 ***
+Month        -3.03996    1.51346  -2.009  0.04714 *  
+Day           0.27388    0.22967   1.192  0.23576    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.86 on 105 degrees of freedom
+Multiple R-squared:  0.6249,	Adjusted R-squared:  0.6071 
+F-statistic: 34.99 on 5 and 105 DF,  p-value: &lt; 2.2e-16
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#To build a predictive model using all other variables to predict Ozone</span>
+<span class="n">fit.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="w"> </span><span class="n">Solar.R</span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Day</span><span class="p">,</span><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">airquality</span><span class="p">)</span>
+<span class="n">fit.1</span>
+
+<span class="nf">summary</span><span class="p">(</span><span class="n">fit.1</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day, data = airquality)
+
+Coefficients:
+(Intercept)      Solar.R         Wind         Temp        Month          Day  
+  -64.11632      0.05027     -3.31844      1.89579     -3.03996      0.27388  
+</pre>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day, data = airquality)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-37.014 -12.284  -3.302   8.454  95.348 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -64.11632   23.48249  -2.730  0.00742 ** 
+Solar.R       0.05027    0.02342   2.147  0.03411 *  
+Wind         -3.31844    0.64451  -5.149 1.23e-06 ***
+Temp          1.89579    0.27389   6.922 3.66e-10 ***
+Month        -3.03996    1.51346  -2.009  0.04714 *  
+Day           0.27388    0.22967   1.192  0.23576    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.86 on 105 degrees of freedom
+  (42 observations deleted due to missingness)
+Multiple R-squared:  0.6249,	Adjusted R-squared:  0.6071 
+F-statistic: 34.99 on 5 and 105 DF,  p-value: &lt; 2.2e-16
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -17417,6 +17573,473 @@ By comparing AIC or BIC values across different models, we select the model with
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#create an interaction term between Wind and Temp</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">WindTemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Wind</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Temp</span>
+
+<span class="c1">#create an interaction term between Solor.R and Temp</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">S3Temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Solar</span><span class="m">-2</span><span class="p">)</span><span class="o">^</span><span class="m">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Temp</span>
+
+<span class="n">fit.2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="w"> </span><span class="n">Solar.R</span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Day</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">WindTemp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S3Temp</span><span class="w"> </span><span class="p">,</span><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fit.2</span><span class="p">)</span>
+
+<span class="c1">#Adding a few more ploynomial terms of wind</span>
+
+<span class="n">fit.3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="w"> </span><span class="n">Solar.R</span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Day</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">WindTemp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S3Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">I</span><span class="p">(</span><span class="n">Wind</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="nf">I</span><span class="p">(</span><span class="n">Wind</span><span class="o">^</span><span class="m">3</span><span class="p">),</span><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+
+<span class="nf">summary</span><span class="p">(</span><span class="n">fit.3</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day + WindTemp + 
+    S3Temp, data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-36.414 -12.007  -2.062   6.044  93.455 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.459e+02  4.696e+01  -5.237 8.68e-07 ***
+Solar.R      8.617e-02  5.252e-02   1.641 0.103904    
+Wind         1.426e+01  4.083e+00   3.492 0.000707 ***
+Temp         4.128e+00  5.712e-01   7.227 8.90e-11 ***
+Month       -2.999e+00  1.467e+00  -2.043 0.043560 *  
+Day          3.015e-01  2.130e-01   1.415 0.159989    
+WindTemp    -2.256e-01  5.194e-02  -4.343 3.30e-05 ***
+S3Temp      -4.074e-09  6.784e-09  -0.601 0.549457    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 19.34 on 103 degrees of freedom
+Multiple R-squared:  0.6837,	Adjusted R-squared:  0.6623 
+F-statistic: 31.81 on 7 and 103 DF,  p-value: &lt; 2.2e-16
+</pre>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day + WindTemp + 
+    S3Temp + I(Wind^2) + I(Wind^3), data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-46.220 -10.900  -1.727   8.933  69.887 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept) -2.754e+01  7.906e+01  -0.348   0.7283   
+Solar.R      8.336e-02  5.032e-02   1.657   0.1007   
+Wind        -1.671e+01  1.068e+01  -1.564   0.1208   
+Temp         2.289e+00  7.898e-01   2.898   0.0046 **
+Month       -3.004e+00  1.415e+00  -2.122   0.0363 * 
+Day          3.467e-01  2.045e-01   1.696   0.0931 . 
+WindTemp    -5.969e-02  7.160e-02  -0.834   0.4065   
+S3Temp      -4.263e-09  6.498e-09  -0.656   0.5133   
+I(Wind^2)    1.254e+00  6.516e-01   1.925   0.0570 . 
+I(Wind^3)   -2.371e-02  1.857e-02  -1.276   0.2047   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 18.52 on 101 degrees of freedom
+Multiple R-squared:  0.7155,	Adjusted R-squared:  0.6902 
+F-statistic: 28.23 on 9 and 101 DF,  p-value: &lt; 2.2e-16
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Stepwise selection (bidirectional)</span>
+<span class="nf">step</span><span class="p">(</span><span class="n">fit.3</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;both&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="c1">#linear regression using the selected features</span>
+<span class="n">fit.4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ozone</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Solar.R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Day</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">I</span><span class="p">(</span><span class="n">Wind</span><span class="o">^</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+
+<span class="nf">summary</span><span class="p">(</span><span class="n">fit.4</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day + I(Wind^2), 
+    data = dat)
+
+Coefficients:
+(Intercept)      Solar.R         Wind         Temp        Month          Day  
+    6.44325      0.05338    -15.12230      1.66023     -2.53453      0.34465  
+  I(Wind^2)  
+    0.53656  
+</pre>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day + I(Wind^2), 
+    data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-37.701 -11.068  -2.474   7.722  71.246 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   6.44325   24.58990   0.262   0.7938    
+Solar.R       0.05338    0.02080   2.567   0.0117 *  
+Wind        -15.12230    2.25600  -6.703 1.08e-09 ***
+Temp          1.66023    0.24699   6.722 9.89e-10 ***
+Month        -2.53453    1.34669  -1.882   0.0626 .  
+Day           0.34465    0.20429   1.687   0.0946 .  
+I(Wind^2)     0.53656    0.09920   5.409 4.07e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 18.52 on 104 degrees of freedom
+Multiple R-squared:  0.7073,	Adjusted R-squared:  0.6904 
+F-statistic: 41.88 on 6 and 104 DF,  p-value: &lt; 2.2e-16
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Stepwise selection (backwards)</span>
+<span class="nf">step</span><span class="p">(</span><span class="n">fit.3</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;back&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+
+<span class="c1">#The model selected may not be the same if different stepwise selection is used.</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Start:  AIC=657.53
+Ozone ~ Solar.R + Wind + Temp + Month + Day + WindTemp + S3Temp + 
+    I(Wind^2) + I(Wind^3)
+
+            Df Sum of Sq   RSS    AIC
+- S3Temp     1    147.65 34796 656.00
+- WindTemp   1    238.37 34887 656.29
+- I(Wind^3)  1    558.94 35207 657.30
+&lt;none&gt;                   34648 657.53
+- Wind       1    839.62 35488 658.18
+- Solar.R    1    941.57 35590 658.50
+- Day        1    986.24 35635 658.64
+- I(Wind^2)  1   1271.17 35920 659.53
+- Month      1   1545.24 36194 660.37
+- Temp       1   2881.66 37530 664.39
+
+Step:  AIC=656
+Ozone ~ Solar.R + Wind + Temp + Month + Day + WindTemp + I(Wind^2) + 
+    I(Wind^3)
+
+            Df Sum of Sq   RSS    AIC
+- WindTemp   1    237.56 35034 654.75
+- I(Wind^3)  1    561.10 35357 655.77
+&lt;none&gt;                   34796 656.00
+- Wind       1    844.47 35641 656.66
+- Day        1    980.70 35777 657.08
+- I(Wind^2)  1   1272.27 36068 657.98
+- Month      1   1398.50 36195 658.37
+- Solar.R    1   2232.31 37028 660.90
+- Temp       1   2846.24 37642 662.73
+
+Step:  AIC=654.75
+Ozone ~ Solar.R + Wind + Temp + Month + Day + I(Wind^2) + I(Wind^3)
+
+            Df Sum of Sq   RSS    AIC
+- I(Wind^3)  1     619.4 35653 654.70
+&lt;none&gt;                   35034 654.75
+- Day        1    1006.6 36040 655.90
+- Month      1    1406.4 36440 657.12
+- I(Wind^2)  1    1619.7 36653 657.77
+- Solar.R    1    2125.6 37159 659.29
+- Wind       1    4226.0 39260 665.39
+- Temp       1   15285.3 50319 692.94
+
+Step:  AIC=654.7
+Ozone ~ Solar.R + Wind + Temp + Month + Day + I(Wind^2)
+
+            Df Sum of Sq   RSS    AIC
+&lt;none&gt;                   35653 654.70
+- Day        1     975.7 36629 655.70
+- Month      1    1214.3 36867 656.42
+- Solar.R    1    2258.9 37912 659.52
+- I(Wind^2)  1   10030.0 45683 680.21
+- Wind       1   15403.5 51056 692.56
+- Temp       1   15489.8 51143 692.75
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Solar.R + Wind + Temp + Month + Day + I(Wind^2), 
+    data = dat)
+
+Coefficients:
+(Intercept)      Solar.R         Wind         Temp        Month          Day  
+    6.44325      0.05338    -15.12230      1.66023     -2.53453      0.34465  
+  I(Wind^2)  
+    0.53656  
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Forward stepwise selection</span>
+<span class="n">fit.0</span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ozone</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+<span class="nf">step</span><span class="p">(</span><span class="n">fit.0</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="o">=</span><span class="s">&#39;forward&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="o">=</span><span class="nf">formula</span><span class="p">(</span><span class="n">fit.3</span><span class="p">),</span><span class="w"> </span><span class="n">trace</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Start:  AIC=779.07
+Ozone ~ 1
+
+            Df Sum of Sq    RSS    AIC
++ Temp       1     59434  62367 706.77
++ Wind       1     45694  76108 728.87
++ I(Wind^2)  1     32004  89798 747.23
++ WindTemp   1     24804  96998 755.79
++ I(Wind^3)  1     21245 100556 759.79
++ Solar.R    1     14780 107022 766.71
++ S3Temp     1      9688 112114 771.87
++ Month      1      2487 119315 778.78
+&lt;none&gt;                   121802 779.07
++ Day        1         3 121799 781.07
+
+Step:  AIC=706.77
+Ozone ~ Temp
+
+            Df Sum of Sq   RSS    AIC
++ WindTemp   1   13792.4 48575 681.03
++ Wind       1   11378.5 50989 686.41
++ I(Wind^2)  1    6016.9 56351 697.51
++ Month      1    2824.7 59543 703.63
++ I(Wind^3)  1    2816.3 59551 703.64
++ Solar.R    1    2723.1 59644 703.82
++ S3Temp     1    1882.6 60485 705.37
+&lt;none&gt;                   62367 706.77
++ Day        1     476.5 61891 707.92
+
+Step:  AIC=681.03
+Ozone ~ Temp + WindTemp
+
+            Df Sum of Sq   RSS    AIC
++ I(Wind^2)  1    7367.6 41207 664.77
++ I(Wind^3)  1    7110.2 41465 665.46
++ Wind       1    4180.9 44394 673.04
++ Solar.R    1    3138.3 45437 675.61
++ S3Temp     1    2726.9 45848 676.62
++ Month      1    2667.2 45908 676.76
+&lt;none&gt;                   48575 681.03
++ Day        1     509.2 48066 681.86
+
+Step:  AIC=664.77
+Ozone ~ Temp + WindTemp + I(Wind^2)
+
+            Df Sum of Sq   RSS    AIC
++ Solar.R    1    3425.1 37782 657.14
++ S3Temp     1    2778.4 38429 659.02
++ Month      1    2188.1 39019 660.71
++ Day        1     748.6 40459 664.73
+&lt;none&gt;                   41207 664.77
++ Wind       1     480.6 40727 665.47
++ I(Wind^3)  1       3.0 41204 666.76
+
+Step:  AIC=657.14
+Ozone ~ Temp + WindTemp + I(Wind^2) + Solar.R
+
+            Df Sum of Sq   RSS    AIC
++ Month      1   1196.03 36586 655.57
++ Day        1    858.04 36924 656.59
+&lt;none&gt;                   37782 657.14
++ Wind       1    306.26 37476 658.23
++ I(Wind^3)  1      9.20 37773 659.11
++ S3Temp     1      2.69 37780 659.13
+
+Step:  AIC=655.57
+Ozone ~ Temp + WindTemp + I(Wind^2) + Solar.R + Month
+
+            Df Sum of Sq   RSS    AIC
++ Day        1    905.87 35680 654.78
+&lt;none&gt;                   36586 655.57
++ Wind       1    280.07 36306 656.71
++ S3Temp     1    146.70 36440 657.12
++ I(Wind^3)  1     43.78 36542 657.43
+
+Step:  AIC=654.78
+Ozone ~ Temp + WindTemp + I(Wind^2) + Solar.R + Month + Day
+
+            Df Sum of Sq   RSS    AIC
+&lt;none&gt;                   35680 654.78
++ Wind       1    323.27 35357 655.77
++ S3Temp     1    152.35 35528 656.31
++ I(Wind^3)  1     39.90 35641 656.66
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Temp + WindTemp + I(Wind^2) + Solar.R + 
+    Month + Day, data = dat)
+
+Coefficients:
+(Intercept)         Temp     WindTemp    I(Wind^2)      Solar.R        Month  
+ -129.02689      3.06960     -0.13290      0.32046      0.05634     -2.56463  
+        Day  
+    0.33191  
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17562,7 +18185,6 @@ F-statistic: 15.59 on 7 and 103 DF,  p-value: 8.616e-14
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Feature selection </span>
 <span class="n">fit.5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="w"> </span><span class="n">Solar.R</span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">I</span><span class="p">(</span><span class="n">Wind</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="nf">I</span><span class="p">(</span><span class="n">Wind</span><span class="o">^</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Day</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="o">*</span><span class="n">Temp</span><span class="o">*</span><span class="n">Month</span><span class="o">*</span><span class="n">Day</span><span class="p">,</span><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">airquality</span><span class="p">)</span>
 <span class="n">fit.5</span>
-
 <span class="c1">#Too many variables, which variables should be included.</span>
 </pre></div>
 
@@ -17813,11 +18435,13 @@ Coefficients:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># k-Fold Cross-Validation, k = 8</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">5378</span><span class="p">)</span>
 <span class="c1">#Set the option for the cross validation</span>
 <span class="n">cv.control</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">)</span>
 
@@ -17830,6 +18454,9 @@ Coefficients:
 <span class="n">fit.cv</span><span class="o">$</span><span class="n">finalModel</span>
 
 <span class="c1">#lm , different results.</span>
+
+<span class="n">fit.000</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Ozone</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Temp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Wind</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Solar.R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Month</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fit.000</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -17848,19 +18475,6 @@ Coefficients:
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Loading required package: ggplot2
-
-Loading required package: lattice
-
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 
 
 <div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
@@ -17871,11 +18485,11 @@ Loading required package: lattice
 
 No pre-processing
 Resampling: Cross-Validated (8 fold) 
-Summary of sample sizes: 97, 96, 98, 98, 96, 97, ... 
+Summary of sample sizes: 98, 99, 96, 97, 96, 97, ... 
 Resampling results:
 
-  RMSE     Rsquared   MAE     
-  20.3398  0.6712055  15.64922
+  RMSE      Rsquared   MAE     
+  20.14307  0.6417553  15.36585
 
 Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</pre>
 </div>
@@ -17896,6 +18510,39 @@ lm(formula = .outcome ~ ., data = dat)
 Coefficients:
 (Intercept)         Temp         Wind      Solar.R        Month  
    -58.0538       1.8709      -3.3165       0.0496      -2.9916  
+</pre>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>
+Call:
+lm(formula = Ozone ~ Temp + Wind + Solar.R + Month, data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-35.870 -13.968  -2.671   9.553  97.918 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -58.05384   22.97114  -2.527   0.0130 *  
+Temp          1.87087    0.27363   6.837 5.34e-10 ***
+Wind         -3.31651    0.64579  -5.136 1.29e-06 ***
+Solar.R       0.04960    0.02346   2.114   0.0368 *  
+Month        -2.99163    1.51592  -1.973   0.0510 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 20.9 on 106 degrees of freedom
+Multiple R-squared:  0.6199,	Adjusted R-squared:  0.6055 
+F-statistic: 43.21 on 4 and 106 DF,  p-value: &lt; 2.2e-16
 </pre>
 </div>
 
@@ -19510,7 +20157,7 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Example: build predictive models ( ridge regression,  Lasso,  ...) to predict &quot;Ozone&quot; using some other suitable variables in the dataset &quot;airquality&quot;. Split the data into training set and validaiton set. Calculate RMSE, Rsq , ... on the testing set of different models.</p>
+<p>Example: build linear predictive models with regulation (ridge regression,  Lasso,  ...) to predict &quot;Ozone&quot; using some other suitable variables in the dataset &quot;airquality&quot;. Split the data into training set and test set. Calculate RMSE, Rsq , ... on the testing set of different models.</p>
 
 </div>
 </div>
@@ -19520,11 +20167,27 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#glmnet</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">glmnet</span><span class="p">)</span>
+
+<span class="c1">#create an interaction term between Wind and Temp</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">WindTemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Wind</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Temp</span>
+
+<span class="c1">#create an interaction term between Solor.R and Temp</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">S2Temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Solar</span><span class="m">-2</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Temp</span>
+
+<span class="c1">#create an interaction term between Solor.R and Temp</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Temp2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Temp</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="w"> </span>
+
+<span class="c1">#create an interaction term between Solor.R and Temp</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Temp3</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Temp</span><span class="p">)</span><span class="o">^</span><span class="m">3</span><span class="w"> </span>
+
+
+
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -19543,25 +20206,38 @@ $$</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Loading required package: Matrix
 
-Loaded glmnet 4.1-8
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 6 × 10</caption>
+<thead>
+	<tr><th></th><th scope=col>Ozone</th><th scope=col>Solar.R</th><th scope=col>Wind</th><th scope=col>Temp</th><th scope=col>Month</th><th scope=col>Day</th><th scope=col>WindTemp</th><th scope=col>S2Temp</th><th scope=col>Temp2</th><th scope=col>Temp3</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>41</td><td>190</td><td> 7.4</td><td>67</td><td>5</td><td>1</td><td>495.8</td><td>2368048</td><td>4489</td><td>300763</td></tr>
+	<tr><th scope=row>2</th><td>36</td><td>118</td><td> 8.0</td><td>72</td><td>5</td><td>2</td><td>576.0</td><td> 968832</td><td>5184</td><td>373248</td></tr>
+	<tr><th scope=row>3</th><td>12</td><td>149</td><td>12.6</td><td>74</td><td>5</td><td>3</td><td>932.4</td><td>1599066</td><td>5476</td><td>405224</td></tr>
+	<tr><th scope=row>4</th><td>18</td><td>313</td><td>11.5</td><td>62</td><td>5</td><td>4</td><td>713.0</td><td>5996702</td><td>3844</td><td>238328</td></tr>
+	<tr><th scope=row>7</th><td>23</td><td>299</td><td> 8.6</td><td>65</td><td>5</td><td>7</td><td>559.0</td><td>5733585</td><td>4225</td><td>274625</td></tr>
+	<tr><th scope=row>8</th><td>19</td><td> 99</td><td>13.8</td><td>59</td><td>5</td><td>8</td><td>814.2</td><td> 555131</td><td>3481</td><td>205379</td></tr>
+</tbody>
+</table>
 
-</pre>
 </div>
-</div>
 
 </div>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#load the data in the preivous codes</span>
@@ -19571,15 +20247,32 @@ Loaded glmnet 4.1-8
 <span class="c1">#Predictor variables</span>
 <span class="n">X.Dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="p">[,</span><span class="m">-1</span><span class="p">]</span>
 
+<span class="n">X.Dat.Scaled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="m">-1</span><span class="p">])</span>
+
 <span class="c1">#Response</span>
 <span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Ozone</span>
+</pre></div>
 
+     </div>
+</div>
+</div>
+</div>
 
-<span class="c1">#Lasso  ,  alpha = 1</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Lasso  ,  alpha = 1</span>
 <span class="c1">#The tuning parameter λ controls the overall strength of the penalty.</span>
-<span class="n">lambda.value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span>
+<span class="c1">#family=&quot;gaussian&quot;   == &gt; lm</span>
+<span class="n">lambda.value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span>
 <span class="n">lfit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">glmnet</span><span class="p">(</span><span class="n">X.Dat</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda.value</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="s">&quot;gaussian&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="nf">str</span><span class="p">(</span><span class="n">lfit</span><span class="p">)</span>
+
+<span class="n">lfit.scaled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">glmnet</span><span class="p">(</span><span class="n">X.Dat.Scaled</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda.value</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="s">&quot;gaussian&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 
 <span class="c1">#Linear regression</span>
 <span class="c1">#fit = lm(Ozone~., data=dat)</span>
@@ -19591,6 +20284,23 @@ Loaded glmnet 4.1-8
 </div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#str(lfit)</span>
+<span class="n">lfit</span><span class="o">$</span><span class="n">beta</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -19602,32 +20312,22 @@ Loaded glmnet 4.1-8
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>List of 12
- $ a0       : Named num -62.9
-  ..- attr(*, &#34;names&#34;)= chr &#34;s0&#34;
- $ beta     :Formal class &#39;dgCMatrix&#39; [package &#34;Matrix&#34;] with 6 slots
-  .. ..@ i       : int [1:5] 0 1 2 3 4
-  .. ..@ p       : int [1:2] 0 5
-  .. ..@ Dim     : int [1:2] 5 1
-  .. ..@ Dimnames:List of 2
-  .. .. ..$ : chr [1:5] &#34;Solar.R&#34; &#34;Wind&#34; &#34;Temp&#34; &#34;Month&#34; ...
-  .. .. ..$ : chr &#34;s0&#34;
-  .. ..@ x       : num [1:5] 0.0487 -3.2619 1.8551 -2.7121 0.2333
-  .. ..@ factors : list()
- $ df       : int 5
- $ dim      : int [1:2] 5 1
- $ lambda   : num 0.3
- $ dev.ratio: num 0.625
- $ nulldev  : num 121802
- $ npasses  : int 10
- $ jerr     : int 0
- $ offset   : logi FALSE
- $ call     : language glmnet(x = X.Dat, y = y, family = &#34;gaussian&#34;, alpha = 1, lambda = lambda.value)
- $ nobs     : int 111
- - attr(*, &#34;class&#34;)= chr [1:2] &#34;elnet&#34; &#34;glmnet&#34;
-</pre>
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>9 x 1 sparse Matrix of class &#34;dgCMatrix&#34;
+                    s0
+Solar.R   3.602116e-02
+Wind      .           
+Temp      .           
+Month    -1.936535e+00
+Day       2.108148e-01
+WindTemp -4.256620e-02
+S2Temp    6.627636e-07
+Temp2     .           
+Temp3     1.240503e-04</pre>
 </div>
+
 </div>
 
 </div>
@@ -19639,7 +20339,69 @@ Loaded glmnet 4.1-8
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Prediction of the fitted models</span>
+<span class="c1">#The best lambda value selected is 0.079</span>
+<span class="n">yhat.0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">lfit</span><span class="p">,</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">X.Dat</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+<span class="c1">#Find MSE</span>
+
+<span class="c1">#The predictors are scaled </span>
+<span class="n">yhat.1</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">predict</span><span class="p">(</span><span class="n">lfit.scaled</span><span class="p">,</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">X.Dat.Scaled</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+
+
+<span class="n">MSE.0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">((</span><span class="n">yhat.0</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<span class="n">MSE.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">((</span><span class="n">yhat.1</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+
+<span class="n">MSE.0</span>
+<span class="n">MSE.1</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+368.234790181853
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+368.234790181853
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Cross validation for selecting lambda</span>
@@ -19647,9 +20409,44 @@ Loaded glmnet 4.1-8
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">4540</span><span class="p">)</span>
 <span class="n">fitcv</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nf">cv.glmnet</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">X.Dat</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s">&quot;gaussian&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="n">fitcv</span><span class="o">$</span><span class="n">lambda.min</span>
+</pre></div>
 
-<span class="c1">#The best lambda value selected is 0.079</span>
+     </div>
+</div>
+</div>
+</div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+0.0749237637443712
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#The best lambda value selected is 0.079</span>
 <span class="n">yhat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fitcv</span><span class="p">,</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">X.Dat</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="n">fitcv</span><span class="o">$</span><span class="n">lambda.min</span><span class="p">)</span>
 <span class="c1">#Find MSE</span>
 
@@ -19675,18 +20472,7 @@ Loaded glmnet 4.1-8
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-0.0793800286586321
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-411.590755343869
+347.502120851955
 </div>
 
 </div>
@@ -19700,24 +20486,163 @@ Loaded glmnet 4.1-8
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">fitcv.s</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nf">cv.glmnet</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">X.Dat.Scaled</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s">&quot;gaussian&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="n">fitcv.s</span><span class="o">$</span><span class="n">lambda.min</span>
+
+<span class="c1">#The best lambda value selected is 0.079</span>
+<span class="n">yhat.s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fitcv.s</span><span class="p">,</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">X.Dat.Scaled</span><span class="p">),</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="n">fitcv.s</span><span class="o">$</span><span class="n">lambda.min</span><span class="p">)</span>
+<span class="c1">#Find MSE</span>
+
+<span class="n">MSE.s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">((</span><span class="n">yhat.s</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<span class="n">MSE.s</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+0.0154081642328106
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+344.415823331863
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#package caret, train function to select the best tuning parameters</span>
 
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">139</span><span class="p">)</span>
+
 <span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Loading required package: ggplot2
+
+Loading required package: lattice
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1392</span><span class="p">)</span>
 
 <span class="c1">#set the cross validation </span>
 <span class="c1"># 5 fold cross validation</span>
 <span class="n">ctrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;cv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
 
-<span class="c1">#set the space to search the tuning parameters</span>
-<span class="n">dgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">10</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">10</span><span class="p">))</span>
-
+<span class="c1">#set the space to search the tuning parameters :  alpha,  lambda</span>
+<span class="c1">#20</span>
+<span class="n">dgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.2</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">20</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.2</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">20</span><span class="p">))</span>
 <span class="n">fit.0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;glmnet&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tuneGrid</span><span class="o">=</span><span class="n">dgrid</span><span class="p">,</span><span class="w"> </span><span class="n">trControl</span><span class="o">=</span><span class="n">ctrl</span><span class="p">,</span><span class="w"> </span><span class="n">preProc</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;scale&quot;</span><span class="p">))</span>
 
 <span class="n">fit.0</span>
+
+
+<span class="c1">#To get the best tuning paramters </span>
+<span class="n">fit.0</span><span class="w"> </span><span class="o">$</span><span class="w"> </span><span class="n">bestTune</span>
+
+<span class="c1">#make prediction using the best model</span>
+<span class="n">yhat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fit.0</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">yhat</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Ozone</span><span class="p">)</span>
+
+<span class="c1">#The best tuning parameter : \lambda = 0.05263158  \alpha =  0.05263158</span>
 
 <span class="c1">#It shows alpha=0,  lambda= 0 leading to the smallest RMSE, MAE, the lagest Rsquared.</span>
 <span class="c1">#According to this output,  it show that the traditional linear regression (alpha=0,  lambda= 0) works best for the data.</span>
@@ -19745,27 +20670,438 @@ Loaded glmnet 4.1-8
 <pre>glmnet 
 
 111 samples
-  5 predictor
+  9 predictor
 
-Pre-processing: centered (5), scaled (5) 
+Pre-processing: centered (9), scaled (9) 
 Resampling: Cross-Validated (5 fold) 
-Summary of sample sizes: 88, 89, 88, 89, 90 
+Summary of sample sizes: 89, 87, 90, 89, 89 
 Resampling results across tuning parameters:
 
-  alpha        lambda       RMSE      Rsquared   MAE     
-  0.000000000  0.000000000  21.18841  0.6034031  15.72105
-  0.001111111  0.001111111  21.19431  0.6031391  15.72604
-  0.002222222  0.002222222  21.23706  0.6017479  15.78813
-  0.003333333  0.003333333  21.25803  0.6011955  15.81607
-  0.004444444  0.004444444  21.27019  0.6008943  15.83074
-  0.005555556  0.005555556  21.27766  0.6007165  15.83982
-  0.006666667  0.006666667  21.28298  0.6005903  15.84656
-  0.007777778  0.007777778  21.28689  0.6004987  15.85140
-  0.008888889  0.008888889  21.28863  0.6004158  15.85427
-  0.010000000  0.010000000  21.29038  0.6003280  15.85745
+  alpha       lambda      RMSE      Rsquared   MAE     
+  0.00000000  0.00000000  20.06662  0.6933147  14.85820
+  0.01052632  0.01052632  19.47771  0.6977306  14.26161
+  0.02105263  0.02105263  19.36159  0.6983544  14.10855
+  0.03157895  0.03157895  19.32234  0.6983637  14.03570
+  0.04210526  0.04210526  19.30608  0.6982063  13.99406
+  0.05263158  0.05263158  19.30324  0.6981298  13.98305
+  0.06315789  0.06315789  19.30909  0.6982958  14.00705
+  0.07368421  0.07368421  19.31637  0.6984137  14.02977
+  0.08421053  0.08421053  19.32465  0.6985008  14.05243
+  0.09473684  0.09473684  19.33354  0.6985625  14.07353
+  0.10526316  0.10526316  19.34303  0.6986032  14.09353
+  0.11578947  0.11578947  19.35296  0.6986276  14.11262
+  0.12631579  0.12631579  19.36350  0.6986339  14.13107
+  0.13684211  0.13684211  19.37426  0.6986305  14.14873
+  0.14736842  0.14736842  19.38548  0.6986149  14.16597
+  0.15789474  0.15789474  19.39698  0.6985903  14.18257
+  0.16842105  0.16842105  19.40880  0.6985584  14.19872
+  0.17894737  0.17894737  19.42069  0.6985233  14.21415
+  0.18947368  0.18947368  19.43345  0.6984735  14.22973
+  0.20000000  0.20000000  19.44675  0.6984120  14.24499
 
 RMSE was used to select the optimal model using the smallest value.
-The final values used for the model were alpha = 0 and lambda = 0.</pre>
+The final values used for the model were alpha = 0.05263158 and lambda
+ = 0.05263158.</pre>
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 1 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>alpha</th><th scope=col>lambda</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>6</th><td>0.05263158</td><td>0.05263158</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAADAFBMVEUAAAABAQECAgIDAwME
+BAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUW
+FhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJyco
+KCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6
+Ojo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tM
+TExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1e
+Xl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29w
+cHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGC
+goKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OU
+lJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWm
+pqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4
+uLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnK
+ysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc
+3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u
+7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////i
+sF19AAAACXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nO3dB3wUxQIG8LmS3gktkJCEQBJ6
+hwChd0SKgPQiHaQ3ARGQjtIEAZEmSFEQQRApKlIUkU4oj94JLXRIAklu321JI8ll7272djf3
+/d/73Uzu9nYm5j7ubnd2hjAAYDUidwcAcgIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYAC
+BAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJ
+gAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYAC
+BAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJ
+gAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYAC
+BAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJ
+gAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYAC
+BAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAhsE6dQxAFU5Zf6rXPogHSUAKnPU7Je59EH6
+h7yRvA0Ait6Qf8x+DoIE8A4ECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIE
+CYACBAmAAgQJgAIECYACBAmAAgQJgAIECURI3NCndsf5z+TuhoIhSJC9J9Xd20/sXajgcbk7
+olwIEmTv/dJ3jbfxnf2ey90TxUKQIFtR5AxXxgXMl7knyoUgQbYWhQmVfm1k7YeSIUiQrRkR
+QmVcQ1n7oWQIEmTr+7xJfKVtD3k7omAIEmTrocv3XHnFZZvMPVEuBAmyN8t1+VuG2Ve4iUHu
+nigWggQizPVwKu6l7fFK7n4oF4IEYjz7ffHW23J3QskQJAAKECQAChAkAAoQJAAKECQAChAk
+AAoQJAAKECQAChAkAAoQJAAKECQAChAkAAoQJAAKECQAChAkAAoQJAAKECQAChAkAAoQJAAK
+ECQAChAkAAoQJAAKECQAChAkAAoQJAAKECQAChAkAAoQJAAKECQAChAkAAoQJAAKECQAChAk
+AAoQJAAKECQAChAkAAoQJAAKECQAChAkAAoQJAAKZAjS4+ik7DZBkEBlbBykM11DnAnR+3f6
+2+RmCBKojG2DNFBD/Ko0bRrhT0irtya2Q5BAZWwapEWk0Qm+drYdmW5iQwQJVMamQaoWlpBc
+NURGmtgQQQKVsWmQPLul1sd5mdgQQQKVse07UnhiSr1OdRMbIkigMjb+jtQkiq9d7ESmmtgQ
+QQKVse1Ru36EBEQ2b1EzmJDmpqKCIIHK2Pg80smOQY6E6Pw67jO5GYIEKmP7kQ2GB/cwsgFy
+GjnG2iVdOpdgegsECVTGpkEav8J4kzDTnRCnvs9MbYgggcrYNEiktvFmIPFp0zeCFI83sSGC
+BCpj8yCd1VSOMVZXkAkmNkSQQGVsHqRvhQarVX7nwVdfzkzRC0ECdbF5kCaQl1y9n8c7D95r
+XD9FMfLK0jYA5GDzIH1PznL1lqVMbPiNkDYAlbBtkApM2XQkT3u2esShh4kNESRQGZsGKUBD
+WHsZZqyLU5SJDREkUBnbnpCNjfppRo/IAwwTHrDH1HYIEqiMTLMInTM9SghBApVR5nRcCBKo
+DIIEQAGCBEABggRAgS2DtNA7HRNbIkigMrYM0uXBTsSjZAoTWyJIoDK2/Wi3izQTtR2CBCpj
+4+9IoQgS5Eg2DlKnVqI2Q5BAZXDUDoACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJ
+gAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYAC
+BAmAAgQJgAIECYACBAmAAgQJgAIECYACBAmAAgQJgAIECYACBAksdGz5/D2v5O6EYiBIYJEr
+EdqQss65N8rdD6VAkMASjwMa3mSYuKn67XL3RCEQJLDE2PA4rhxdxCBzTxQCQQJLlJjNlzfJ
+OXk7ohQIEljC52eh4vC7rP1QDAQJLBH8LV8+JUfl7YhSIEhgie4N+PJb7zfydkQpECSwxHmn
+CUnG4qDXTLl7ohAIElhkm2fRnkNqawfhoB0PQQLL3P+yS8uxh+XuhWIgSAAUIEgAFCBIABQg
+SAAUIEgAFCBIABQgSAAUIEgAFCBIABQgSAAUIEgAFCBIABQgSAAUIEgAFCBIABQgSAAUIEgA
+FCBIABQgSAAUIEgAFCBIABQgSAAUIEgAFCBIABQgSAAUIEgAFCBIABQgSAAUIEgAFCBIABQg
+SAAUIEgAFCBIABQgSAAUIEigCM9mvl/y/RlP5e6GxRAkUILzhYKGLxgeHHBO7o5YCkECBXgT
+1jLWWMS1Cn0jd1cshCCBAmzy4D/UPfXcKHNPLIUggQKMaCpU3hsmaz8shyCBAvRrJ1Q69JG1
+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
+Q36hsqwIXya2yDXr0MkV4aHpD397b+GKfS6aSVERztphJ5aHhfMDujfou/x27tf2+p8ZMX7I
+J1SWh5j7W3A6C0OPGJGfJMGGcnqQdjie5MoBIRmHof3lIEzDOD5SuCdxXriOFBz8zmHk8K/4
+ci/xIM7B/jrin3LK9u/6bsS9ociDB/schN/qs+rif4E0RiQvT1tupkXPBwnl9CB16PjXgNqN
+Rp1/pD/47kP7++mLjWJnMI0NnpZ6b1zGQ2LDyvKrIk/M27dqk7FXYtNtYbgv+iKg+Fzsoi3M
+jp7OYeOuin1SGn868gud/6elN3IcKMnpQapYTf/+xE8iHRYHr0z/gGGgrllTfZh+IXO3YbDp
+EQH38raJYZiEBRp9q89HVXZeY3JjU5Y4r05K6OCQz3tIRZf1Fjy/aVH2sPxB/24W9wCkktOD
+FOTMjSH4Tue7Nv0DX3n+zTCznb00IQ4Vr2T2zDSiijtVqO3r6MF9SlygP57N5lmb45wvUK+v
+YGxvrsMp85/+oq2maIPCmp7x2W8KNpbDg5TkWpSvtCTn0j9QgLti4v6GsmH7s/9slvjH7Enr
+3FfzP7Rob3pjU+6vduiyj2vvvc6WPD9q6fjlFyxvHiSTw4N0iei5j3SvS+jSP3CVXOMr21xF
+7uoIES6fWBVgRYcOaYQDHMuCrdgLKE4OD9JxMl/fdtm2GUX8tOmnYzhFhIkVDmgSxO3qT53w
+zrXF24oO7XYSKptyW7EXUJwcHqQHmmOHPwzxrDR+fqH0D8RohWPWywuK3NUlInyVmlXaig6d
+T74sfFp5K/YCipPDg8TU6MAV8aXfnSa1Nn+p6puyA8XuqlR/rnhZeKLJzV5Nq52vdLdTTMzY
+avkq9M9wHKPYIK54ETTF1E7iZ9fzK97pcLZ92tYyJLDJGszCJb+cHqSjLn3uM8yF+gHvXqt3
+3LXXPYa52NBf9ADSvxyGxzDM6Wqhz01tda9Yoc82LGjqMLNAsak/zo502/XO4384jHxs/GQZ
+EW7qN3xSPv/Y9Yta6RaY7pHhY8cey1YPcm+JKyhkl9ODxPwdRgJ8Sa1rGR44FE78c5Ma2R36
+TmNPECnkQxrfMblRo6pczhZo6rEHqQ2feD96Z4NdgZpAb/JedManpmpfipsBbG02SzCvceX+
+eBfyYuyd7HJ8kJikE2s3Xcz0gZPrNpl3KDnh2JrN2QxJuECiuHKPhp+WNaHwnHc3eXt0zc8Z
+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
+VEnvND9I+udXSJAekOZc2ZRIOCfXxSJklZQtxRYv+4YPknSNPCEh7qV6NNa6HpX0v9lKPSHE
+ca2Uvwn/Gk+zfymaShskaf/8CgnSPdKCK5uSaKmaeDXBxflrSVv62PkswwdJukZuETLWwDC/
+a8pJ+ZvMIM1Pvz75HpkjYSP8azzN/qVoKjVIUv/5FRKkJF1NrozQJ0nUwm+FSLMLkrb0B5nH
+CEGSrpF4kjuRLRuSB9I18ti52Ftj8aao63PpGuFf42n2L0VTKUGS/M+vkCAxfoW5IkCqeXgn
+kML7JW5pdsri8ssl/HV8KnJFP3JcukYOkf5c2Yscla4R4TWeZv8SNJUcJOn//EoJUgdy0Xh7
+lnSUZvffkRbPpG7p936sKqRJv78l/HUae8axRU3tK+kauUtaciV7FFyyRoTXeJr9S9CU0IgN
+/vxKCdI+0plhDO3IQUn2bghzf2qblviPdhI2spsMNH4o+ZE9xSNdI2V0e4y3O7WVJGxEeI2n
+2b8ETQmHBm3w51dKkJhmpO64msK/hNRdJ7kb8x5J3JIQJAkbaUZK9WlA/G5L2UiUh6ZR//oa
+r/MSNpL8qSvN/uk3xTdiiz+/YoIU/3lVz2pT30iz8z9Tvr7ckbil5CBJ10j81EiP4h8/kbaR
+6N7FXYv3uy9lI8lBSrN/+k3xjdjiz6+YIAGoGYIEQAGCBEABggRAAYIEQAGCBEABggRAAYIE
+QAGCBEABggRAAYIEQAGCBEABggRAAYIEQAGCBEABggRAAYIEQAGCBEABggRAAYIEQAGCBEAB
+ggRAAYIEQAGCBEABggRAAYIEQAGCBEABggRAAYIEQAGCBEABggRAAYIEQAGCBEABgqRCvcgr
+ubsA70CQVCjzIO0J2mLznkAyBEmFMg/SVrLW5j2BZAiSCiFIyoMgqcVsspktviarjUF68Xl5
+txLL2Z9vdinmHNDmFMPUZ1ftjpG3j3YMQVKLq6QLW9Ryem4MUovgYQO9yM8Mc87dqXW/yrpc
+d5ndg0mf7+Ll7qXdQpBUo0yuBIa5p/2A/WhX+hnD7CedGWYQ2WF8aBFZg4928kKQVGMS2ct+
+stvIBukn488Gx8bGNK1NMlZ/I/MRJHkhSKpxmgwxfrJzj2WDdIO9w70xd/+93RNDECS5IUjq
+ERJo/GRn/DhnDNJL9mc2SPc75iHutT5EkOSGIKnHSHLqa/Irk3L4mw1ShObjA0nMYQRJbgiS
+ehwik2rmesukDdIt0pqt7UGQ5IYgqYfBL1jbm62kBukxqWesPK5J5rJBWilr9+wbgqQi/Qh7
+4C7dR7tG5L0pfXLXI6V/ZXaTilNey9tBO4Ygqcge4sce7E4bpMf9/D1rrGYGePVi4po553oi
+bwftGIKkIsfZA+CgSAiSigwnh+XuAmQBQVKN5yfcQ+XuA2QFQVKN3ETzk9x9gKwgSKrxRf+9
+cncBsoQgAVCAIAFQgCABUIAgAVCAIAFQgCABUIAgAVCAIAFQgCABUIAgAVCAIAFQgCABUIAg
+AVCAIAFQgCABUIAgAVCAIAFQgCABUIAgAVCAIAFQgCABUIAgAVCAIAFQgCABUIAgAVCAIAFQ
+8H/RPDvLThVIJQAAAABJRU5ErkJggg=="
+width=420
+height=420
+class="
+"
+>
 </div>
 
 </div>
@@ -20121,7 +21457,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[44]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Create train data and test data</span>
@@ -20192,249 +21528,57 @@ class="
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Loading required package: ggplot2
+
+Loading required package: lattice
 
 
-<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>glmnet 
+Attaching package: ‘dplyr’
 
-28 samples
-10 predictors
 
-Pre-processing: centered (10), scaled (10) 
-Resampling: Cross-Validated (5 fold) 
-Summary of sample sizes: 22, 22, 23, 23, 22 
-Resampling results across tuning parameters:
+The following objects are masked from ‘package:stats’:
 
-  alpha       lambda     RMSE      Rsquared   MAE     
-  0.00000000  0.2000000  3.024379  0.8080604  2.541427
-  0.05263158  0.2157895  3.222087  0.7824520  2.677631
-  0.10526316  0.2315789  3.147878  0.7913709  2.632876
-  0.15789474  0.2473684  3.086231  0.7977166  2.590904
-  0.21052632  0.2631579  3.041057  0.8016545  2.562702
-  0.26315789  0.2789474  3.001998  0.8049363  2.537743
-  0.31578947  0.2947368  2.996140  0.8052632  2.532556
-  0.36842105  0.3105263  2.997303  0.8048441  2.530557
-  0.42105263  0.3263158  2.998951  0.8044068  2.528042
-  0.47368421  0.3421053  3.001242  0.8039525  2.524944
-  0.52631579  0.3578947  3.004790  0.8034578  2.521690
-  0.57894737  0.3736842  3.008233  0.8030553  2.516829
-  0.63157895  0.3894737  3.011281  0.8026896  2.511215
-  0.68421053  0.4052632  3.010694  0.8028987  2.503256
-  0.73684211  0.4210526  3.008605  0.8036578  2.494699
-  0.78947368  0.4368421  3.002963  0.8048838  2.480372
-  0.84210526  0.4526316  2.991704  0.8069598  2.469108
-  0.89473684  0.4684211  2.977444  0.8092843  2.459487
-  0.94736842  0.4842105  2.960762  0.8119943  2.445916
-  1.00000000  0.5000000  2.942735  0.8153368  2.438293
+    filter, lag
 
-RMSE was used to select the optimal model using the smallest value.
-The final values used for the model were alpha = 1 and lambda = 0.5.</pre>
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+
+Attaching package: ‘neuralnet’
+
+
+The following object is masked from ‘package:dplyr’:
+
+    compute
+
+
+</pre>
 </div>
-
 </div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+Error in createDataPartition(dat$mpg, p = 0.8, list = FALSE): object &#39;dat&#39; not found
+Traceback:
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table class="dataframe">
-<caption>A data.frame: 1 × 2</caption>
-<thead>
-	<tr><th></th><th scope=col>alpha</th><th scope=col>lambda</th></tr>
-	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>20</th><td>1</td><td>0.5</td></tr>
-</tbody>
-</table>
-
+1. .handleSimpleError(function (cnd) 
+ . {
+ .     watcher$capture_plot_and_output()
+ .     cnd &lt;- sanitize_call(cnd)
+ .     watcher$push(cnd)
+ .     switch(on_error, continue = invokeRestart(&#34;eval_continue&#34;), 
+ .         stop = invokeRestart(&#34;eval_stop&#34;), error = NULL)
+ . }, &#34;object &#39;dat&#39; not found&#34;, base::quote(createDataPartition(dat$mpg, 
+ .     p = 0.8, list = FALSE)))</pre>
 </div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-1.36582987538078
-</div>
-
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAAC/VBMVEUAAAABAQECAgIDAwME
-BAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUW
-FhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJyco
-KCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6
-Ojo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tM
-TExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1e
-Xl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29w
-cHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGC
-goKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OU
-lJSVlZWWlpaXl5eYmJiampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqan
-p6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5
-ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrL
-y8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd
-3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v
-7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////tiQEd
-AAAACXBIWXMAABJ0AAASdAHeZh94AAAdY0lEQVR4nO3deXxV5Z3H8V/CkqABFFChAoZIBRHB
-hdYFiAoUY0QBkYrQFktRsSCOVtxabF2q1DrWcaGdUQuWLqOW0gooSJ1SW+2ICFgcgysqguyI
-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
-SUVORK5CYII="
-width=420
-height=420
-class="
-"
->
-</div>
-
 </div>
 
 </div>
@@ -20449,91 +21593,7 @@ class="
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Note alpha=1 for lasso only and can blend with ridge penalty down to</span>
-<span class="c1"># alpha=0 ridge only.</span>
-<span class="n">glmmod</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="s">&quot;binomial&quot;</span><span class="p">)</span>
-
-<span class="c1"># Plot variable coefficients vs. shrinkage parameter lambda.</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">glmmod</span><span class="p">,</span><span class="w"> </span><span class="n">xvar</span><span class="o">=</span><span class="s">&quot;lambda&quot;</span><span class="p">)</span>
-
-<span class="c1"># Specify k-fold cross-validation as a training method (framework)</span>
-<span class="n">ctrls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cv&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># Cross-validation</span>
-<span class="w">                          </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="c1"># Specify number of folds</span>
-<span class="w">                          </span><span class="n">savePredictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;all&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Save all predictions</span>
-
-<span class="n">model_LASSO</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="c1"># . means &quot;all others vectors&quot;</span>
-<span class="w">                     </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train</span><span class="p">,</span>
-<span class="w">                     </span><span class="n">preProcess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">,</span><span class="s">&quot;scale&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1"># Grand mean center and standardize variables</span>
-<span class="w">                     </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;glmnet&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># Method for LASSO regression</span>
-<span class="w">                     </span><span class="n">tuneGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="c1"># Mixing percentage. Constant</span>
-<span class="w">                                            </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda_vector</span><span class="p">),</span><span class="w"> </span><span class="c1"># DF for model to test tuning parameters</span>
-<span class="w">                     </span><span class="n">trControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctrlspecs</span><span class="p">,</span><span class="w"> </span><span class="c1"># Train LASSO using k-fold cross-validation</span>
-<span class="w">                     </span><span class="n">na.action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">na.omit</span><span class="p">,</span><span class="w"> </span><span class="c1"># If NAs encountered, use listwise deletion.</span>
-<span class="w">                     </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;binomial&quot;</span><span class="p">)</span>
-<span class="w">                     </span>
-
-<span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warpbreaks</span><span class="p">,</span><span class="w"> </span>
-<span class="n">trControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">trainControl</span><span class="p">(</span><span class="n">savePredictions</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span>
-<span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;glmnet&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;poisson&quot;</span><span class="p">)</span>
-
-
-
-<span class="n">net.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">dfiT</span><span class="p">,</span>
-<span class="w">                </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;glmnet&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">trControl</span><span class="o">=</span><span class="n">trCtr</span><span class="p">,</span>
-<span class="w">                </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mean_Balanced_Accuracy&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">tuneLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
-<span class="w">                </span><span class="n">family</span><span class="o">=</span><span class="s">&quot;multinomial&quot;</span><span class="p">,</span><span class="n">type.multinomial</span><span class="o">=</span><span class="s">&quot;grouped&quot;</span><span class="p">,</span><span class="n">standardize.response</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span>
-<span class="w">                </span><span class="n">maximize</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
-
-
-<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
-<span class="nf">data</span><span class="p">(</span><span class="s">&quot;iris&quot;</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
-<span class="nf">rm</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
-<span class="n">dfi</span><span class="o">=</span><span class="w"> </span><span class="n">iris</span>
-
-<span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">dfi</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="n">.</span><span class="m">8</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span>
-
-<span class="n">dfiT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dfi</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span>
-<span class="n">dfiTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dfi</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">,]</span>
-
-<span class="n">pp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">dfiT</span><span class="p">,</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;nzv&quot;</span><span class="p">,</span><span class="s">&quot;YeoJohnson&quot;</span><span class="p">,</span><span class="s">&quot;center&quot;</span><span class="p">,</span><span class="s">&quot;scale&quot;</span><span class="p">))</span>
-<span class="n">dfiT</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span><span class="n">dfiT</span><span class="p">)</span>
-<span class="n">dfiTest</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span><span class="n">dfiTest</span><span class="p">)</span>
-<span class="n">dfiT</span><span class="o">$</span><span class="n">bin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">dfiT</span><span class="p">))</span>
-<span class="n">dfiT</span><span class="o">$</span><span class="n">bin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">dfiT</span><span class="o">$</span><span class="n">bin</span><span class="o">&gt;</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
-
-<span class="n">dfiTest</span><span class="o">$</span><span class="n">bin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">dfiTest</span><span class="p">))</span>
-<span class="n">dfiTest</span><span class="o">$</span><span class="n">bin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">dfiTest</span><span class="o">$</span><span class="n">bin</span><span class="o">&gt;</span><span class="n">.</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
-
-<span class="n">indFold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">createMultiFolds</span><span class="p">(</span><span class="n">dfiT</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">k</span><span class="o">=</span><span class="m">12</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">times</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-
-<span class="n">indFold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">createMultiFolds</span><span class="p">(</span><span class="n">dfiT</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">k</span><span class="o">=</span><span class="m">5</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">times</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
-
-<span class="n">trCtr</span><span class="w"> </span><span class="o">=</span><span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;repeatedcv&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">savePredictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;final&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">returnResamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;final&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">classProbs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">summaryFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiClassSummary</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">selectionFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">best</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;random&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">sampling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;smote&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">indFold</span>
-<span class="w">                    </span><span class="p">)</span>
-
-<span class="n">net.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">dfiT</span><span class="p">,</span>
-<span class="w">                </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;glmnet&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">trControl</span><span class="o">=</span><span class="n">trCtr</span><span class="p">,</span>
-<span class="w">                </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mean_Balanced_Accuracy&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">tuneLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
-<span class="w">                </span><span class="n">family</span><span class="o">=</span><span class="s">&quot;multinomial&quot;</span><span class="p">,</span><span class="n">type.multinomial</span><span class="o">=</span><span class="s">&quot;grouped&quot;</span><span class="p">,</span><span class="n">standardize.response</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span>
-<span class="w">                </span><span class="n">maximize</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
-<span class="n">rr</span><span class="o">-</span><span class="n">caretglmnetmultinomial</span>
+<div class=" highlight hl-r"><pre><span></span>
 </pre></div>
 
      </div>
