@@ -14597,7 +14597,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Chapter-5---Nonlinear-models">Chapter 5   Nonlinear models<a class="anchor-link" href="#Chapter-5---Nonlinear-models">&#182;</a></h1><p>Many models exhibit inherent nonlinearity. This chapter explores various nonlinear models, including neural networks, multivariate adaptive regression splines (MARS), support vector machines (SVMs), and K-nearest neighbors (KNNs). It's also important to note that tree-based models are nonlinear as well.</p>
+<h1 id="Chapter-5---Nonlinear-models">Chapter 5   Nonlinear models<a class="anchor-link" href="#Chapter-5---Nonlinear-models">&#182;</a></h1><p>Many real-world relationships between variables are inherently nonlinear. Linear models often fall short in capturing such complex patterns. To address this, various nonlinear modeling techniques have been developed that can flexibly adapt to intricate data structures.</p>
+<p>This chapter introduces several major classes of nonlinear models, including neural networks, multivariate adaptive regression splines (MARS), support vector machines (SVMs), and K-nearest neighbors (KNN). Each of these models captures nonlinearities in distinct ways: neural networks through layered nonlinear transformations, MARS through piecewise basis functions, SVMs through kernel mappings, and KNN through local averaging in feature space.</p>
+<p>While many nonlinear techniques exist, tree-based methods such as decision trees, random forests, and gradient boosting machines will be explored separately in the next chapter, given their distinctive structure and interpretability. Together, these models form a powerful toolkit for analyzing complex data and improving predictive performance in settings where linear assumptions are insufficient.</p>
 
 </div>
 </div>
@@ -14609,7 +14611,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="5.1-Neural-networks">5.1 Neural networks<a class="anchor-link" href="#5.1-Neural-networks">&#182;</a></h1><p>A neural network (Bishop 1995, Ripley 1996, etc) is a computational model inspired by the structure and function of the human brain. It comprises interconnected nodes, known as neurons, organized into layers. The network receives input data, processes it through these layers, and produces an output or prediction.</p>
+<h1 id="5.1-Neural-networks">5.1 Neural networks<a class="anchor-link" href="#5.1-Neural-networks">&#182;</a></h1><p>A neural network (Bishop, 1995; Ripley, 1996; Goodfellow et al., 2016) is a computational model inspired by the structure and functioning of the human brain. It is designed to recognize patterns and model complex, nonlinear relationships between inputs and outputs. A neural network consists of interconnected processing units, called neurons, organized into layers. Each neuron transforms its inputs into an output signal, which is then passed to other neurons in subsequent layers. Through this layered processing, the network learns to approximate functions, make predictions, or classify data.</p>
+<p>Neural networks have become central to modern machine learning due to their ability to automatically learn representations from data, making them effective for a wide range of applications such as image recognition, speech processing, natural language understanding, and predictive analytics.</p>
 <h2 id="Structure-of-a-Neural-Network">Structure of a Neural Network<a class="anchor-link" href="#Structure-of-a-Neural-Network">&#182;</a></h2><ol>
 <li><p><strong>Neuron</strong>: The basic building block of a neural network. Each neuron receives input from other neurons or from the input data, performs a computation, and produces an output. The output is typically determined by applying an activation function to the weighted sum of its inputs.</p>
 </li>
@@ -14634,59 +14637,80 @@ $$ z = \sum_{i=1}^{n} (w_i \cdot x_i) $$</p>
 <p>Input Layer: This layer receives the initial data and passes it on to the next layer. The number of neurons in this layer corresponds to the number of input features or variables.</p>
 <p>Hidden Layers: These layers, as the name suggests, are hidden between the input and output layers. They perform complex transformations on the input data through weighted connections and activation functions. The number of hidden layers and neurons in each layer can vary depending on the complexity of the problem.</p>
 <p>Output Layer: This layer produces the final results or predictions based on the processed information from the hidden layers. The number of neurons in the output layer depends on the nature of the task. For example, in binary classification, there may be one neuron for each class, while in regression, there's typically a single neuron.</p>
-<h2 id="Hidden-layers-&amp;-activation-functions">Hidden layers &amp; activation functions<a class="anchor-link" href="#Hidden-layers-&amp;-activation-functions">&#182;</a></h2><p>Hidden layers, positioned between the input and output layers. They operate by employing a non-linear activation function on the data. This activation function is applied to the weighted sum of the inputs, resulting in the neuron's output. This non-linearity via the activation function empowers the neural network to grasp intricate data patterns effectively.</p>
-<p>Activation functions play a crucial role in neural networks by introducing non-linearity to the model. They essentially make a determination regarding whether a neuron should become active or not. In simpler terms, they decide whether the information being received by the neuron is important and relevant for the task at hand or if it should be disregarded.</p>
-<ol>
-<li>Rectified Linear Unit (ReLU) Activation (It is the most commonly used activation function in deep learning models):</li>
-</ol>
+<h2 id="Hidden-Layers-and-Activation-Functions">Hidden Layers and Activation Functions<a class="anchor-link" href="#Hidden-Layers-and-Activation-Functions">&#182;</a></h2><h3 id="1.-Hidden-Layers">1. Hidden Layers<a class="anchor-link" href="#1.-Hidden-Layers">&#182;</a></h3><p><strong>Hidden layers</strong>, positioned between the input and output layers, are responsible for capturing the complex relationships within data. Each hidden layer transforms its inputs through weighted connections and nonlinear activation functions, allowing the network to model intricate and high-dimensional patterns that linear models cannot represent.</p>
+<p>Without hidden layers or nonlinear activation functions, a neural network behaves like a simple linear model, unable to capture nonlinear dependencies between input and output variables.</p>
+<p>The number of hidden layers and neurons in each layer determines the <strong>capacity</strong> and <strong>depth</strong> of the network. Networks with multiple hidden layers are referred to as <strong>deep neural networks (DNNs)</strong>.</p>
+<hr />
+<h3 id="2.-Activation-Functions">2. Activation Functions<a class="anchor-link" href="#2.-Activation-Functions">&#182;</a></h3><p><strong>Activation functions</strong> introduce <strong>nonlinearity</strong> into the network, enabling neurons to make complex decisions. They determine whether a neuron should be activated, i.e., whether the information it processes is relevant for the given task.<br />
+Without nonlinear activation, stacking multiple layers would still result in a linear transformation.</p>
+<p>Below are several commonly used activation functions:</p>
+<hr />
+<h4 id="(a)-Rectified-Linear-Unit-(ReLU)">(a) Rectified Linear Unit (ReLU)<a class="anchor-link" href="#(a)-Rectified-Linear-Unit-(ReLU)">&#182;</a></h4><p>The <strong>Rectified Linear Unit (ReLU)</strong> is the most widely used activation function in modern deep learning models.</p>
 $$
 f(x) = \max(0, x)
-$$<p>The rectified linear activation function enables models to learn more rapidly and achieve superior performance. As a result, the rectified linear activation function is the default choice for building multilayer Perceptrons and convolutional neural networks.</p>
-<ol start="2">
-<li>Binary Step</li>
-</ol>
-$$
-f(x) = \left\{
-        \begin{array}{lll}
-            0 &amp; for &amp; x \leq 0  \\
-            1 &amp; for &amp; x &gt; 0
-        \end{array}
-    \right.
-$$<ol start="2">
-<li>Sigmoid Activation (Logistic Activation):</li>
-</ol>
-$$
-f(x)={\frac {1}{1+e^{-x}}}
-$$<ol start="3">
-<li>Hyperbolic Tangent Activation Function</li>
-</ol>
-$$
-f(x)={\frac {1-e^{-x}}{1+e^{-x}}}
-$$<ol start="4">
-<li>Hyperbolic Tangent (Tanh) Activation:</li>
-</ol>
-$$
+$$<p>ReLU is computationally efficient and helps mitigate the vanishing gradient problem, enabling deep networks to learn faster and achieve superior performance.<br />
+It is the default activation function for most multilayer perceptrons and convolutional neural networks.</p>
+<hr />
+<h4 id="(b)-Binary-Step-Function">(b) Binary Step Function<a class="anchor-link" href="#(b)-Binary-Step-Function">&#182;</a></h4>$$
+f(x) =
+\begin{cases}
+0, &amp; x \le 0 \\
+1, &amp; x &gt; 0
+\end{cases}
+$$<p>This function activates a neuron only if the input exceeds a certain threshold.<br />
+Although conceptually simple, it is rarely used in modern networks because it is not differentiable and cannot be optimized using gradient-based methods.</p>
+<hr />
+<h4 id="(c)-Sigmoid-(Logistic)-Function">(c) Sigmoid (Logistic) Function<a class="anchor-link" href="#(c)-Sigmoid-(Logistic)-Function">&#182;</a></h4>$$
+f(x) = \frac{1}{1 + e^{-x}}
+$$<p>The <strong>sigmoid</strong> function compresses the input into the range (0,1), making it suitable for binary classification problems.<br />
+However, it can cause vanishing gradients in deep networks, slowing down learning.</p>
+<hr />
+<h4 id="(d)-Hyperbolic-Tangent-(Tanh)-Function">(d) Hyperbolic Tangent (Tanh) Function<a class="anchor-link" href="#(d)-Hyperbolic-Tangent-(Tanh)-Function">&#182;</a></h4>$$
 f(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}
-$$<ol start="5">
-<li>Softmax Activation</li>
-</ol>
-$$
+$$<p>The <strong>tanh</strong> function outputs values in the range (-1, 1) and is often preferred over sigmoid for hidden layers because its mean output is closer to zero, facilitating faster convergence during training.</p>
+<hr />
+<h4 id="(e)-Softmax-Function">(e) Softmax Function<a class="anchor-link" href="#(e)-Softmax-Function">&#182;</a></h4>$$
 f(x)_i = \frac{e^{x_i}}{\sum_{j} e^{x_j}}
-$$<p>When developing deep learning models or neural networks, selecting the optimal number of hidden layers and the number of neurons within them can be a challenging task. Neural network training is a time-intensive process, often taking hours or even days, making fine-tuning the architecture a potentially frustrating and time-consuming endeavor.</p>
-<p>However, by following a concise set of guidelines, it is possible to systematically establish an effective network architecture and make informed decisions regarding the appropriate number of hidden layers and neurons in a neural network. During training, the network adjusts the weights and biases to fit the data, a critical step in achieving accurate predictions.</p>
-<p>To choose the number of hidden layers to use, consider:</p>
-<p>If your data can be easily separated in a straight line (like separating points on a graph with a single line), you might not need any hidden layers at all.</p>
-<p>For simpler data with just a few characteristics or features, usually having 1 or 2 hidden layers is enough.</p>
-<p>When you're dealing with complex data that has lots of characteristics or features, it often works best to use 3 to 5 hidden layers.</p>
-<p>Be careful about using a lot of hidden layers, like 8, 9, or even more, as this can sometimes make your model too complex and cause it to fit the training data too closely, which might not be good for making predictions on new data.</p>
-<p>As for how many nodes (or neurons) you should have in each hidden layer, you can follow these guidelines:</p>
-<p>Usually, the number of hidden neurons should be somewhere between the number of neurons in the input layer and the output layer.</p>
-<p>A common rule of thumb is to use the square root of the product of the number of neurons in the input and output layers to estimate the right number of hidden neurons.</p>
-<p>In later layers, it's often helpful to use fewer hidden neurons. This helps the network focus on finding important patterns and features, as well as identifying what category something belongs to.</p>
-<p>Remember, these are general rules, and you can adjust them to fit your specific problem. Sometimes, it makes sense to use more or fewer hidden layers or neurons based on what you're trying to accomplish.</p>
-<h2 id="Training-a-neural-network">Training a neural network<a class="anchor-link" href="#Training-a-neural-network">&#182;</a></h2><p>Training a neural network is an iterative process that involves adjusting its internal parameters to optimize performance by minimizing loss. Loss measures the disparity between the network's predictions and actual target values in the dataset. Through continual fine-tuning of these parameters, the network becomes more proficient at making accurate predictions or classifications.</p>
-<p>The optimization process is driven by backpropagation, a method that systematically calculates partial derivatives in reverse. This reveals how each parameter and layer in the network contributes to the overall loss. Using this information, precise adjustments are made to the parameters, helping the network improve its predictions and generalization from training data to unseen examples.</p>
-<p>Stochastic Gradient Descent (SGD), a widely used optimization algorithm, updates the network’s parameters iteratively based on the gradients calculated during backpropagation. By making small, incremental changes to weights and biases, SGD moves the network closer to an optimal configuration, enhancing its accuracy and performance over time.</p>
+$$<p>The <strong>softmax</strong> function is primarily used in the <strong>output layer</strong> for multi-class classification.<br />
+It converts a vector of arbitrary real-valued scores into a probability distribution across multiple classes.</p>
+<hr />
+<h3 id="3.-Choosing-the-Number-of-Hidden-Layers-and-Neurons">3. Choosing the Number of Hidden Layers and Neurons<a class="anchor-link" href="#3.-Choosing-the-Number-of-Hidden-Layers-and-Neurons">&#182;</a></h3><p>Designing an effective neural network architecture requires balancing model complexity and computational efficiency.<br />
+The following guidelines can serve as a starting point:</p>
+<ul>
+<li><strong>No hidden layers</strong>: sufficient when data are linearly separable.</li>
+<li><strong>1–2 hidden layers</strong>: suitable for moderately complex problems with a small number of features.</li>
+<li><strong>3–5 hidden layers</strong>: effective for complex data with many features or nonlinear relationships.</li>
+<li><strong>More than 5 layers</strong>: may lead to overfitting or excessive computation unless managed with regularization and large datasets.</li>
+</ul>
+<p><strong>Choosing the number of neurons per layer:</strong></p>
+<ul>
+<li>Typically between the number of neurons in the input and output layers.</li>
+<li>A common heuristic:<br />
+$$
+n_{\text{hidden}} \approx \sqrt{n_{\text{input}} \times n_{\text{output}}}
+$$</li>
+<li>In deeper networks, later layers often use fewer neurons to extract higher-level abstract features and reduce dimensionality.</li>
+</ul>
+<p>These are only general rules; optimal architecture choices should be guided by <strong>experimentation</strong>, <strong>cross-validation</strong>, and the <strong>specific characteristics of the data</strong>.</p>
+<h3 id="Training-a-neural-network">Training a neural network<a class="anchor-link" href="#Training-a-neural-network">&#182;</a></h3><p>Training a neural network involves optimizing its internal parameters (weights and biases) to minimize a <strong>loss function</strong>, which measures the difference between predicted and actual values.</p>
+<p>The process typically involves the following steps:</p>
+<ol>
+<li><strong>Forward Propagation</strong> – The input data are passed through the network layer by layer to compute predictions.</li>
+<li><strong>Loss Computation</strong> – The network’s predictions are compared to the true target values using a loss function (e.g., mean squared error for regression, cross-entropy for classification).</li>
+<li><strong>Backpropagation</strong> – Gradients of the loss with respect to each parameter are computed by applying the <strong>chain rule</strong> in reverse order through the network.</li>
+<li><strong>Parameter Update</strong> – Using an optimization algorithm such as <strong>Stochastic Gradient Descent (SGD)</strong> or its variants (e.g., Adam, RMSProp), the parameters are updated iteratively to reduce the loss.</li>
+</ol>
+<p>A typical update step for SGD is given by:</p>
+$$
+w_{ij}^{(t+1)} = w_{ij}^{(t)} - \eta \frac{\partial L}{\partial w_{ij}}
+$$<p>where</p>
+<ul>
+<li>$w_{ij}$: weight connecting neuron $i$ to neuron $j$,</li>
+<li>$\eta$: learning rate, and</li>
+<li>$\frac{\partial L}{\partial w_{ij}}$: gradient of the loss function with respect to that weight.</li>
+</ul>
+<p>Through repeated iterations, the network gradually adjusts its parameters to minimize the loss, improving its accuracy and generalization to unseen data.</p>
+<p>Learning rate ($\eta$) = How aggressively we learn from the data. A small $\eta$ → slow convergence, might get stuck in local minima. A large $\eta$ → unstable training or divergence (loss oscillates or explodes). Regularization strength ($\lambda$) = How cautious we are about overfitting. Together, they balance learning dynamics (speed) and model generalization (stability).</p>
 
 </div>
 </div>
@@ -14698,16 +14722,72 @@ $$<p>When developing deep learning models or neural networks, selecting the opti
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Example:  Use the boston data at MASS package. Build a neural net model to predict &quot;medv&quot; using all other features.</p>
-<p>For simple tasks like this, &quot;neuralnet&quot; or &quot;nnet&quot; may be sufficicent, while for more complex tasks and deep learning applications, libraries like Keras, TensorFlow (GPU, CPU version) offer greater flexibility and advanced features. If you want to improve predictive performance through ensembling, you may consider &quot;avNNet&quot; or similar ensemble methods.</p>
-<p>a. Please use neuralnet to a neural net model to predict &quot;medv&quot; using all other features</p>
-<p>For more information about &quot;neuralnet&quot; ( Training of Neural Networks).</p>
-<p>b. Please use nnet to build a neural net model to predict &quot;medv&quot; using all other features
-Comment:  the “nnet” package specializes in feed-forward neural networks, which are a type of artificial neural network where the information flows in one direction, from the input layer to the output layer.</p>
+<p><strong>Feature scaling</strong> is one of the most critical preprocessing steps when training a neural network.
+It ensures that each feature contributes equally to the model’s learning process and helps the optimization algorithm (such as gradient descent) converge faster and more reliably.</p>
+<p><strong>Min–Max Normalization</strong></p>
+<p>For a feature value $x$:</p>
+$$
+x' = \frac{x - \min(x)}{\max(x) - \min(x)}
+$$<p>where</p>
+<ul>
+<li>$x'$: normalized value (typically in [0, 1])</li>
+<li>$\min(x)$: minimum value of the feature</li>
+<li>$\max(x)$: maximum value of the feature</li>
+</ul>
+<p><strong>Inverse Min–Max Transformation</strong></p>
+<p>To recover the original value $x$ from the normalized value $x'$:</p>
+$$
+x = x' \times (\max(x) - \min(x)) + \min(x)
+$$
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Example. Using the Boston dataset from the MASS package, build a neural network to predict medv from all other predictors.</p>
+<p>For tasks of this scale, neuralnet or nnet is often sufficient. For more complex problems or deep learning applications, frameworks such as Keras or TensorFlow (CPU/GPU) provide greater flexibility and advanced features. If you want to boost predictive performance via ensembling, consider models like avNNet or related ensemble methods.</p>
+<p>The neuralnet package is widely used for simple feed-forward neural networks (multilayer perceptrons). The nnet package builds simple, single-hidden-layer feed-forward neural networks that are fast and efficient for basic regression or classification tasks. In contrast, neuralnet supports multiple hidden layers, offers more flexibility, and provides detailed visualization of the network structure and training process.</p>
+<p>a. Use the neuralnet package to build a neural network model that predicts medv using all other features on a training dataset.
+For more information about the neuralnet package, refer to its documentation on Training of Neural Networks (?neuralnet).</p>
+<p>b. Use the nnet package to build a neural network model that predicts medv using all other features on a training dataset.
+Evaluate the model’s performance on a testing dataset using appropriate metrics such as RMSE or $R^2$.</p>
 
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Without scaling, variables measured on larger numerical ranges can dominate those on smaller ranges, leading to biased weight updates and slower or unstable learning. For instance, a feature measured in thousands (e.g., “income”) could overshadow a small-range feature like “age” or “BMI”.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14781,12 +14861,22 @@ Comment:  the “nnet” package specializes in feed-forward neural networks, wh
 <span class="c1">#scaling   - way 1</span>
 <span class="c1">##min-max normalization</span>
 <span class="c1">#min-max normalization</span>
+<span class="c1">#Min–Max Normalization (also called rescaling) is a data preprocessing technique that transforms features to a fixed range, typically [0, 1] or sometimes [-1, 1].</span>
+<span class="c1">#It ensures that all variables contribute equally to the model and prevents features with larger numerical ranges from dominating the learning process.</span>
 <span class="n">scale.fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w"> </span>
 <span class="w">  </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="n">miny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">Boston</span><span class="o">$</span><span class="n">medv</span><span class="p">)</span>
 <span class="n">range.y</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">max</span><span class="p">(</span><span class="n">Boston</span><span class="o">$</span><span class="n">medv</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">miny</span>
+
+<span class="c1"># Standardization (Z-score scaling)</span>
+<span class="c1">#X_scaled = scale(X_train)</span>
+
+<span class="c1"># Min-Max normalization (manual)</span>
+<span class="c1">#X_minmax = as.data.frame(  lapply(X_train, function(x) (x - min(x)) / (max(x) - min(x))) )</span>
+<span class="c1">#preProc = preProcess(data, method = &quot;range&quot;)  # scales to [0,1]</span>
+<span class="c1">#data_norm = predict(preProc, data)</span>
 
 <span class="c1">#Transformed data</span>
 <span class="n">Boston.dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Boston</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">  </span><span class="nf">mutate_all</span><span class="p">(</span><span class="n">scale.fun</span><span class="p">)</span>
@@ -14867,6 +14957,9 @@ Comment:  the “nnet” package specializes in feed-forward neural networks, wh
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">nn.fit</span><span class="p">,</span><span class="w"> </span><span class="n">rep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;best&quot;</span><span class="p">)</span>
 <span class="c1">#The number of weights :  a lot</span>
+
+<span class="c1">#library(NeuralNetTools)</span>
+<span class="c1">#plotnet(nn.fit)</span>
 </pre></div>
 
      </div>
@@ -23556,6 +23649,7 @@ class="
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Ensemble-models">Ensemble models<a class="anchor-link" href="#Ensemble-models">&#182;</a></h1><p>Ensemble models are a machine learning technique by combining the predictions of multiple individual models to have a more accurate/robust prediction. By combining the diverse opinions of multiple models, the resulting prediction is often better than that of any single model.  They are widely used in various machine learning tasks and have proven to be effective in improving predictive performance and reducing overfitting.</p>
+<p>In the context of neural networks, ensemble approaches such as avNNet (from the caret package) extend the basic nnet model by training several networks with random initial weights and averaging their predictions. This helps to stabilize performance, reduce overfitting, and enhance predictive accuracy, especially on complex datasets. Ensemble neural networks are widely used in both regression and classification tasks where consistency and reliability of prediction are critical.</p>
 
 </div>
 </div>
@@ -25470,6 +25564,24 @@ class="
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Neural-Network-Regression-Model-using-TensorFlow/Keras-in-R">Neural Network Regression Model using TensorFlow/Keras in R<a class="anchor-link" href="#Neural-Network-Regression-Model-using-TensorFlow/Keras-in-R">&#182;</a></h3><p>The neural network consists of:</p>
+<p>Input layer: 13 input nodes (matching the number of predictors)</p>
+<p>Hidden Layer 1: 6 neurons, activation = ReLU</p>
+<p>Hidden Layer 2: 4 neurons, activation = ReLU</p>
+<p>Output layer: 1 neuron, activation = Linear (for continuous prediction)</p>
+<p>Loss function: Mean Squared Error (MSE) — measures model error in squared units</p>
+<p>Metric: Root Mean Squared Error (RMSE) — interpretable in original scale</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -25478,7 +25590,44 @@ class="
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">keras</span><span class="p">)</span>
+<span class="nf">use_session_with_seed</span><span class="p">(</span><span class="m">53289</span><span class="p">)</span>
+
+<span class="c1"># Extract predictors (first 13 variables) and response (14th variable)</span>
+<span class="n">train.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">train.dat</span><span class="p">[,</span><span class="w"> </span><span class="m">-14</span><span class="p">])</span>
+<span class="n">train.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">train.dat</span><span class="p">[,</span><span class="w"> </span><span class="m">14</span><span class="p">])</span>
+
+<span class="c1"># Assume test.dat is prepared in the same structure</span>
+<span class="n">test.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">test.dat</span><span class="p">[,</span><span class="w"> </span><span class="m">-14</span><span class="p">])</span>
+<span class="n">test.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">test.dat</span><span class="p">[,</span><span class="w"> </span><span class="m">14</span><span class="p">])</span>
+
+<span class="c1"># Get the number of predictors (features)</span>
+<span class="n">n_features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ncol</span><span class="p">(</span><span class="n">train.x</span><span class="p">)</span>
+
+<span class="c1"># Build a neural network model with two hidden layers: 6 and 4 neurons</span>
+<span class="n">fit.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">keras_model_sequential</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">activation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;relu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">input_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_features</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">activation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;relu&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">layer_dense</span><span class="p">(</span><span class="n">units</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">activation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;linear&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compile the model: regression with MSE loss and RMSE metric</span>
+<span class="n">fit.1</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">compile</span><span class="p">(</span>
+<span class="w">  </span><span class="n">optimizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">optimizer_adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.001</span><span class="p">),</span>
+<span class="w">  </span><span class="n">loss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mse&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">metrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">metric_root_mean_squared_error</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="c1"># Train the model on the training data</span>
+<span class="n">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fit.1</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train.x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train.y</span><span class="p">,</span>
+<span class="w">  </span><span class="n">epochs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200</span><span class="p">,</span>
+<span class="w">  </span><span class="n">batch_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">32</span><span class="p">,</span>
+<span class="w">  </span><span class="n">validation_split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">,</span>
+<span class="w">  </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="p">)</span>
+
+<span class="c1"># Predict on the test dataset</span>
+<span class="n">y_pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">fit.1</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">test.x</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -25486,6 +25635,25 @@ class="
 </div>
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Excerise: The Concrete dataset (from the AppliedPredictiveModeling package) contains measurements of ingredient proportions used to make concrete and the resulting CompressiveStrength.</p>
+<p>Reproducibility: set seed = 53289.</p>
+<p>Data split: create a training/test split (e.g., 80/20).
+Scaling: apply min_max scaling before build the predecitive model.</p>
+<p>a. Use the neuralnet package to build a neural network model that predicts CompressiveStrength using all other features in the Concrete dataset.</p>
+<p>b. Use the nnet package and Ensemble models to build a neural network model to predict CompressiveStrength using all other features.</p>
+<p>c. Evaluate each model on a test dataset.
+Compute and report performance metrics such as Root Mean Squared Error (RMSE) and produce a scatter plot of true vs. predicted values to visually assess model accuracy. Please use seed = 53289.</p>
+
+</div>
+</div>
+</div>
 </div>
 </body>
 
