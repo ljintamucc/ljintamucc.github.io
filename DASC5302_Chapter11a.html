@@ -14601,7 +14601,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <p>Bayes’ theorem defines the relationship between a class variable $C$ and a dependent feature vector $X = (x_1, x_2, \ldots, x_n)$ as:</p>
 $$
 P(C \mid X) = \frac{P(X \mid C) P(C)}{P(X)}
-$$<p>Under the <strong>naive conditional independence</strong> assumption—that all features are independent given the class, i.e.,</p>
+$$<p>Under the <strong>naive conditional independence</strong> assumption that all features are independent given the class, i.e.,</p>
 $$
 P(X \mid C) = \prod_{i=1}^{n} P(x_i \mid C),
 $$<p>the theorem simplifies to:</p>
@@ -14728,43 +14728,38 @@ pred.prob  = predict(fit.nb, test.dat, type = &quot;raw&quot;)</p>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Example:  Build a  Naive Bayes predictive model to predict 'Species' , usig iris data set.</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">### Practical Example in R</span>
-<span class="c1">### both **Gaussian Naive Bayes** (for continuous features) and **Multinomial Naive Bayes** (for count-based features).</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 
-<span class="c1">#### Example 1: Gaussian Naive Bayes (Iris Dataset)</span>
-
-<span class="c1"># Load required package</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">e1071</span><span class="p">)</span>
-
-<span class="c1"># Load the iris dataset</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
 
-<span class="c1"># Split the data</span>
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">6021</span><span class="p">)</span>
-<span class="n">index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">iris</span><span class="p">),</span><span class="w"> </span><span class="m">0.8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">iris</span><span class="p">))</span>
-<span class="n">train.dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<span class="n">test.dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="c1">#All 4 features are continous, **Gaussian Naive Bayes** </span>
 
-<span class="c1"># Fit Gaussian Naive Bayes model</span>
-<span class="n">model_gnb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">naiveBayes</span><span class="p">(</span><span class="n">Species</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train.dat</span><span class="p">)</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">121</span><span class="p">)</span>
 
-<span class="c1"># Predict</span>
-<span class="n">pred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">model_gnb</span><span class="p">,</span><span class="w"> </span><span class="n">test.dat</span><span class="p">)</span>
-
-<span class="c1"># Evaluate accuracy</span>
-<span class="n">accuracy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">pred</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">test.dat</span><span class="o">$</span><span class="n">Species</span><span class="p">)</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Gaussian NB Accuracy:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
-
-<span class="c1"># Confusion matrix</span>
-<span class="nf">table</span><span class="p">(</span><span class="n">Predicted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pred</span><span class="p">,</span><span class="w"> </span><span class="n">Actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test.dat</span><span class="o">$</span><span class="n">Species</span><span class="p">)</span>
+<span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">train.dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="n">index</span><span class="p">,]</span>
+<span class="n">test.dat</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">,]</span>
 </pre></div>
 
      </div>
@@ -14783,8 +14778,11 @@ pred.prob  = predict(fit.nb, test.dat, type = &quot;raw&quot;)</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Gaussian NB Accuracy: 0.967 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Loading required package: ggplot2
+
+Loading required package: lattice
+
 </pre>
 </div>
 </div>
@@ -14794,13 +14792,569 @@ pred.prob  = predict(fit.nb, test.dat, type = &quot;raw&quot;)</p>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">levels</span><span class="p">(</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'setosa'</li><li>'versicolor'</li><li>'virginica'</li></ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">e1071</span><span class="p">)</span>
+
+<span class="n">fit.nb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">naiveBayes</span><span class="p">(</span><span class="n">Species</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train.dat</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">laplace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">prior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">)</span>
+
+
+<span class="c1">#Predict the fitted values (probability to take different classes) for the testing data</span>
+
+<span class="n">pred.prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fit.nb</span><span class="p">,</span><span class="w"> </span><span class="n">test.dat</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;raw&quot;</span><span class="p">)</span>
+
+
+
+<span class="c1">#Predict the class for the testing data</span>
+<span class="n">pred.class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fit.nb</span><span class="p">,</span><span class="w"> </span><span class="n">test.dat</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;class&quot;</span><span class="p">)</span>
+
+<span class="n">pred.class</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>setosa</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>versicolor</li><li>virginica</li><li>virginica</li><li>virginica</li><li>virginica</li><li>virginica</li><li>virginica</li><li>versicolor</li><li>virginica</li><li>virginica</li><li>virginica</li><li>virginica</li><li>virginica</li><li>virginica</li><li>virginica</li></ol>
+
+<details>
+	<summary style=display:list-item;cursor:pointer>
+		<strong>Levels</strong>:
+	</summary>
+	<style>
+	.list-inline {list-style: none; margin:0; padding: 0}
+	.list-inline>li {display: inline-block}
+	.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+	</style>
+	<ol class=list-inline><li>'setosa'</li><li>'versicolor'</li><li>'virginica'</li></ol>
+</details>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">pred.class</span><span class="p">,</span><span class="w"> </span><span class="n">test.dat</span><span class="o">$</span><span class="n">Species</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
 
 <div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>            Actual
-Predicted    setosa versicolor virginica
-  setosa         16          0         0
-  versicolor      0          6         0
-  virginica       0          1         7</pre>
+<pre>Confusion Matrix and Statistics
+
+            Reference
+Prediction   setosa versicolor virginica
+  setosa         15          0         0
+  versicolor      0         15         2
+  virginica       0          0        13
+
+Overall Statistics
+                                          
+               Accuracy : 0.9556          
+                 95% CI : (0.8485, 0.9946)
+    No Information Rate : 0.3333          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+                                          
+                  Kappa : 0.9333          
+                                          
+ Mcnemar&#39;s Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: setosa Class: versicolor Class: virginica
+Sensitivity                 1.0000            1.0000           0.8667
+Specificity                 1.0000            0.9333           1.0000
+Pos Pred Value              1.0000            0.8824           1.0000
+Neg Pred Value              1.0000            1.0000           0.9375
+Prevalence                  0.3333            0.3333           0.3333
+Detection Rate              0.3333            0.3333           0.2889
+Detection Prevalence        0.3333            0.3778           0.2889
+Balanced Accuracy           1.0000            0.9667           0.9333</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#AUC to predict Setosa vs non-Setosa</span>
+<span class="n">setosa.prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pred.prob</span><span class="p">[,</span><span class="s">&quot;setosa&quot;</span><span class="p">]</span>
+<span class="n">setosa.prob</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>1</li><li>1</li><li>0.999999999999973</li><li>1</li><li>0.99999999990892</li><li>0.999999999999936</li><li>1</li><li>1</li><li>1</li><li>1</li><li>0.999999999999996</li><li>0.999999999400329</li><li>1</li><li>1</li><li>3.82531741171973e-117</li><li>6.85704640943052e-79</li><li>5.01558148645248e-127</li><li>1.76626783359358e-79</li><li>3.80367588992538e-114</li><li>1.12149703976666e-63</li><li>2.29204775943791e-79</li><li>3.40324113470752e-111</li><li>1.70496808092792e-46</li><li>2.41790712970336e-122</li><li>3.1318844154023e-97</li><li>3.53735276735427e-81</li><li>2.35950900467478e-109</li><li>3.2683630272912e-91</li><li>6.56118907012959e-36</li><li>1.20418902089003e-123</li><li>1.85509903302881e-297</li><li>1.11856130000059e-183</li><li>1.56204218756009e-215</li><li>2.81406981544589e-222</li><li>1.57780178302238e-186</li><li>0</li><li>3.34839119980529e-136</li><li>2.48423333675141e-153</li><li>8.61458742408775e-148</li><li>2.60642195691464e-238</li><li>1.114926267645e-229</li><li>2.41018629087065e-252</li><li>2.33503392241935e-187</li><li>1.16729016274081e-226</li></ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">pROC</span><span class="p">)</span><span class="w">      </span><span class="c1"># ROC curves / AUC</span>
+<span class="c1"># ROC &amp; AUC</span>
+<span class="n">iSetosa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">test.dat</span><span class="o">$</span><span class="n">Species</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;setosa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;setosa&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;notsetosa&quot;</span><span class="p">)</span>
+<span class="n">iSetosa</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'setosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li><li>'notsetosa'</li></ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">roc.obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">roc</span><span class="p">(</span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iSetosa</span><span class="p">,</span><span class="w"> </span><span class="n">predictor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setosa.prob</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;notsetosa&quot;</span><span class="p">,</span><span class="s">&quot;setosa&quot;</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">roc.obj</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ROC Curve&quot;</span><span class="p">)</span>
+<span class="nf">auc</span><span class="p">(</span><span class="n">roc.obj</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Setting direction: controls &lt; cases
+
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+1
+</div>
+
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAAC+lBMVEUAAAABAQECAgIDAwME
+BAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUW
+FhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJyco
+KCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6
+Ojo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tM
+TExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1e
+Xl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29w
+cHBxcXFycnJ0dHR2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGCgoKDg4OE
+hISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OUlJSVlZWW
+lpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqanp6eo
+qKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6
+urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrLy8vM
+zMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e
+3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v7+/w
+8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7///+aNkzsAAAA
+CXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nO3dCZwcVb3o8f9MhskEQgJhHjiaYDZICCAR
+0UAyCQS4kAwhi+AFJkBQIYYQN3xKriJcIy7gFSSg74kKwsVnROQqygWiFy+LvscSIHFhF4TE
+QBa2AJnMzPl8XlX3rN09Nd1dp845Vef3/Xzoqqk+Paea9O8z3dU106IAxCa2dwDIAkICNCAk
+QANCAjQgJEADQgI0ICRAA0ICNCAkQANCAjQgJEADQgI0ICRAA0ICNCAkQANCsuof0m3YYV/Y
+0bXxuZVHNNY3zb78td5xDyybPGKPiWfdXnj7gbbDNEKyqjekwKFt4abOS+u7vm68tWvUjjO6
+hxy3qe+tB9oO8wjJqn4hyTfDTef1fl37o9ygnTN6Nx20pffGA22HBYRkVRjSyvb29l1brw3W
+moMt/ytY1q+8+5lbW4OVoevCQZ8P1vb4+v3P/ToMZ3nvjQfaDgsIyaowpC/mV48W2VupN0aJ
+jHogt+F7wXUnBMuXG4JneY+GW3Z+SKTu9e7bDrQdNhCSVX1COjsoSKnVwYZ/67rypGD9T0p9
+O1h8I7/lF8Hqvd23Ldp+rsgx4VfXBVkFi0tEJqpbpx4YLIe+EW4/RGRRsPjvjzQNnXDa/Ubu
+nz8Iyao+Ic0UOUqpliCnt7uufCAf1cIghK4DeO1PP/30G923LdpeIqSbamTsE8G3+UXw9UvB
+8qdK/UvXq6r/2WnoPvqBkKzqCem1/x2s/Uip/yEyq/vKnbUiZyg1SWRSqdsWbS8Oab99RMaq
+w0U+Hnz9o+AV1Q51ZzDPUR/9YHB5RVJ3ykuEZFW/o3bnBz9agnY+1nPt/iLH5to6odRti7YX
+hyT153//ZnW5SFPw4+f0MMv2g/LlflFk+Nbk7pd/CMmqviGFj+/2mr4hTRSZqVSjyEmlblu0
+vURI4VM69ffgmz6kOoLx/6E2iNRuD7a9Xifyk2Tuk58Iyap+P5FWqFwdR3df2RY82D+i1IEi
+h5a6bdH24pD2zF8xS+QS9aDIyHfULX3m+3Iy98lPhGRV92ukjmdOCNb+ptQckcadXVc+lD8s
+d3LwLKxr02urV6/e0H3bou3FIU3IX/1dkQ+qVSIfVepbfUL6pKE76QVCsqr3qN0fg7VfKXVV
+sPhO15ULgvX1Sn0zWPwgv+Vnweovu29btP3crp9mfQ9/57xSJzWbgh9Ldyq1RmSv+7o8Y+Qu
+eoKQrOoN6bl8Fq/tFfxIejC3JehBjg+WL+0mMv6lcEvbESL1PYcIirZ/QuSQ8MuvFIYUHlS/
+cjdp3KXUY8FrpDfDTS//4x/dJ8lCA0KyqjekJ4O1a4Ll1eGZQZf8/vnbzwoPuj0cXrUiWHvP
+jc+8sjY8FeijvTcu3H6ZSM1tSq3dqyikG0X2yR0VVG3jRC4Mlr+ukdo/m7ynWUdIVvX/iXR5
+uHJO74uYmu/nrnrr8N5N41/uvXHh9t+GK017h5cFIb0xLNz4+3D158HK1I8eUStynrm76QFC
+sqo3pG3B2tJwpXNlXVcco9Z0jXp1Xncv05/ve+vC7fNz63usKApJfSTY/u6O3OoXh+RvclZ7
+8nfPI4RkVZ9ThN4fvHpZn1t78nNT995tv1lf39477u4l43dvnPGx/+gouH3/7W1fe/8eoxb9
+uehgQ/5kvM90rd/fesiwA07574Tuka8ICdCAkAANCAnQgJAADQgJ0ICQAA0ICdCAkAANCAnQ
+gJAADQgJ0ICQAA0ICdCAkAANCAnQwEBIjz4EpMqjlT/Kkw/pQQFSZUbzgxU/zJMP6X7ZOfgg
+wBnPrplR+Wd1EBLQz7Nr/iqEBMTz7JqndxISEE/QkSIkIJ6wI0IC4sl1REhALPmOCAmIo6sj
+QgJi6O6IkIDq9XRESEDVejuyEdLWjYV/1r0IISEF+nRkOqT1Z09oEKkbvfi+yGGEBPf17chw
+SCtqpGlaS8uRo0UWtUWMIyQ4r19HZkO6Rk58JL+24TS5LGIgIcF1/TsyG9L0Sbu6VzubmyMG
+EhIcV9CR2ZBGLOldXzkyYiAhwW2FHRn+iTS59zNIZ8+IGEhIcFpRR6ZfI819PL/2xGJZFTGQ
+kOCy4o4MH7VbJjKmef6CWeNE5kelQkhwWImOTL+PtK51bL3IkKbWeyKHERLcVaojC2c2dG7e
+xJkNSK+SHXGuHVCR0h2lLqQX7gYsur90R9ZC2j51asGWbcuX9mgZKKQXhtn+Q4DwW/29pR+Z
+tkLaIoXfpW9IM+WN0jf7L9v/H+G5hhdKPzJthdS2dm3Etd+LCOkK2z/c4a0bv3TDAB05+hop
+KqT/Snx2oKQBjjPkEBJQnqiOCAkoT2RHhASUJbojQgLKMUhHRkO6eq9+IkYSEtwyWEdGQ3rq
+U0Nlz0N6RIwkJDhl0I4MP7X7T5lX1jhCgksG78j0a6QDCQmpU0ZHpkNavKisYYQEd5TTEUft
+gGhldURIQKTyOiIkIEqZHRESEKHcjggJGFjZHRESMKDyOyIkYCAVdERIwAAq6YiQgNIq6oiQ
+gJIq64iQgFIq7IiQgBIq7YiQgGIVd0RIQJHKOyIkoFAVHRESUKCajggJ6K+qjggJ6Ke6jggJ
+6KvKjggJ6KPajggJ6FV1R4QE9Ki+I0ICusXoiJCALnE6IiQgL1ZHhATkxOuIkIBQzI4ICVDx
+OyIkQENHhARo6IiQAA0dERK8p6MjQoLvtHRESPCcno4ICX7T1BEhwWu6OiIk+ExbR4QEj+nr
+iJDgL40dERK8pbMjQoKvtHZESPCU3o4ICX7S3BEhwUu6OyIk+Eh7R4QED+nviJDgnwQ6IiR4
+J4mOCAm+SaQjQoJnkumIkOCXhDoiJHglqY4ICT5JrCNCgkeS64iQ4I8EOyIkeCPJjggJvki0
+I0KCJ5LtiJDgh4Q7IiR4IemOCAk+SLwjQoIHku+IkJB9BjoiJGSeiY4ICVlnpCNCQsaZ6YiQ
+kG2GOiIkZJqpjggJWWasI0JChpnriJCQXQY7IiRklsmOCAlZZbQjQkJGme2IkJBNhjsiJGSS
+6Y4ICVlkvCNCQgaZ74iQkD0WOiIkZI6NjggJWWOlI0JCxtjpiJCQLZY6IiRkiq2OCAlZYq0j
+QkKG2OuIkJAdFjsiJGSGzY4ICVlhtSNCQkbY7YiQkA2WOyIkZILtjggJWWC9I0JCBtjviJCQ
+fg50REhIPRc6IiSknRMdERJSzo2OCAnp5khHhIRUc6UjQkKaOdMRISHF3OnITkivPvhK9ABC
+Qhkc6shwSK9ePO/CHeqK3UU+9JeocYSEwbnUkdmQtk4QkdNvlAPOa6nda3PEQELCoJzqyGxI
+n5WrXrqhrv6knUrdUXN+xEBCwmDc6shsSJNnBxenyWPh+nEHRwwkJAzCsY7MhrT7J4KLi+Wt
+cP38PSIGEhKiudaR4Z9IxwYXp8vj4foJ/ERC1ZzryPRrpGtfvrmubmGbUnfVfCJiICEhinsd
+GT5qN15ETv2BHHT+wiEjNkUMJCREcLAjw+8jbbvopEvfVJc1iBy2PmocIWFgLnZk58yGrQ+8
+FD2AkDAgJzviXDukjJsdERLSxdGOrIW0ferUgi3bli/tMZOQUJKrHVkLaYsUfhdCwqCc7cha
+SG1r10Zcy1M7lOJuR7xGQno43JGNkLZu7BhsCCGhmMsdmQ5p/dkTGkTqRi++L3IYIaGI0x0Z
+DmlFjTRNa2k5crTIoraIcYSEQm53ZDaka+TER/JrG06TyyIGEhIKON6R2ZCmT9rVvdrZ3Bwx
+kJDQn+sdmQ1pxJLe9ZUjIwYSEvpxviPDP5Emt/esz54RMZCQ0Jf7HZl+jTT38fzaE4tlVcRA
+QkIfKejI8FG7ZSJjmucvmDVOZP7OiHGEhF5p6Mj0+0jrWsfWiwxpar0nchghoUcqOrJwZkPn
+5k2c2YCypaMjzrWD21LSESHBaWnpiJDgstR0REhwWHo6IiS4K0UdERKclaaOCAmuSlVHhARH
+pasjQoKbUtYRIcFJaeuIkOCi1HVESHBQ+joiJLgnhR0REpyTxo4ICa5JZUeEBMeksyNCgltS
+2hEhwSlp7YiQ4JLUdkRIcEh6OyIkuCPFHRESnJHmjggJrkh1R4QER6S7I0KCG1LeESHBCWnv
+iJDggtR3REhwQPo7IiTYl4GOCAnWZaEjQoJtmeiIkGBZNjoiJNiVkY4ICVZlpSNCgk2Z6YiQ
+YFF2OiIk2JOhjggJ1mSpI0KCLZnqiJBgSbY6IiTYkbGOCAlWZK0jQoINmeuIkGBB9joiJJiX
+wY4ICcZlsSNCgmmZ7IiQYFg2OyIkmJXRjggJRmW1I0KCSZntiJBgUHY7IiSYk+GOCAnGZLkj
+QoIpme6IkGBItjsiJJiR8Y4ICUZkvSNCggmZ74iQYED2OyIkJM+DjggJifOhI0JC0rzoiJCQ
+MD86IiQky5OOCAmJ8qUjQkKSvOmIkJAgfzoiJCTHo44ICYnxqSNCQlK86oiQkBC/OiIkJMOz
+jggJifCtI0JCErzriJCQAP86IiTo52FHhATtfOyIkKCblx0REjTzsyNCgl6edkRI0MrXjggJ
+OnnbESFBI387IiTo43FHhARtfO6IkKCL1x0REjTxuyNCgh6ed0RI0ML3jggJOnjfESFBAzoi
+JMRHR4SE+OhIERJio6MQISEeOsohJMRCR3mEhDjoqAshIQY66kZIqB4d9bAS0uaH34weQEip
+QEe9zIb0tyXfVer/TRWpPfnvUeMIKQ3oqA+jIT21j1ytnhxWc8KyWdK0PWIgIaUAHfVlNKSP
+1P1KqVNq7w5W/498MmIgIbmPjvoxGtJ+C4OL0XNz68cfEjGQkJxHR/0ZDWnPxcHFvh/PrZ83
+ImIgIbmOjgoYDWn2e15Tat77OoPVjoNnRQwkJMfRUSGjIf2nHPkHtW74ynb19gVyWcRAQnIb
+HRUxe/j7yjrZf+Z4aTxihMzbGTGOkJxGR8UMvyH7/IVjh4rI3nPujBxGSC6joxIsnNmw7YV3
+BhtCSA6jo1I41w6VoaOSCAkVoaPSbIW0ferUgi3bli/tMZOQHEVHA7AV0hYp/C6ElAJ0NBBb
+IbWtXRtxLU/t3ERHA+I1EspGRwOzENLWjR2DDSEkF9FRBMMhrT97QoNI3ejF90UOIyQH0VEU
+syGtqJGmaS0tR44WWdQWMY6Q3ENHkYyGdI2c+Eh+bcNpnLSaLnQUzWhI0yft6l7tbG6OGEhI
+rqGjQRgNacSS3vWVIyMGEpJj6GgwZn8iTW7vWZ89I2IgIbmFjgZl+DXS3Mfza08sllURAwnJ
+KXQ0OLNH7ZaJjGmev2DWOJH5/GJfWtBRGQy/j7SudWy9yJCm1nsihxGSQ+ioHObPbOjcvIkz
+G1KEjsrCuXaIREflISREoaMyERIi0FG5CAkDo6OyERIGREflIyQMhI4qoDOk61+Lty+9CMkB
+dFQJnSFJw4fXvBVvd7oQkn10VBGdIV1zdK0MP/P2qN/YKxMhWUdHldH7GmnT6qClUef9btBT
+FwZBSLbRUYW0H2zYtHpWrTR9+o9V71GIkCyjo0rpP2r36CXjJHDgLdXukiIk2+ioYnpD2vW7
+T79XpGnZXQ9fOLzmd9XvFSFZRUeV0xnSLWftLTLhcw+EH22pHpHl1e8VIdlER1XQevhbDrvk
+se4vXmu8vNp9IiSr6KgaOkO64pl4+9KLkOyho6roDGlL9yfx7dhW9f7kEZI1dFQdrU/tru9a
++dd9qt6fPEKyhY6qpC2kX9x0kyy9KeeHRwyLuVeEZAkdVUtbSGOlj5Nj7hUh2UFHVdMW0l23
+3Safui3vzrdj7hUhWUFH1dP5Gun4O+PtSy9CsoGOYuAX+9CFjuLQFZLIi6rPi6SYe0VI5tFR
+LLpCWrhwizq1V8y9IiTj6CgentohREcx6Qzp8xvi7UsvQjKMjuLSe9LqB656Od7udCEks+go
+Np0h/fTU3aVu3pq4byIpQjKMjuLT+xppx89O20P2WnpfnD0KEZJJdKSB9oMNb/38jD1lfNX7
+k0dIBtGRDvqP2r2wegbvI6UIHWmhOaQNq44QGbnk9hh7FCIkY+hID50h3fe5CSIjzvpV1KfD
+loeQTKEjTfQe/h5x5i/fGeDKihCSIXSki86QWm/TUpEiJFPoSBtOEfIYHenD2d/+oiONOPvb
+W3SkE0/tfEVHWvF37TxFR3rxd+38REea8XftvERHuvF37XxER9rxd+08REf68Xft/ENHCeDw
+t3foKAmc2eAbOkoEZzZ4ho6SwVM7v9BRQvSH1Pk8v9jnLDpKitaQ7vnYc+rFQ2Tolzpj7RMh
+JYWOEqMzpDtqZYM6Q/7pCPlJvJ0ipGTQUXJ0hjRz5B/UjmHHqJ0TZ8baJ0JKBh0lSGdIo5Yo
+tVZ+oNSyfePtFCElgY6SpDOkka1KXSRPKnXuHvF2ipASQEeJ0hnSB9+9s23MeKXaJk6Jt1OE
+pB8dJUtnSNfLpLHyr+quw+TSeDtFSNrRUcK0Hv7+auOQRW+pL8qCATIoGyFpRkdJ0/yGbFvw
+31PPVL87XQhJLzpKHKcIeYCOkqc1pFtOP75LrH0iJL3oyACdIV0nMrwxL95OEZJOdGSCzpAO
+HhH7o/q6EJI+dGSExpA66z8Zc2d6EJI2dGSGxpDekc/G3JkehKQLHRmi86nd0eNejbczPQhJ
+EzoyRWdIzx966Jqnt+TE2ylC0oSOjNEZ0l578MdPnEJH5ugM6dxe8XaKkLSgI4M4syGz6Mgk
+zSHtePwPMXamByHFR0dGaQ3pbx/eLXh5dPHil2LtkiIkDejILJ0hbRwj02eL+k7NezbG2ylC
+io2ODNMZ0gXyY3VTcOUdQ5bH2ylCiouOTNMZ0ntnq1xIav4BsfaJkOKiI+N0hrTHJ7pCOp8/
+fmIVHZmnM6RpH+oK6fAPxNonQoqHjizQGdIq+UpHGNIq+UK8nSKkOOjIBp0htc+SiUfJ8g/I
+oXz0pT10ZIXW95F2Xrm/iOzzxddj7ZIipBjoyA7dpwi98aet1e9MD0KqFh1Zov1cu4dueKi9
+6r3pRkhVoiNbtIXU/o2Dr1aqozV4bnfAhrh7RUjVoSNrdIXUMVdqVyt1uey38sy6EfxinxV0
+ZI+ukK6TU7YHi3HyR6VulYtj7hUhVYOOLNIV0jH7hA/9DdIcfjHpyJh7RUhVoCObdIW076Lw
+8kq5LlzMf1e8nSKkKtCRVbpCGrosvDxZngsXHx4aa58IqQp0ZJeukA44Obh4Y/j43Bfve3e8
+nSKkitGRZbpCWtSwUamrJPdXT/6826KYe0VIFaIj23SFdL8cdOMN+8pvg9UXDpdfxdwrQqoM
+HVmn7Q3ZVbUicqpSHR9qkHPi7hUhVYSO7NN3itBD3/zMzR1Ktdcf/N2OuHtFSJWgIwfo/7t2
+sStShFQROnIBfyAy7ejICYSUcnTkBkJKNzpyBCGlGh25gpDSjI6cYSek6wb51GZCKgsducNO
+SLIs+npCKgcdOcRkSH+/vZvMDS4iRhJSGejIJSZDul76iRhJSIOjI6eYDOn1c2T4yq+HZFpw
+ETGSkAZFR24x+xrpZ6PG3Zv7DrxGiomOHGP4YMPfj629qI2QYqMj15g+atd5ef3UDYQUEx05
+x/zh73UHNXybkGKhI/dYeB/prQuEkOKgIwdZeUN27RV3Rw8gpAh05CLOtUsbOnISIaUMHbnJ
+Vkjbp04t2LJt+dIeMwlpAHTkKFshbSk6RYiQykBHrrIVUtvatRHX8tSuNDpyFq+RUoSO3GUh
+pK0bB/2LXYRUCh05zHBI68+e0CBSN3px9K/IElIJdOQysyGtqJGmaS0tR44WWdQWMY6QitGR
+04yGdI2c+Eh+bcNpclnEQEIqQkduMxrS9Em7ulc7m5sjBhJSITpynNGQRizpXV85MmIgIRWg
+I9eZ/Yk0ub1nffaMiIGE1B8dOc/wa6S5j+fXnlgsqyIGElI/dOQ+s0ftlomMaZ6/YNY4kfk7
+I8YRUl90lAKG30da1zq2XmRIU+s9kcMIqQ86SgPzZzZ0bt7EmQ0VoKNU4Fw7x9FROhCS2+go
+JQjJaXSUFoTkMjpKDUJyGB2lByG5i45ShJCcRUdpQkiuoqNUISRH0VG6EJKb6ChlCMlJdJQ2
+hOQiOkodQnIQHaUPIbmHjlKIkJxDR2lESK6ho1QiJMfQUToRklvoKKUIySl0lFaE5BI6Si1C
+cggdpRchuYOOUoyQnEFHaUZIrqCjVCMkR9BRuhGSG+go5QjJCXSUdoTkAjpKPUJyAB2lHyHZ
+R0cZQEjW0VEWEJJtdJQJhGQZHWUDIdlFRxlBSFbRUVYQkk10lBmEZBEdZQch2UNHGUJI1tBR
+lhCSLXSUKYRkCR1lCyHZQUcZQ0hW0FHWEJINdJQ5hGQBHWUPIZlHRxlESMbRURYRkml0lEmE
+ZBgdZRMhmUVHGUVIRtFRVhGSSXSUWYRkEB1lFyGZQ0cZRkjG0FGWEZIpdJRphGQIHWUbIZlB
+RxlHSEbQUdYRkgl0lHmEZAAdZR8hJY+OPEBIiaMjHxBS0ujIC4SUMDryAyEli448QUiJoiNf
+EFKS6MgbhJQgOvIHISWHjjxCSImhI58QUlLoyCuElBA68gshJYOOPENIiaAj3xBSEujIO4SU
+ADryDyHpR0ceIiTt6MhHhKQbHXmJkDSjIz8Rkl505ClC0oqOfEVIOtGRtwhJIzryFyHpQ0ce
+IyRt6MhnhKQLHXmNkDShI78Rkh505DlC0oKOfEdIOtCR9whJAzoCIcVHRyCk+OgIhBQfHUER
+Umx0hBAhxUNHyCGkWOgIeYQUBx2hi+mQNv91V37llRcjRqUkJDpCN7MhrXufyLtuyK3Oifou
+6QiJjtDDaEhPN9Qe39Ig14br6Q+JjtDLaEin1/xGqZcnNvxVZSAkOkIfRkMaNye8fGLYySr9
+IdER+jIa0tBzc4svye9THxIdoR+jIY2dklu8OWb8qykPiY7Qn9GQPiUrXg+Xv5YF21MdEh2h
+gNGQtkyU2uPClS/J8MYUh0RHKGT2faStX5icf3Z3/SRJb0h0hCK2ThHqfG5txLVOh0RHKMa5
+dpWiI5RASBWiI5RiK6TtU6cWbNm2fGmPmc6GREcoyVZIW4oONqQiJDpCabZCalubxoMNdIQB
+8BqpAnSEgVgIaevGjsGGuBkSHWFAhkNaf/aEBpG60YvvixzmZEh0hIGZDWlFjTRNa2k5crTI
+oraIcS6GREeIYDSka+TER/JrG06TyyIGOhgSHSGK0ZCmT9rVvdrZ3Bwx0L2Q6AiRjIY0Yknv
++sqREQOdC4mOEM3sT6TJ7T3rs2dEDHQtJDrCIAy/Rpr7eH7ticWyKmKgYyHREQZj9qjdMpEx
+zfMXzBonMn9nxDi3QqIjDMrw+0jrWsfWiwxpar0ncphTIdERBmf+zIbOzZtSdWYDHaEMnGs3
+CDpCOQgpGh2hLIQUiY5QHkKKQkcoEyFFoCOUi5AGRkcoGyENiI5QPkIaCB2hAoQ0ADpCJQip
+NDpCRQipJDpCZQipFDpChQipBDpCpQipGB2hYoRUhI5QOUIqREeoAiEVoCNUg5D6oyNUhZD6
+oSNUh5D6oiNUiZD6oCNUi5B60RGqRkg96AjVI6RudIQYCKkLHSEOQsqjI8RCSDl0hHgIKURH
+iImQFB0hPkKiI2hASHQEDQiJjqCB9yHREXTwPSQ6ghaeh0RH0MPvkOgImngdEh1BF59DoiNo
+43FIdAR9/A2JjqCRtyHREXTyNSQ6glaehkRH0MvPkOgImnkZEh1BNx9DoiNo52FIdAT9/AuJ
+jpAA70KiIyTBt5DoCInwLCQ6QjL8ComOkBCvQqIjJMWnkOgIifEoJDpCcvwJiY6QIG9CoiMk
+yZeQ6AiJ8iQkOkKy/AiJjpAwL0KiIyTNh5DoCInzICQ6QvKyHxIdwYDMh0RHMCHrIdERjMh4
+SHQEM7IdEh3BkEyHREcwJcsh0RGMyXBIdARzshsSHcGgzIZERzApqyHREYzKaEh0BLOyGRId
+wbBMhkRHMC2LIdERjMtgSHQE87IXEh3BgsyFREewIWsh0RGsyFhIdAQ7shUSHcGSTIVER7Al
+SyHREazJUEh0BHuyExIdwaLMhERHsCkrIdERrMpISHQEu7IREh3BskyEREewLQsh0RGsy0BI
+dAT70h8SHcEBqQ+JjuCCtIdER3BCykOiI7gh3SHRERxhIaStGzsGG1JmSHQEVxgOaf3ZExpE
+6kYvvi9yWHkh0RGcYTakFTXSNK2l5cjRIovaIsaVFRIdwR1GQ7pGTnwkv7bhNLksYmA5IdER
+HGI0pOmTdnWvdjY3RwwsIyQ6gkuMhjRiSe/6ypERAwcPiY7gFLM/kSa396zPnhExcNCQ6Ahu
+Mfwaae7j+bUnFsuqiIGDhURHcIzZo3bLRMY0z18wa5zI/J0R4wYJiY7gGsPvI61rHVsvMqSp
+9Z7IYdEh0RGcY/7Mhs7Nm+Kd2UBHcE/6zrW7mY7gnvSF9GU6gntshbR96tSCLduWL+0xMyKk
+f9cwO6CZrZC2SOF36RtSiwxwTO/++oYXNMwOaGYrpLa1ayOuvX+AkJ5dcy8dwUVuvkYaICSO
+18FVbv5iX+mQ6AjOcvMX+0qGREdwl5u/2FcqJDqCw9z8xb4SIdERXObmL/YVh0RHcJqbv9hX
+FBIdwW1u/mJfYUh0BMe5+Yt9BSHREVzn5i/29Q+JjuA8N3+xr19IdAT3ufmLfX1DoiOkgPPn
+2tER0sD1kOgIqeB4SHSEdHA7JDpCSjgdEh0hLVwOiY6QGg6HREdID3dDoiOkiLMh0RHSxNWQ
+nqQjpImjIc1Y82zikwD6uBnSgzNnCJAqD1b8ME8+JPXoQwOYM/NGq2Yyv9/zzxnokflo5Y9y
+AyEN6JxzLE7O/Myvc35CYn7m14CQmJ/5NSAk5md+DQiJ+ZlfA0JifubXgJCYn/k1ICTmZ34N
+CIn5mV8DQmJ+5tfAZkhLl1qcnPmZX+f8NkPats3i5MzP/DrntxkSkBmEBGhASIAGhARoQEiA
+BoQEaEBIgAaEBFrxnoYAAAdgSURBVGhASIAGhARoQEiABoQEaEBIgAaEBGhASIAGNkJ66moL
+kyLCG9f/3fYupJ2NkD69V78vr50xcsa15mYvnG7rhVN2n3Khud8xK7q7dx43oumfzX2CVKn/
+3efI7dbm3/qZ8Q3jz7B4//U8/iyEdNfQfiEtk0lnHygrTM1eON228XLM0qNl4quW5ldXSVPr
+/CH7PG9r/sDPxFxIhfNvnShTzj2hZtg6S/PrevwZD2nxJJG+Ia2TObvUrhNq1puZvmi6lXJN
+cHmlfNnS/M/XTQsa/qUssTR/4MVRw42FVDT/RXJBcPnr2sMsza/r8Wc8pEXz5u3ZN6RWeSy4
+fNjUA6loupPk5eDyJZlnaf4L5Q/h4urvWppfqc5jx600FlLR/JNrXw8Xx8tmO/PrevzZeI10
+SN+Qxo7OLZommJm7aLpL5ebg8sdyoaX5x+5vZuKB5lfq8tp7v24spKL5pxyXW7TIX+3Mr+vx
+ZzukzvoZueW0BiNTF0/35im7tX75jLrTd1iaf+jMR0/ed8ypTxmZvtT/7nX1FyljIQ30z/1y
+w367rMyv7fFnO6TNMj+3bJGtJqYuMd0P60Sk/iYTs5eYf5tMGH7ox+bU7l75p5ZqmV+9NWXq
+TnMhDfDP/cRE+ZGd+bU9/myHtEkW5JYtstHE1MXTfU3mP7Zj3UnyLRPTF8//gshFnUrdXfN+
+O/OrCxo2KHMhlfznfvPiYQ2rLc2v7fFnO6SOIbNyyyPrOkxMXTTd1oaD2oLFzgN2f83K/O9I
+Y3u4PMHMi+2i+dfKt5XBkEr9c/9mf5ln5gVSifm1Pf5sh6SaxucWY0abmbtwugfk/Nzy3Co+
+EV7H/GrvI3KLZfKwlfmvkG7XWZlfqYtl/O+NTF16fl2PP+shnSFPBJcbpNXM3IXTvSQLc8v8
+UXDz86s5I94OF7Nq37Qy/93LQtNk7rL7rMyvrpcFpt4LLzm/rsefxZDatmwPLu+RM5XqPE3u
+NTN3n+ny8x825K7g8o7aD1qa/05ZETyp+Kmp97GK5s8xd/i7cP7OScO3D36r5ObX9vizGNJa
+mRou5smxK2d1/VwwoHe6/PyP71lz4vnH14z8s6X5gw2HLv0naTJ11mjR/CFzIRXO/5w0zsl7
+xcr82h5/9kN659KjRkxftdPU5L3Tdc2/8bwpu09Z9g9r87+zqnnPKRcYO2m2aP6QwZAK5v9t
+z2u0F63Mr+3xx+8jARoQEqABIQEaEBKgASEBGhASoAEhARoQEqABIQEaEBKgASEBGhASoAEh
+ARoQEqABIQEaEBKgASEBGhASoAEhARoQEqABIQEaEJJ7HvjwpIZ3zf5BZxlDF4b/fl971/B3
+1PA5RdthEP/DnfNVaZj3iYX7yNz2wceGwTwok7/cXiKku8b+IqldRBFCcs3DtQeFH4zwxiny
+jcEHb3kx/JC0nwZrL71SuP02MfRZNVCE5J5vyo255fbag3PLzrZBbnD9AH/dkZBMIiTXfEZ+
+nF9ZfbVSjef+cF/Z/5+fCb9uv+yo4WM/uSlc3bpsyl7H/jBYOVVUc/hnSrteI/Xdfny4fcsV
+8vPc95IbrNwZfxCSa26Wfb/zRvcXjeNrxi2ZVbP3w0rtPFqOWHqM7P+8Us+PHXLi0ony6Vww
+vzlXPnN9Ry6kftvv/JQsvf6dZ+Ss8PscPdTIxz95jJBc03GKyPD5V/0p90WjzH1bqZ/IcUpd
+KV8JNtwgpyh1ltyqVNv0mifDYLqe2oUh9d+ef2p32KhdSm2q/bDNu+QDQnJO593njguelY37
+VkcQUu2T4aaT5Em1/8TcZ8odVb/jldrcJ4H/uvnu/iEVbM+HdIn8Lnxmt8bWvfEFITnp2etm
+iCwOQhqb+/Jq+dWbctRNodny+H2yqntcv5AKtudDeix8pnf08LeM3wXPEJJr2rs+zPSP+8pD
+qvHI3Pqtcs2fej7/5IF/7/2Yyn4hFWzvOmo34b3BM7szTd4DLxGSYzrqP9S1dpHcoBrH5Vav
+lZ9vkQu6h6ztfYepX0gF27tC+pw8utrcxx95i5Bcc/CwF/IrZ8qDwWukp8PVhbJe7ZP/1Obv
+XKxekPnh2h113+sfUsH2rpAekEtmjRrsvSjERUiu+a4c/pdw+Yu6ie2qUU56R6lbaqYr9S/y
+1WDrnTWtSrXU3KHUrmNr/lpw1K7/9tskfEdJdTaNqz3P5h3yAyG5puMcqT/slAWTZcQGpRpH
+j5r48eNrRv5fpV4/RD6wfMGQ97yo1F/2HTLvginy2YKndgXb75QjvrIjuGaZhAfukCxCcs8v
+F767fr9pXwpPnms85qkF73rPKU+Fm9/6/OG7T1gWnoenNp59wPDDv99ZGFL/7W/PaxgVfjTt
+XdLUYe/O+IKQnNZ4TPzv8XB4ABwJIySn6QjpQvlj/G+CQRCS0+KH9Nojww/UsSeIRkhOmxL7
+HLlGqblFx54gGiFl3DfP55CdCYQEaEBIgAaEBGhASIAGhARoQEiABoQEaEBIgAaEBGhASIAG
+hARoQEiABoQEaEBIgAb/H9zbCOyznhvmAAAAAElFTkSuQmCC"
+width=420
+height=420
+class="
+"
+>
 </div>
 
 </div>
@@ -14928,78 +15482,6 @@ Balanced Accuracy           1.0000            0.9286           0.9783</pre>
 
 </div>
 
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>library(naivebayes)</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#To build a predictive model via Naive Bayes to predict &quot; Species&quot; using other features in iris data.</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">naivebayes</span><span class="p">)</span>
-<span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
-<span class="nf">str</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>naivebayes 1.0.0 loaded
-
-For more information please visit: 
-
-https://majkamichal.github.io/naivebayes/
-
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&#39;data.frame&#39;:	150 obs. of  5 variables:
- $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
- $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
- $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
- $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
- $ Species     : Factor w/ 3 levels &#34;setosa&#34;,&#34;versicolor&#34;,..: 1 1 1 1 1 1 1 1 1 1 ...
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15099,306 +15581,6 @@ Balanced Accuracy           1.0000            0.9550           0.9550</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#install.packages(&quot;tm&quot;)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Warning message in install.packages(&#34;tm&#34;):
-“&#39;lib = &#34;/opt/R/4.2.2/lib/R/library&#34;&#39; is not writable”
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-Error in install.packages(&#34;tm&#34;): unable to install packages
-Traceback:
-
-1. stop(&#34;unable to install packages&#34;)
-2. .handleSimpleError(function (cnd) 
- . {
- .     watcher$capture_plot_and_output()
- .     cnd &lt;- sanitize_call(cnd)
- .     watcher$push(cnd)
- .     switch(on_error, continue = invokeRestart(&#34;eval_continue&#34;), 
- .         stop = invokeRestart(&#34;eval_stop&#34;), error = NULL)
- . }, &#34;unable to install packages&#34;, base::quote(install.packages(&#34;tm&#34;)))</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># ============================================================</span>
-<span class="c1"># Multinomial Naive Bayes for Text Classification (Updated)</span>
-<span class="c1"># ============================================================</span>
-
-<span class="c1"># Load required packages</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">e1071</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">tm</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">pROC</span><span class="p">)</span>
-
-
-
-<span class="nf">data</span><span class="p">(</span><span class="s">&quot;crude&quot;</span><span class="p">)</span><span class="w">  </span>
-
-<span class="c1"># Preprocessing pipeline</span>
-<span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">tm_map</span><span class="p">(</span><span class="n">crude</span><span class="p">,</span><span class="w"> </span><span class="nf">content_transformer</span><span class="p">(</span><span class="n">tolower</span><span class="p">))</span>
-<span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">tm_map</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span><span class="w"> </span><span class="n">removePunctuation</span><span class="p">)</span>
-<span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">tm_map</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span><span class="w"> </span><span class="n">removeNumbers</span><span class="p">)</span>
-<span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">tm_map</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span><span class="w"> </span><span class="n">removeWords</span><span class="p">,</span><span class="w"> </span><span class="nf">stopwords</span><span class="p">(</span><span class="s">&quot;english&quot;</span><span class="p">))</span>
-<span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">tm_map</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span><span class="w"> </span><span class="n">stripWhitespace</span><span class="p">)</span>
-
-<span class="c1">#Create Document-Term Matrix (DTM)</span>
-<span class="n">dtm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">DocumentTermMatrix</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">weighting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weightTf</span><span class="p">))</span>
-<span class="n">dtm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">removeSparseTerms</span><span class="p">(</span><span class="n">dtm</span><span class="p">,</span><span class="w"> </span><span class="m">0.95</span><span class="p">)</span>
-<span class="n">dtm.df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">dtm</span><span class="p">))</span>
-
-
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">121</span><span class="p">)</span>
-<span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;spam&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ham&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">dtm.df</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
-
-<span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="n">train.dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtm.df</span><span class="p">[</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<span class="n">test.dat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">dtm.df</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-<span class="n">train.y</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">labels</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-<span class="n">test.y</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">labels</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">]</span>
-
-
-<span class="n">fit.nb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">naiveBayes</span><span class="p">(</span><span class="n">train.dat</span><span class="p">,</span><span class="w"> </span><span class="n">train.y</span><span class="p">,</span><span class="w"> </span><span class="n">laplace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-
-
-<span class="n">pred.class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fit.nb</span><span class="p">,</span><span class="w"> </span><span class="n">test.dat</span><span class="p">)</span>
-<span class="n">pred.prob</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">fit.nb</span><span class="p">,</span><span class="w"> </span><span class="n">test.dat</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;raw&quot;</span><span class="p">)[,</span><span class="w"> </span><span class="s">&quot;spam&quot;</span><span class="p">]</span>
-
-
-<span class="n">conf.matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">pred.class</span><span class="p">,</span><span class="w"> </span><span class="n">test.y</span><span class="p">,</span><span class="w"> </span><span class="n">positive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;spam&quot;</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">conf.matrix</span><span class="p">)</span>
-
-
-<span class="n">roc.obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">roc</span><span class="p">(</span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test.y</span><span class="p">,</span><span class="w"> </span><span class="n">predictor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pred.prob</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;ham&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;spam&quot;</span><span class="p">))</span>
-<span class="n">auc.value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">auc</span><span class="p">(</span><span class="n">roc.obj</span><span class="p">)</span>
-<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;AUC:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">auc.value</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
-
-<span class="nf">plot</span><span class="p">(</span><span class="n">roc.obj</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ROC Curve for Multinomial Naive Bayes&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-Error in library(tm): there is no package called ‘tm’
-Traceback:
-
-1. stop(packageNotFoundError(package, lib.loc, sys.call()))</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Example-Workflow">Example Workflow<a class="anchor-link" href="#Example-Workflow">&#182;</a></h3><ol>
-<li><p><strong>Raw corpus:</strong> A collection of messages:</p>
-<blockquote>
-<p>[&quot;Win a free ticket now!&quot;, &quot;Let's schedule a meeting for tomorrow.&quot;, &quot;Exclusive offer just for you!&quot;]</p>
-</blockquote>
-</li>
-<li><p><strong>Cleaned corpus:</strong></p>
-<blockquote>
-<p>[&quot;win free ticket&quot;, &quot;schedule meeting tomorrow&quot;, &quot;exclusive offer&quot;]</p>
-</blockquote>
-</li>
-<li><p><strong>Converted to DTM:</strong></p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-  <th>Document</th>
-  <th>win</th>
-  <th>free</th>
-  <th>ticket</th>
-  <th>schedule</th>
-  <th>meeting</th>
-  <th>exclusive</th>
-  <th>offer</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Doc1</td>
-  <td>1</td>
-  <td>1</td>
-  <td>1</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-</tr>
-<tr>
-  <td>Doc2</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td>1</td>
-  <td>1</td>
-  <td>0</td>
-  <td>0</td>
-</tr>
-<tr>
-  <td>Doc3</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td>0</td>
-  <td>1</td>
-  <td>1</td>
-</tr>
-</tbody>
-</table>
-<p>This structured representation (DTM) is then passed to a classifier (like <code>naiveBayes</code>) for training.</p>
-<h2 id="Explanation-of-Code-and-Functions">Explanation of Code and Functions<a class="anchor-link" href="#Explanation-of-Code-and-Functions">&#182;</a></h2><h3 id="1.-Load-Dataset">1. Load Dataset<a class="anchor-link" href="#1.-Load-Dataset">&#182;</a></h3><ul>
-<li><code>data(&quot;crude&quot;)</code> loads a small example text corpus from the <strong>tm</strong> package for demonstration.<br />
-In real applications, this can be replaced with a true <strong>SMS spam dataset</strong> (e.g., <code>sms_spam</code>) containing message text and labels (spam or ham).</li>
-</ul>
-<p>A <strong>corpus</strong> (plural: <em>corpora</em>) is a collection of <strong>text documents</strong> that forms the foundation for text analysis or natural language processing (NLP) tasks.<br />
-Each document in the corpus represents a single text instance — such as an email, a sentence, a review, or a message.</p>
-<p>For example, in a <strong>spam classification problem</strong>, each document corresponds to one SMS message or email, and the corpus is the entire set of messages.</p>
-<h3 id="2.-Preprocessing-Pipeline">2. Preprocessing Pipeline<a class="anchor-link" href="#2.-Preprocessing-Pipeline">&#182;</a></h3><ul>
-<li>Converts raw text into a consistent, machine-readable format.</li>
-<li><code>tm_map()</code> applies sequential text transformations to standardize the corpus:<ul>
-<li><code>content_transformer(tolower)</code> – converts all text to lowercase (so “Free” and “free” are treated the same).</li>
-<li><code>removePunctuation</code> – removes punctuation marks (<code>. , ! ?</code>) to keep only words.</li>
-<li><code>removeNumbers</code> – removes digits that generally carry little meaning in text classification.</li>
-<li><code>removeWords(stopwords(&quot;english&quot;))</code> – removes common English stopwords such as “the”, “is”, and “and”.</li>
-<li><code>stripWhitespace</code> – removes extra spaces introduced during cleaning.</li>
-</ul>
-</li>
-</ul>
-<p>These steps help reduce noise and ensure that tokenized words represent meaningful information for classification.</p>
-<h3 id="3.-Document-Term-Matrix-(DTM)">3. Document-Term Matrix (DTM)<a class="anchor-link" href="#3.-Document-Term-Matrix-(DTM)">&#182;</a></h3><ul>
-<li><code>DocumentTermMatrix()</code> constructs a structured numeric representation of the corpus:<ul>
-<li>Rows = individual documents</li>
-<li>Columns = unique words (terms)</li>
-<li>Entries = frequency (count) of each term in each document</li>
-</ul>
-</li>
-<li><code>control = list(weighting = weightTf)</code> specifies <strong>term frequency weighting</strong> (raw word counts).</li>
-<li><code>removeSparseTerms(dtm, 0.95)</code> removes rare words that appear in fewer than 5% of documents, reducing sparsity and improving model efficiency.</li>
-<li><code>as.matrix()</code> converts the DTM into a standard matrix, and <code>as.data.frame()</code> converts it to a data frame for modeling.</li>
-</ul>
-<h3 id="4.-Labels-and-Splitting">4. Labels and Splitting<a class="anchor-link" href="#4.-Labels-and-Splitting">&#182;</a></h3><ul>
-<li><code>set.seed(6021)</code> ensures reproducibility for random operations.</li>
-<li><code>sample(c(&quot;spam&quot;, &quot;ham&quot;), ...)</code> generates <strong>synthetic labels</strong> (spam or ham) for illustration.<br />
-In real scenarios, replace this with the actual labels from the dataset.</li>
-<li><code>createDataPartition(labels, p = 0.8, list = FALSE)</code> (from <strong>caret</strong>) creates stratified indices for an 80/20 train-test split.</li>
-</ul>
-<p>The resulting data subsets are:</p>
-<ul>
-<li><code>train.dat</code> – training data frame containing 80% of the documents</li>
-<li><code>test.dat</code> – testing data frame containing 20% of the documents</li>
-<li>The corresponding labels are <code>train.y</code> and <code>test.y</code>.</li>
-</ul>
-<h3 id="5.-Model-Training">5. Model Training<a class="anchor-link" href="#5.-Model-Training">&#182;</a></h3><ul>
-<li><code>fit.nb = naiveBayes(train.dat, train.y, laplace = 1)</code> fits a <strong>Multinomial Naive Bayes</strong> classifier:<ul>
-<li><code>train.dat</code> – term frequency data for training.</li>
-<li><code>train.y</code> – associated class labels.</li>
-<li><code>laplace = 1</code> applies <strong>Laplace smoothing</strong> (also called additive smoothing) to handle words that never appear in some classes, preventing zero-probability issues.</li>
-</ul>
-</li>
-</ul>
-<h3 id="6.-Prediction">6. Prediction<a class="anchor-link" href="#6.-Prediction">&#182;</a></h3><ul>
-<li><code>predict(fit.nb, test.dat)</code> produces predicted class labels (<code>spam</code> or <code>ham</code>) for the test data.</li>
-<li><code>predict(fit.nb, test.dat, type = &quot;raw&quot;)</code> returns <strong>posterior probabilities</strong> for each class.</li>
-<li><code>[, &quot;spam&quot;]</code> extracts the predicted probability of the message being spam, which is later used for AUC and ROC analysis.</li>
-</ul>
-<h3 id="7.-Model-Evaluation">7. Model Evaluation<a class="anchor-link" href="#7.-Model-Evaluation">&#182;</a></h3><ul>
-<li><code>confusionMatrix(pred.class, test.y, positive = &quot;spam&quot;)</code> (from <strong>caret</strong>) provides detailed performance metrics:<ul>
-<li><strong>Accuracy</strong> – overall proportion of correctly classified messages.</li>
-<li><strong>Sensitivity (Recall)</strong> – fraction of actual spam messages correctly identified.</li>
-<li><strong>Specificity</strong> – fraction of ham (non-spam) messages correctly identified.</li>
-<li>Additional metrics such as <strong>Kappa</strong> and <strong>Balanced Accuracy</strong> for imbalanced data scenarios.</li>
-</ul>
-</li>
-</ul>
-<h3 id="8.-ROC-Curve-and-AUC">8. ROC Curve and AUC<a class="anchor-link" href="#8.-ROC-Curve-and-AUC">&#182;</a></h3><ul>
-<li><code>roc(response = test.y, predictor = pred.prob, levels = c(&quot;ham&quot;, &quot;spam&quot;))</code> (from <strong>pROC</strong>) constructs the <strong>ROC curve</strong>:<ul>
-<li><code>response</code> = true labels.</li>
-<li><code>predictor</code> = predicted probabilities for the positive class (&quot;spam&quot;).</li>
-</ul>
-</li>
-<li><code>auc(roc.obj)</code> calculates the <strong>Area Under the ROC Curve (AUC)</strong> to quantify overall discrimination ability.</li>
-<li><code>plot(roc.obj, col = &quot;blue&quot;, main = &quot;ROC Curve for Multinomial Naive Bayes&quot;)</code> visualizes the classifier performance:<ul>
-<li>A curve closer to the top-left corner indicates stronger separation between spam and ham classes.</li>
-</ul>
-</li>
-</ul>
-<hr />
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Use lasso or ridge regression for classfication</span>
 
 <span class="c1">#To build a predictive model via Lasso (elastic net) to predict &quot; Species&quot; using other features in iris data.</span>
@@ -15446,31 +15628,31 @@ In real scenarios, replace this with the actual labels from the dataset.</li>
             Reference
 Prediction   setosa versicolor virginica
   setosa         50          0         0
-  versicolor      0         48         1
-  virginica       0          2        49
+  versicolor      0         47         1
+  virginica       0          3        49
 
 Overall Statistics
                                           
-               Accuracy : 0.98            
-                 95% CI : (0.9427, 0.9959)
+               Accuracy : 0.9733          
+                 95% CI : (0.9331, 0.9927)
     No Information Rate : 0.3333          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
-                  Kappa : 0.97            
+                  Kappa : 0.96            
                                           
  Mcnemar&#39;s Test P-Value : NA              
 
 Statistics by Class:
 
                      Class: setosa Class: versicolor Class: virginica
-Sensitivity                 1.0000            0.9600           0.9800
-Specificity                 1.0000            0.9900           0.9800
-Pos Pred Value              1.0000            0.9796           0.9608
-Neg Pred Value              1.0000            0.9802           0.9899
+Sensitivity                 1.0000            0.9400           0.9800
+Specificity                 1.0000            0.9900           0.9700
+Pos Pred Value              1.0000            0.9792           0.9423
+Neg Pred Value              1.0000            0.9706           0.9898
 Prevalence                  0.3333            0.3333           0.3333
-Detection Rate              0.3333            0.3200           0.3267
-Detection Prevalence        0.3333            0.3267           0.3400
-Balanced Accuracy           1.0000            0.9750           0.9800</pre>
+Detection Rate              0.3333            0.3133           0.3267
+Detection Prevalence        0.3333            0.3200           0.3467
+Balanced Accuracy           1.0000            0.9650           0.9750</pre>
 </div>
 
 </div>
