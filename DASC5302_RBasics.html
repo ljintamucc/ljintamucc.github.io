@@ -14658,10 +14658,42 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="2.-Basic-R-syntax">2. Basic R syntax<a class="anchor-link" href="#2.-Basic-R-syntax">&#182;</a></h2><p>R is <strong>case-sensitive</strong>, so <code>x</code>, <code>X</code>, and <code>x1</code> are different object names.</p>
+<h2 id="2.-Basic-R-syntax">2. Basic R syntax<a class="anchor-link" href="#2.-Basic-R-syntax">&#182;</a></h2><h3 id="Variables-(objects)-in-R">Variables (objects) in R<a class="anchor-link" href="#Variables-(objects)-in-R">&#182;</a></h3><p>In R, we store values in <strong>objects</strong>, which are often informally called <strong>variables</strong>.</p>
+<p>For example,</p>
+<div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
+</pre></div>
+<p>creates an object named <code>x</code> and stores the value <code>5</code> in it. After an object has been created, its name can be used in later calculations:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span>
+</pre></div>
+<p>returns <code>7</code>.</p>
+<p>The assignment operator <code>&lt;-</code> is commonly used to assign a value to an object:</p>
+<div class="highlight"><pre><span></span><span class="n">age</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">20</span>
+<span class="n">height</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">68.5</span>
+<span class="n">student_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Alex&quot;</span>
+</pre></div>
+<p>An object can store many kinds of information, including a single number, text, a vector, a data frame, or the result of a calculation.</p>
+<p>R is <strong>case-sensitive</strong>, so <code>x</code>, <code>X</code>, and <code>x1</code> are different object names.</p>
 <p>Object names can contain letters, numbers, periods (<code>.</code>), and underscores (<code>_</code>), but they should not begin with a number.</p>
 <p>The assignment operator <code>&lt;-</code> is commonly used in R. The operator <code>=</code> also works in many assignment situations.</p>
 <p>Anything after <code>#</code> on a line is a comment.</p>
+<p>Object names:</p>
+<ul>
+<li>may contain <strong>letters</strong>, <strong>numbers</strong>, periods (<code>.</code>), and underscores (<code>_</code>);</li>
+<li>should normally begin with a <strong>letter</strong>;</li>
+<li>may begin with a period (<code>.</code>), but if they do, the period cannot be immediately followed by a number;</li>
+<li><strong>cannot begin with a number</strong>;</li>
+<li>cannot contain spaces;</li>
+<li>should not use special operators such as <code>+</code>, <code>-</code>, <code>*</code>, or <code>/</code>;</li>
+<li>cannot be reserved R words such as <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>NA</code>, <code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, or <code>function</code>.</li>
+</ul>
+<p>Examples of useful object names are:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span>
+<span class="n">age</span>
+<span class="n">student_age</span>
+<span class="n">test.score</span>
+<span class="n">weight1</span>
+<span class="n">sample_mean</span>
+</pre></div>
 
 </div>
 </div>
@@ -14719,6 +14751,25 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Practice">Practice<a class="anchor-link" href="#Practice">&#182;</a></h3><p>Try the following in a new R code cell.</p>
+<ol>
+<li>Create <code>x &lt;- 5</code> and <code>y &lt;- 10</code>.</li>
+<li>Display <code>x</code> and <code>y</code>.</li>
+<li>Find <code>x + y</code>, <code>x * y</code>, and <code>x^2</code>.</li>
+<li>Create <code>Score &lt;- 90</code> and <code>score &lt;- 80</code>. Display both.</li>
+<li>Add a comment beginning with <code>#</code>.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="3.-Common-data-types">3. Common data types<a class="anchor-link" href="#3.-Common-data-types">&#182;</a></h2><p>Some important basic data types in R are:</p>
 <ul>
 <li><strong>numeric</strong>: numbers such as <code>2.5</code> or <code>10</code>;</li>
@@ -14763,26 +14814,27 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="4.-Vectors-and-the-c()-function">4. Vectors and the <code>c()</code> function<a class="anchor-link" href="#4.-Vectors-and-the-c()-function">&#182;</a></h2><p>A <strong>vector</strong> is a one-dimensional collection of values. Vectors are among the most important basic data structures in R. Many variables in a dataset can be viewed as vectors: for example, a column containing the heights of all sampled students is a numeric vector.</p>
-<h3 id="The-c()-function">The <code>c()</code> function<a class="anchor-link" href="#The-c()-function">&#182;</a></h3><p>The function <code>c()</code> is used to <strong>combine values</strong> into a vector. You will use it frequently in R.</p>
-<p>The general form is</p>
+<h2 id="4.-Vectors">4. Vectors<a class="anchor-link" href="#4.-Vectors">&#182;</a></h2><p>A <strong>vector</strong> is a one-dimensional collection of values and is one of the most important basic data structures in R. In many datasets, a single variable can be viewed as a vector. For example, the heights of all sampled students form a numeric vector, while their majors form a character or categorical vector.</p>
+<p>The Chapter 1 notes introduce vectors as a basic data structure and emphasize the use of <code>c()</code> to <strong>combine</strong> values into a vector. A vector has a <strong>length</strong>, which is the number of elements it contains.</p>
+<h3 id="Creating-vectors-with-c()">Creating vectors with <code>c()</code><a class="anchor-link" href="#Creating-vectors-with-c()">&#182;</a></h3><p>The general form is</p>
 <div class="highlight"><pre><span></span><span class="n">object_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="w"> </span><span class="n">value2</span><span class="p">,</span><span class="w"> </span><span class="n">value3</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">)</span>
 </pre></div>
 <p>For example,</p>
 <div class="highlight"><pre><span></span><span class="n">weight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span><span class="w"> </span><span class="m">2.7</span><span class="p">,</span><span class="w"> </span><span class="m">4.2</span><span class="p">,</span><span class="w"> </span><span class="m">2.7</span><span class="p">,</span><span class="w"> </span><span class="m">5.2</span><span class="p">)</span>
 </pre></div>
 <p>creates a numeric vector named <code>weight</code>.</p>
-<p>Important points about <code>c()</code>:</p>
+<p>Important points:</p>
 <ul>
 <li>Values inside <code>c()</code> are separated by commas.</li>
 <li>The result can be assigned to an object using <code>&lt;-</code>.</li>
-<li><code>c()</code> can combine individual values <strong>or existing vectors</strong>.</li>
-<li>Character values must be placed inside quotation marks, for example <code>c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)</code>.</li>
+<li><code>c()</code> can combine individual values or existing vectors.</li>
+<li>Character values must be placed inside quotation marks, such as <code>c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)</code>.</li>
 <li>Logical vectors can contain <code>TRUE</code> and <code>FALSE</code>.</li>
-<li>In an <strong>atomic vector</strong>, all elements have a common basic type. If different types are combined, R may automatically convert them to a common type. This is called <strong>coercion</strong>.</li>
-<li>A single number such as <code>x &lt;- 5</code> is also treated by R as a vector of length 1.</li>
+<li>In an <strong>atomic vector</strong>, all elements have a common basic type. If different types are combined, R may convert the elements to a common type. This is called <strong>coercion</strong>.</li>
+<li>A single number such as <code>x &lt;- 5</code> is also treated as a vector of length 1.</li>
+<li>Use <code>length(x)</code> to find the number of elements in a vector.</li>
 </ul>
-<p>The function name <code>c()</code> is commonly read as “combine” or “concatenate.”</p>
+<p>The function name <code>c()</code> is commonly read as <strong>combine</strong> or <strong>concatenate</strong>.</p>
 
 </div>
 </div>
@@ -14825,30 +14877,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Useful summary functions for a numeric vector</span>
-<span class="nf">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<span class="nf">median</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<span class="nf">sd</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<span class="nf">var</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<span class="nf">min</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<span class="nf">max</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<span class="nf">range</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-<span class="nf">summary</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14856,7 +14884,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Creating-sequences-and-repeated-values">Creating sequences and repeated values<a class="anchor-link" href="#Creating-sequences-and-repeated-values">&#182;</a></h3>
+<h3 id="Creating-sequences-and-repeated-values">Creating sequences and repeated values<a class="anchor-link" href="#Creating-sequences-and-repeated-values">&#182;</a></h3><p>R provides convenient functions for constructing vectors without typing every value.</p>
+<ul>
+<li><code>a:b</code> creates an integer sequence from <code>a</code> to <code>b</code>.</li>
+<li><code>seq()</code> creates a sequence using a starting value, an ending value, and either a desired length or an increment.</li>
+<li><code>rep()</code> repeats a value or vector a specified number of times.</li>
+<li><code>round()</code> can be used to round displayed numerical results.</li>
+</ul>
+<p>These operations are especially useful when creating indices, grids of values, or repeated group labels.</p>
+
 </div>
 </div>
 </div>
@@ -14913,7 +14949,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Vectorized-calculations">Vectorized calculations<a class="anchor-link" href="#Vectorized-calculations">&#182;</a></h3><p>Many R operations are automatically applied element-by-element to vectors.</p>
+<h3 id="Vectorized-calculations">Vectorized calculations<a class="anchor-link" href="#Vectorized-calculations">&#182;</a></h3><p>Many R operations are <strong>vectorized</strong>, meaning that an operation can be applied to all elements of a vector at once.</p>
+<p>For example, if</p>
+<div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
+</pre></div>
+<p>then <code>x + 10</code>, <code>x * 2</code>, <code>x^2</code>, and <code>sqrt(x)</code> are evaluated element by element. This is usually simpler and more efficient than processing one value at a time.</p>
 
 </div>
 </div>
@@ -14946,8 +14986,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="5.-Subsetting-vectors">5. Subsetting vectors<a class="anchor-link" href="#5.-Subsetting-vectors">&#182;</a></h2><p>R uses square brackets <code>[]</code> for subsetting.</p>
+<h3 id="Subsetting-vectors">Subsetting vectors<a class="anchor-link" href="#Subsetting-vectors">&#182;</a></h3><p><strong>Subsetting</strong> means selecting part of a vector. R uses square brackets <code>[]</code> for this purpose.</p>
 <p>Important: R indexing starts at <strong>1</strong>, not 0.</p>
+<p>Common forms include:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w">          </span><span class="c1"># second element</span>
+<span class="n">x</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)]</span><span class="w">    </span><span class="c1"># first and fourth elements</span>
+<span class="n">x</span><span class="p">[</span><span class="m">-2</span><span class="p">]</span><span class="w">         </span><span class="c1"># all elements except the second</span>
+<span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">3</span><span class="p">]</span><span class="w">      </span><span class="c1"># elements satisfying a logical condition</span>
+</pre></div>
+<p>A logical expression such as <code>x &gt; 3</code> produces a vector of <code>TRUE</code> and <code>FALSE</code> values. When it is placed inside <code>[]</code>, R keeps the elements for which the condition is <code>TRUE</code>.</p>
 
 </div>
 </div>
@@ -14980,8 +15027,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="6.-Missing-values">6. Missing values<a class="anchor-link" href="#6.-Missing-values">&#182;</a></h2><p>Missing observations are represented by <code>NA</code>.</p>
-<p>Many statistical functions return <code>NA</code> when missing values are present unless <code>na.rm = TRUE</code> is used.</p>
+<h3 id="Missing-values-in-vectors">Missing values in vectors<a class="anchor-link" href="#Missing-values-in-vectors">&#182;</a></h3><p>A missing observation is represented by <code>NA</code>.</p>
+<p>Use</p>
+<div class="highlight"><pre><span></span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>to identify missing values. Many statistical functions return <code>NA</code> if a vector contains missing observations. The argument</p>
+<div class="highlight"><pre><span></span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+</pre></div>
+<p>tells functions such as <code>mean()</code> and <code>sum()</code> to remove missing values before performing the calculation.</p>
+<p>For example,</p>
+<div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+<p>computes the mean of the observed values only.</p>
 
 </div>
 </div>
@@ -15014,7 +15071,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="7.-Factors-for-categorical-variables">7. Factors for categorical variables<a class="anchor-link" href="#7.-Factors-for-categorical-variables">&#182;</a></h2><p>Factors are useful for categorical variables whose possible values represent groups or levels.</p>
+<h3 id="Categorical-vectors-and-factors">Categorical vectors and factors<a class="anchor-link" href="#Categorical-vectors-and-factors">&#182;</a></h3><p>A character vector can store category labels, such as</p>
+<div class="highlight"><pre><span></span><span class="n">group</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Control&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Treatment&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Control&quot;</span><span class="p">)</span>
+</pre></div>
+<p>For statistical analysis, categorical variables are often stored as <strong>factors</strong>. A factor records the possible categories as <strong>levels</strong>.</p>
+<div class="highlight"><pre><span></span><span class="n">group</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Control&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Treatment&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Control&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Treatment&quot;</span><span class="p">))</span>
+</pre></div>
+<p>Useful functions include:</p>
+<ul>
+<li><code>levels(group)</code> — display the factor levels;</li>
+<li><code>table(group)</code> — count observations in each category.</li>
+</ul>
+<p>Factors are especially useful when a variable represents groups rather than numerical quantities.</p>
 
 </div>
 </div>
@@ -15046,13 +15114,47 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="8.-Data-frames">8. Data frames<a class="anchor-link" href="#8.-Data-frames">&#182;</a></h2><p>A <strong>data frame</strong> stores data in rows and columns.</p>
+<h3 id="Practice">Practice<a class="anchor-link" href="#Practice">&#182;</a></h3><ol>
+<li>Create <code>x &lt;- c(2, 4, 6, 8, 10)</code> and display it.</li>
+<li>Find the length of <code>x</code>.</li>
+<li>Display the second element of <code>x</code>.</li>
+<li>Display the values of <code>x</code> that are greater than 5.</li>
+<li>Use <code>seq()</code> to create the integers from 1 to 10.</li>
+<li>Use <code>rep()</code> to repeat the value 3 five times.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5.-Data-frames">5. Data frames<a class="anchor-link" href="#5.-Data-frames">&#182;</a></h2><p>A <strong>data frame</strong> is the standard table-like structure used for many datasets in R.</p>
+<p>A data frame is more general than a matrix because different columns can contain different kinds of data. For example, one column may be numeric, another may contain character labels, and another may be a factor.</p>
+<p>Think of a data frame as a rectangular dataset:</p>
 <ul>
-<li>Each <strong>row</strong> usually represents an observation or case.</li>
-<li>Each <strong>column</strong> represents a variable.</li>
-<li>Different columns may have different data types.</li>
+<li>each <strong>row</strong> represents one observation, subject, case, or experimental unit;</li>
+<li>each <strong>column</strong> represents one variable;</li>
+<li>all entries in a given column describe the same variable;</li>
+<li>different columns may have different data types.</li>
 </ul>
+<p>For example, a student dataset might contain columns for <code>height</code>, <code>weight</code>, <code>major</code>, and <code>graduated</code>.</p>
 <p>R contains many built-in datasets. We will first use <code>mtcars</code>, so this section works without downloading a file.</p>
+<p>Useful commands for inspecting a data frame include:</p>
+<ul>
+<li><code>head(dat)</code> — first six rows;</li>
+<li><code>tail(dat)</code> — last six rows;</li>
+<li><code>dim(dat)</code> — number of rows and columns;</li>
+<li><code>nrow(dat)</code> and <code>ncol(dat)</code> — numbers of rows and columns separately;</li>
+<li><code>names(dat)</code> — variable names;</li>
+<li><code>str(dat)</code> — structure and variable types;</li>
+<li><code>summary(dat)</code> — summaries of the variables.</li>
+</ul>
+<p>These checks are useful whenever you first load a dataset.</p>
 
 </div>
 </div>
@@ -15087,7 +15189,25 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Selecting-rows-and-columns-from-a-data-frame">Selecting rows and columns from a data frame<a class="anchor-link" href="#Selecting-rows-and-columns-from-a-data-frame">&#182;</a></h3>
+<h3 id="Selecting-rows-and-columns-from-a-data-frame">Selecting rows and columns from a data frame<a class="anchor-link" href="#Selecting-rows-and-columns-from-a-data-frame">&#182;</a></h3><p>The Chapter 1 examples show two common ways to extract a variable:</p>
+<div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">mpg</span>
+<span class="n">dat</span><span class="p">[,</span><span class="w"> </span><span class="s">&quot;mpg&quot;</span><span class="p">]</span>
+</pre></div>
+<p>The <code>$</code> operator is convenient when selecting one named variable. Square-bracket indexing uses the form</p>
+<div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+<p>For example:</p>
+<ul>
+<li><code>dat[2, ]</code> selects the second row;</li>
+<li><code>dat[, 2]</code> selects the second column;</li>
+<li><code>dat[1:5, ]</code> selects rows 1 through 5;</li>
+<li><code>dat[1:5, c(&quot;mpg&quot;, &quot;wt&quot;)]</code> selects particular rows and columns.</li>
+</ul>
+<p>Logical conditions can also be used to select cases. For example,</p>
+<div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">mpg</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">25</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+<p>keeps only cars whose <code>mpg</code> is greater than 25.</p>
+
 </div>
 </div>
 </div>
@@ -15142,11 +15262,30 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="9.-Reading-a-.csv-file">9. Reading a <code>.csv</code> file<a class="anchor-link" href="#9.-Reading-a-.csv-file">&#182;</a></h2><p>Use <code>read.csv()</code> to import a comma-separated data file.</p>
-<h3 id="A-file-stored-in-the-same-JupyterHub-folder">A file stored in the same JupyterHub folder<a class="anchor-link" href="#A-file-stored-in-the-same-JupyterHub-folder">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">dat0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;Diamond.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">dat0</span><span class="p">)</span>
+<h2 id="6.-Reading-a-.csv-file">6. Reading a <code>.csv</code> file<a class="anchor-link" href="#6.-Reading-a-.csv-file">&#182;</a></h2><p>Real datasets are often stored outside R. A common format is a <strong>comma-separated values (<code>.csv</code>) file</strong>. Use <code>read.csv()</code> to import such a file into R as a data frame.</p>
+<h3 id="A-file-stored-in-the-same-JupyterHub-folder">A file stored in the same JupyterHub folder<a class="anchor-link" href="#A-file-stored-in-the-same-JupyterHub-folder">&#182;</a></h3><p>If <code>Diamond.csv</code> is in the same folder as the notebook, use</p>
+<div class="highlight"><pre><span></span><span class="n">dat0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;Diamond.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
-<h3 id="A-file-available-from-a-web-address">A file available from a web address<a class="anchor-link" href="#A-file-available-from-a-web-address">&#182;</a></h3><p>The following reproduces the Diamond-data example from the original notebook. It requires an internet connection.</p>
+<p>Here:</p>
+<ul>
+<li><code>&quot;Diamond.csv&quot;</code> is the file name or path;</li>
+<li><code>header = TRUE</code> tells R that the first row contains the variable names;</li>
+<li><code>dat0 &lt;-</code> stores the imported data in an R object named <code>dat0</code>.</li>
+</ul>
+<p>In JupyterHub, the <strong>current working directory</strong> is the folder R is currently using. These commands are useful:</p>
+<div class="highlight"><pre><span></span><span class="nf">getwd</span><span class="p">()</span><span class="w">       </span><span class="c1"># show the current working directory</span>
+<span class="nf">list.files</span><span class="p">()</span><span class="w">  </span><span class="c1"># show files in the current directory</span>
+</pre></div>
+<p>If R reports that a file cannot be found, first check the spelling, capitalization, and folder location.</p>
+<h3 id="A-file-available-from-a-web-address">A file available from a web address<a class="anchor-link" href="#A-file-available-from-a-web-address">&#182;</a></h3><p><code>read.csv()</code> can also read a <code>.csv</code> file directly from a web address. The Chapter 1 notes use the Diamond dataset as an example.</p>
+<p>After importing any dataset, do not immediately begin analysis. First verify that it loaded correctly using commands such as:</p>
+<div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">dat0</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">dat0</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">dat0</span><span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">dat0</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">dat0</span><span class="p">)</span>
+</pre></div>
+<p>The Diamond data used here contain variables such as <code>carat</code>, <code>colour</code>, <code>clarity</code>, <code>certification</code>, and <code>price</code>.</p>
 
 </div>
 </div>
@@ -15178,7 +15317,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>If <code>Diamond.csv</code> has been uploaded to the same JupyterHub directory as this notebook, use:</p>
+<p>If <code>Diamond.csv</code> has been uploaded to the same JupyterHub directory as this notebook, the following code can be used. <code>head()</code> is included as a quick check that the file was imported successfully.</p>
 
 </div>
 </div>
@@ -15209,7 +15348,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Example-subsetting-with-the-Diamond-data">Example subsetting with the Diamond data<a class="anchor-link" href="#Example-subsetting-with-the-Diamond-data">&#182;</a></h3><p>After <code>dat0</code> has been loaded, the following commands illustrate common operations.</p>
+<h3 id="Working-with-the-imported-Diamond-data">Working with the imported Diamond data<a class="anchor-link" href="#Working-with-the-imported-Diamond-data">&#182;</a></h3><p>After <code>dat0</code> has been loaded, you can use the same row, column, and logical-subsetting ideas introduced above.</p>
+<p>For example:</p>
+<ul>
+<li><code>dat0$colour</code> extracts the variable <code>colour</code>;</li>
+<li><code>dat0[, 2]</code> extracts the second column;</li>
+<li><code>dat0[2, ]</code> extracts the second row;</li>
+<li><code>dat0[2:6, ]</code> selects rows 2 through 6;</li>
+<li><code>dat0$colour == &quot;D&quot;</code> creates a logical vector identifying diamonds whose colour is <code>&quot;D&quot;</code>;</li>
+<li><code>dat0[dat0$colour == &quot;D&quot;, ]</code> keeps only those cases.</li>
+</ul>
+<p>This illustrates an important R workflow:</p>
+<p><strong>load the data → inspect the data → select variables/cases → analyze or visualize the data.</strong></p>
 
 </div>
 </div>
@@ -15246,19 +15396,26 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="10.-Packages">10. Packages<a class="anchor-link" href="#10.-Packages">&#182;</a></h2><p>Packages add functions and datasets to R.</p>
-<p>Install a package <strong>once</strong>:</p>
-<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
-<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+<h3 id="Practice:-load-the-Diamond-data">Practice: load the Diamond data<a class="anchor-link" href="#Practice:-load-the-Diamond-data">&#182;</a></h3><ol>
+<li><p>Download <code>Diamond.csv</code> to your local computer.</p>
+</li>
+<li><p>Upload <code>Diamond.csv</code> to the same folder as this notebook in JupyterHub.</p>
+</li>
+<li><p>Run <code>list.files()</code> and check that <code>&quot;Diamond.csv&quot;</code> is listed.</p>
+</li>
+<li><p>Load the file:</p>
+<div class="highlight"><pre><span></span><span class="n">dat0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;Diamond.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
-<p>Load an installed package at the beginning of a session:</p>
-<div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-</pre></div>
-<p>The package <code>tidyverse</code> loads <code>ggplot2</code>, <code>dplyr</code>, and several other related packages:</p>
-<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tidyverse&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1"># run once, if needed</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</pre></div>
+</li>
+<li><p>Run <code>head(dat0)</code> to view the first six rows.</p>
+</li>
+<li><p>Run <code>dim(dat0)</code> and <code>names(dat0)</code> to check the size and variable names.</p>
+</li>
+<li><p>Display the second row using <code>dat0[2, ]</code>.</p>
+</li>
+<li><p>Display the variable <code>price</code> using <code>dat0$price</code>.</p>
+</li>
+</ol>
 
 </div>
 </div>
@@ -15270,8 +15427,340 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="11.-Basic-dplyr-data-manipulation">11. Basic <code>dplyr</code> data manipulation<a class="anchor-link" href="#11.-Basic-dplyr-data-manipulation">&#182;</a></h2><p>The following examples use <code>dplyr</code> and the built-in <code>mtcars</code> data.</p>
-<p>The base-R pipe <code>|&gt;</code> sends the result on its left to the function on its right. The tidyverse pipe <code>%&gt;%</code> is also widely used.</p>
+<h2 id="7.-Data-summarization">7. Data summarization<a class="anchor-link" href="#7.-Data-summarization">&#182;</a></h2><p>After a dataset has been loaded, one of the first steps is to <strong>summarize the data</strong>. Numerical summaries help us describe the center, spread, and overall distribution of a variable before using more advanced statistical methods.</p>
+<p>Suppose a sample contains observations</p>
+$$
+x_1, x_2, \ldots, x_n.
+$$<h3 id="Measures-of-center">Measures of center<a class="anchor-link" href="#Measures-of-center">&#182;</a></h3><p>The <strong>sample mean</strong> is</p>
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i.
+$$<p>It represents the arithmetic average of the observations.</p>
+<p>In R:</p>
+<div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>The <strong>median</strong> is the middle observation after the data are ordered. It is often less affected by unusually large or unusually small observations than the mean.</p>
+<p>In R:</p>
+<div class="highlight"><pre><span></span><span class="nf">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<h3 id="Measures-of-variability">Measures of variability<a class="anchor-link" href="#Measures-of-variability">&#182;</a></h3><p>The <strong>sample variance</strong> measures how far the observations tend to vary around the sample mean:</p>
+$$
+s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2.
+$$<p>In R:</p>
+<div class="highlight"><pre><span></span><span class="nf">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>The <strong>sample standard deviation</strong> is</p>
+$$
+s = \sqrt{s^2}.
+$$<p>It measures variability in the same units as the original variable.</p>
+<p>In R:</p>
+<div class="highlight"><pre><span></span><span class="nf">sd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<h3 id="Minimum,-maximum,-and-range">Minimum, maximum, and range<a class="anchor-link" href="#Minimum,-maximum,-and-range">&#182;</a></h3><p>Useful functions for examining the spread of a variable include:</p>
+<div class="highlight"><pre><span></span><span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">range</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p><code>range(x)</code> returns the minimum and maximum values.</p>
+<p>The numerical width of the range can be calculated by</p>
+<div class="highlight"><pre><span></span><span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<h3 id="Quartiles-and-quantiles">Quartiles and quantiles<a class="anchor-link" href="#Quartiles-and-quantiles">&#182;</a></h3><p>Quartiles divide the ordered observations into four parts.</p>
+<ul>
+<li>the first quartile, $Q_1$, is the 25th percentile;</li>
+<li>the median, $Q_2$, is the 50th percentile;</li>
+<li>the third quartile, $Q_3$, is the 75th percentile.</li>
+</ul>
+<p>In R:</p>
+<div class="highlight"><pre><span></span><span class="nf">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>The <strong>interquartile range (IQR)</strong> is</p>
+$$
+IQR = Q_3 - Q_1.
+$$<p>In R:</p>
+<div class="highlight"><pre><span></span><span class="nf">IQR</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<h3 id="A-quick-numerical-summary">A quick numerical summary<a class="anchor-link" href="#A-quick-numerical-summary">&#182;</a></h3><p>The function</p>
+<div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>provides a convenient summary of a numerical variable, including the minimum, first quartile, median, mean, third quartile, and maximum.</p>
+<p>For an entire data frame:</p>
+<div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">diamond</span><span class="p">)</span>
+</pre></div>
+<p>R summarizes each variable according to its type.</p>
+<h3 id="Summarizing-categorical-variables">Summarizing categorical variables<a class="anchor-link" href="#Summarizing-categorical-variables">&#182;</a></h3><p>For a categorical variable, the mean and standard deviation usually do not make sense. Instead, we often summarize the variable by its <strong>frequency distribution</strong>.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">colour</span><span class="p">)</span>
+</pre></div>
+<p>To convert counts to proportions:</p>
+<div class="highlight"><pre><span></span><span class="nf">prop.table</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">colour</span><span class="p">))</span>
+</pre></div>
+<h3 id="Sample-size-and-missing-values">Sample size and missing values<a class="anchor-link" href="#Sample-size-and-missing-values">&#182;</a></h3><p>The function</p>
+<div class="highlight"><pre><span></span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>returns the number of elements in a vector, including missing values.</p>
+<p>To count missing observations:</p>
+<div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+<p>To count non-missing observations:</p>
+<div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+<p>Many summary functions return <code>NA</code> when missing values are present unless we specify</p>
+<div class="highlight"><pre><span></span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+</pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+<h3 id="Summarizing-a-variable-in-a-data-frame">Summarizing a variable in a data frame<a class="anchor-link" href="#Summarizing-a-variable-in-a-data-frame">&#182;</a></h3><p>Recall that <code>$</code> extracts one variable from a data frame. For the Diamond data:</p>
+<div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">median</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">var</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+</pre></div>
+<p>The same commands can be applied to another numerical variable, such as <code>carat</code>.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Numerical summaries for the Diamond data</span>
+
+<span class="c1"># Price</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">median</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">var</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+
+<span class="nf">min</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">max</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">range</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+
+<span class="nf">quantile</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+<span class="nf">IQR</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+
+<span class="nf">summary</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">price</span><span class="p">)</span>
+
+<span class="c1"># Carat</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">carat</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">carat</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">carat</span><span class="p">)</span>
+
+<span class="c1"># Categorical variable</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">colour</span><span class="p">)</span>
+<span class="nf">prop.table</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">diamond</span><span class="o">$</span><span class="n">colour</span><span class="p">))</span>
+
+<span class="c1"># Summary of the entire data frame</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">diamond</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Practice:-summarize-the-Diamond-data">Practice: summarize the Diamond data<a class="anchor-link" href="#Practice:-summarize-the-Diamond-data">&#182;</a></h3><p>After <code>dat0</code> has been loaded:</p>
+<ol>
+<li>Find the mean of <code>price</code>.</li>
+<li>Find the median of <code>price</code>.</li>
+<li>Find the variance and standard deviation of <code>price</code>.</li>
+<li>Find the minimum and maximum of <code>price</code>.</li>
+<li>Run <code>summary(dat0$price)</code>.</li>
+<li>Run <code>table(dat0$colour)</code>.</li>
+<li>Run <code>summary(dat0)</code>.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="8.-R-packages">8. R packages<a class="anchor-link" href="#8.-R-packages">&#182;</a></h2><p>An <strong>R package</strong> is a collection of functions, code, documentation, and sometimes datasets developed for particular types of tasks.</p>
+<p>Base R includes many standard functions and datasets. Thousands of additional packages are available from repositories such as <strong>CRAN</strong> and GitHub.</p>
+<p>There are two separate steps:</p>
+<ol>
+<li><p><strong>Install a package</strong> — usually done only once on a computer or server:</p>
+<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">)</span>
+</pre></div>
+</li>
+<li><p><strong>Load a package</strong> — usually done again at the beginning of each new R session:</p>
+<div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</pre></div>
+</li>
+</ol>
+<p>Installed packages are stored in an R <strong>library</strong>. <code>library()</code> makes the package's functions and datasets available in the current R session.</p>
+<h3 id="The-AppliedPredictiveModeling-package">The <code>AppliedPredictiveModeling</code> package<a class="anchor-link" href="#The-AppliedPredictiveModeling-package">&#182;</a></h3><p>The package <strong><code>AppliedPredictiveModeling</code></strong> accompanies the book <em>Applied Predictive Modeling</em> by Max Kuhn and Kjell Johnson. It contains datasets and supporting materials used in examples from the book, making it convenient for practicing predictive-modeling methods in R.</p>
+<p>To load the package:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Load a package</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">AppliedPredictiveModeling</span><span class="p">)</span>
+</pre></div>
+<p>If the package has not yet been installed on your computer or JupyterHub environment, install it first:</p>
+<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;AppliedPredictiveModeling&quot;</span><span class="p">)</span>
+</pre></div>
+<p>and then load it:</p>
+<div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">AppliedPredictiveModeling</span><span class="p">)</span>
+</pre></div>
+<p>Chapter 1 uses the <strong>abalone</strong> data as an example. After loading the package, the dataset can be made available with:</p>
+<div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">abalone</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">abalone</span><span class="p">)</span>
+</pre></div>
+<p>Here:</p>
+<ul>
+<li><code>data(abalone)</code> loads the dataset into the R environment;</li>
+<li><code>head(abalone)</code> displays the first six observations;</li>
+<li>the dataset contains measurements on abalones and can be used to practice data inspection and predictive-modeling techniques.</li>
+</ul>
+<p>This illustrates an important distinction:</p>
+<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;AppliedPredictiveModeling&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># usually only once</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">AppliedPredictiveModeling</span><span class="p">)</span><span class="w">             </span><span class="c1"># each new R session</span>
+<span class="nf">data</span><span class="p">(</span><span class="n">abalone</span><span class="p">)</span><span class="w">                                  </span><span class="c1"># load a dataset from the package</span>
+</pre></div>
+<h3 id="The-tidyverse">The <code>tidyverse</code><a class="anchor-link" href="#The-tidyverse">&#182;</a></h3><p>The <strong><code>tidyverse</code></strong> is a collection of R packages designed to work together for common tasks in data science, including importing data, cleaning data, transforming variables, summarizing data, and creating graphics.</p>
+<p>Rather than being a single package with one purpose, <code>tidyverse</code> loads a group of related packages that use a consistent style and syntax. This makes it easier to move from one step of a data-analysis workflow to another.</p>
+<p>Some important packages in the tidyverse include:</p>
+<ul>
+<li><strong><code>dplyr</code></strong> — data manipulation, such as selecting variables, filtering observations, creating new variables, and computing summaries;</li>
+<li><strong><code>ggplot2</code></strong> — data visualization;</li>
+<li><strong><code>tidyr</code></strong> — reshaping and organizing data into a tidy format;</li>
+<li><strong><code>readr</code></strong> — importing rectangular data files such as <code>.csv</code> files;</li>
+<li><strong><code>tibble</code></strong> — a modern version of the R data frame;</li>
+<li><strong><code>stringr</code></strong> — working with character strings;</li>
+<li><strong><code>forcats</code></strong> — working with categorical variables and factors;</li>
+<li><strong><code>purrr</code></strong> — tools for applying functions repeatedly and working with lists.</li>
+</ul>
+<p>To install the tidyverse, usually only once:</p>
+<div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;tidyverse&quot;</span><span class="p">)</span>
+</pre></div>
+<p>To load it at the beginning of an R session:</p>
+<div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</pre></div>
+<p>When <code>library(tidyverse)</code> is run, several core tidyverse packages are loaded together.</p>
+<h4 id="Why-use-the-tidyverse?">Why use the tidyverse?<a class="anchor-link" href="#Why-use-the-tidyverse?">&#182;</a></h4><p>The tidyverse is especially useful because many of its functions have a consistent structure and are designed to work naturally with data frames.</p>
+<p>For example, a common data-analysis workflow is:</p>
+<div class="highlight"><pre><span></span><span class="n">data</span>
+<span class="w">  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="kc">...</span><span class="p">)</span>
+<span class="w">  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="kc">...</span><span class="p">)</span>
+<span class="w">  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="kc">...</span><span class="p">)</span>
+<span class="w">  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span><span class="kc">...</span><span class="p">)</span>
+</pre></div>
+<p>This can be read as:</p>
+<blockquote>
+<p>Start with the data, then filter the rows, then select variables, then create or modify variables, and finally compute summaries.</p>
+</blockquote>
+<p>This style often makes R code easier to read because the commands appear in the same order as the steps of the analysis.</p>
+<h4 id="Pipes">Pipes<a class="anchor-link" href="#Pipes">&#182;</a></h4><p>A <strong>pipe</strong> passes the result of one command to the next command.</p>
+<p>Base R provides:</p>
+<div class="highlight"><pre><span></span><span class="o">|&gt;</span>
+</pre></div>
+<p>The tidyverse also commonly uses:</p>
+<div class="highlight"><pre><span></span><span class="o">%&gt;%</span>
+</pre></div>
+<p>For example,</p>
+<div class="highlight"><pre><span></span><span class="n">mtcars</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">mpg</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">25</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">cyl</span><span class="p">,</span><span class="w"> </span><span class="n">wt</span><span class="p">)</span>
+</pre></div>
+<p>means:</p>
+<ol>
+<li>start with <code>mtcars</code>;</li>
+<li>keep only cars with <code>mpg &gt; 25</code>;</li>
+<li>keep only the variables <code>mpg</code>, <code>cyl</code>, and <code>wt</code>.</li>
+</ol>
+<p>Without a pipe, the same analysis can be written using nested functions, but the piped version is often easier for students to follow.</p>
+<h4 id="Base-R-and-tidyverse">Base R and tidyverse<a class="anchor-link" href="#Base-R-and-tidyverse">&#182;</a></h4><p>Both <strong>base R</strong> and the <strong>tidyverse</strong> can be used for data analysis. They are not competing systems that require choosing only one.</p>
+<p>For example, selecting observations can be done with base R:</p>
+<div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+<p>or with <code>dplyr</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">dat</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5000</span><span class="p">)</span>
+</pre></div>
+<p>In this course, it is useful to understand both styles. Base R helps students understand fundamental R indexing and data structures, while tidyverse functions often provide a readable workflow for data manipulation and visualization.</p>
+<p>You do not need to load the entire tidyverse for every task. Individual packages can also be loaded separately, for example:</p>
+<div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Load a package</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">AppliedPredictiveModeling</span><span class="p">)</span>
+
+<span class="c1"># Load a dataset included with the package</span>
+<span class="nf">data</span><span class="p">(</span><span class="n">abalone</span><span class="p">)</span>
+
+<span class="c1"># Display the first six observations</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">abalone</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="9.-Basic-dplyr-data-manipulation">9. Basic <code>dplyr</code> data manipulation<a class="anchor-link" href="#9.-Basic-dplyr-data-manipulation">&#182;</a></h2><p><code>dplyr</code> provides readable functions for common data-frame operations.</p>
+<p>The Chapter 1 notes emphasize the <strong>pipe</strong>, which sends the output from one command to the next command. This helps avoid deeply nested functions and makes a sequence of data-processing steps easier to read.</p>
+<p>Two common pipe operators are:</p>
+<div class="highlight"><pre><span></span><span class="o">|&gt;</span><span class="w">     </span><span class="c1"># base R pipe, available starting with R 4.1</span>
+<span class="o">%&gt;%</span><span class="w">    </span><span class="c1"># tidyverse/magrittr pipe</span>
+</pre></div>
+<p>For example,</p>
+<div class="highlight"><pre><span></span><span class="n">mtcars</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">cyl</span><span class="p">,</span><span class="w"> </span><span class="n">wt</span><span class="p">)</span>
+</pre></div>
+<p>can be read as:</p>
+<blockquote>
+<p>Start with <code>mtcars</code>, then select the variables <code>mpg</code>, <code>cyl</code>, and <code>wt</code>.</p>
+</blockquote>
+<p>Some important <code>dplyr</code> functions are:</p>
+<ul>
+<li><code>select()</code> — choose variables (columns) by name;</li>
+<li><code>filter()</code> — choose observations (rows) satisfying conditions;</li>
+<li><code>mutate()</code> — create or transform variables;</li>
+<li><code>summarize()</code> — reduce many values to summary values such as means;</li>
+<li><code>group_by()</code> — define groups before computing summaries;</li>
+<li><code>arrange()</code> — reorder rows;</li>
+<li><code>count()</code> — count observations in categories or groups;</li>
+<li><code>pull()</code> — extract one column as a vector.</li>
+</ul>
+<p>The following examples use the built-in <code>mtcars</code> dataset.</p>
 
 </div>
 </div>
@@ -15391,6 +15880,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Diamond-data-examples-with-dplyr">Diamond-data examples with <code>dplyr</code><a class="anchor-link" href="#Diamond-data-examples-with-dplyr">&#182;</a></h3><p>These examples can be run after <code>dat0</code> has been imported.</p>
+<p>They parallel the Chapter 1 examples:</p>
+<ul>
+<li><code>filter()</code> selects cases, such as diamonds with <code>colour == &quot;D&quot;</code>;</li>
+<li><code>select()</code> keeps particular variables;</li>
+<li><code>mutate()</code> creates a new variable, such as <code>profit = 0.2 * price + 5</code>;</li>
+<li><code>summarize()</code> computes numerical summaries;</li>
+<li><code>group_by()</code> allows summaries to be calculated separately for different categories.</li>
+</ul>
+<p>Compare the <code>dplyr</code> syntax with the earlier base-R syntax using <code>$</code> and square brackets. Both approaches are useful.</p>
 
 </div>
 </div>
@@ -15444,7 +15942,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="12.-Data-visualization-with-ggplot2">12. Data visualization with <code>ggplot2</code><a class="anchor-link" href="#12.-Data-visualization-with-ggplot2">&#182;</a></h1><p><code>ggplot2</code> is a widely used R package for statistical graphics. A typical graph has three main parts:</p>
+<h2 id="10.-Data-visualization-with-ggplot2">10. Data visualization with <code>ggplot2</code><a class="anchor-link" href="#10.-Data-visualization-with-ggplot2">&#182;</a></h2><p><code>ggplot2</code> is a widely used R package for statistical graphics. A typical graph has three main parts:</p>
 <div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATA</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_VARIABLE</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y_VARIABLE</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">geom_...</span><span class="p">()</span>
 </pre></div>
@@ -15549,7 +16047,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="12.1-Additional-ggplot2-examples">12.1 Additional <code>ggplot2</code> examples<a class="anchor-link" href="#12.1-Additional-ggplot2-examples">&#182;</a></h2><p>The next cell shows several useful extensions without introducing a new plotting cell for every variation:</p>
+<h3 id="10.1-Additional-ggplot2-examples">10.1 Additional <code>ggplot2</code> examples<a class="anchor-link" href="#10.1-Additional-ggplot2-examples">&#182;</a></h3><p>The next cell shows several useful extensions without introducing a new plotting cell for every variation:</p>
 <ul>
 <li>map a grouping variable to <code>color</code>;</li>
 <li>add a fitted linear regression line with <code>geom_smooth(method = &quot;lm&quot;)</code>;</li>
@@ -15655,7 +16153,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="12.2-Optional-plots-for-the-imported-Diamond-data">12.2 Optional plots for the imported Diamond data<a class="anchor-link" href="#12.2-Optional-plots-for-the-imported-Diamond-data">&#182;</a></h2><p>After <code>dat0</code> has been imported, the same <code>ggplot2</code> ideas can be applied to the Diamond data. The commands below are kept together in one optional cell.</p>
+<h3 id="10.2-Optional-plots-for-the-imported-Diamond-data">10.2 Optional plots for the imported Diamond data<a class="anchor-link" href="#10.2-Optional-plots-for-the-imported-Diamond-data">&#182;</a></h3><p>After <code>dat0</code> has been imported, the same <code>ggplot2</code> ideas can be applied to the Diamond data. The commands below are kept together in one optional cell.</p>
 
 </div>
 </div>
@@ -15699,22 +16197,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="13.-Saving-a-ggplot2-graph">13. Saving a <code>ggplot2</code> graph<a class="anchor-link" href="#13.-Saving-a-ggplot2-graph">&#182;</a></h2><p>The most recent <code>ggplot2</code> graph can be saved with <code>ggsave()</code>.</p>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;scatterplot.png&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span><span class="p">)</span>
-</pre></div>
-<p>You can also save a named plot object:</p>
-
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15750,16 +16232,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="14.-Short-practice">14. Short practice<a class="anchor-link" href="#14.-Short-practice">&#182;</a></h1><p>Try these exercises in new code cells.</p>
-<ol>
-<li>Create the vector <code>x &lt;- c(4, 7, 9, 12, 15)</code>. Find its mean and standard deviation.</li>
-<li>Select the values of <code>x</code> that are greater than 8.</li>
-<li>Using <code>mtcars</code>, find the mean <code>mpg</code> for cars with 4 cylinders.</li>
-<li>Using <code>dplyr</code>, calculate the mean <code>mpg</code> for each cylinder group.</li>
-<li>Make a histogram of <code>mtcars$hp</code>.</li>
-<li>Make a scatterplot of <code>hp</code> versus <code>mpg</code>.</li>
-<li>Make a boxplot of <code>mpg</code> grouped by transmission type (<code>am</code>). Treat <code>am</code> as a factor.</li>
-<li>Using <code>iris</code>, create a scatterplot of <code>Sepal.Width</code> versus <code>Petal.Width</code>, with points colored by <code>Species</code>.</li>
+<h1 id="Practice">Practice<a class="anchor-link" href="#Practice">&#182;</a></h1><ol>
+<li>Create <code>x &lt;- c(4, 7, 9, 12, 15)</code>.</li>
+<li>Display the values of <code>x</code> greater than 8.</li>
+<li>Use <code>mean(mtcars$mpg)</code> to find the mean miles per gallon.</li>
+<li>Run <code>summary(mtcars$mpg)</code>.</li>
+<li>Make a histogram of <code>mtcars$mpg</code>.</li>
+<li>Make a scatterplot of <code>wt</code> versus <code>mpg</code>.</li>
 </ol>
 
 </div>
@@ -15791,10 +16270,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <tr>
   <td>Inspect objects</td>
   <td><code>class()</code>, <code>typeof()</code>, <code>length()</code>, <code>str()</code></td>
-</tr>
-<tr>
-  <td>Summaries</td>
-  <td><code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>var()</code>, <code>summary()</code></td>
 </tr>
 <tr>
   <td>Subsetting</td>
